@@ -1,0 +1,29 @@
+.allAbout {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Crimson Pro", serif;
+  color: black;
+  font-size: 20px;
+  font-weight: normal;
+}
+.radi {
+  width: 100%;
+  align-items: center;
+}
+.roqia img {
+  width: 1350px;
+  height: 500px;
+  vertical-align: middle;
+}
+.roqia {
+  width: 100%;
+  display: grid;
+  border: red;
+}
+
+h4 {
+  padding: 30px 0px 0px 20px;
+  text-align: center;
+  font-weight: bold;
+}

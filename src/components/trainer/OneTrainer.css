@@ -1,0 +1,170 @@
+.big-div {
+  margin-bottom: 520px;
+}
+.col-xs-12 {
+  float: right;
+  position: relative;
+  right: 115px;
+  top: 60px;
+}
+
+.gym-img {
+  border-radius: 100px;
+}
+
+.list--gym-address {
+  position: relative;
+  right: 35px;
+  bottom: 22px;
+  list-style-type: none;
+}
+
+.gym-block-bottm {
+  display: block;
+}
+
+.gym-block__title {
+  margin-left: 40px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-top: 20px;
+}
+
+.text-link {
+  margin: 10px;
+  cursor: pointer;
+}
+
+.list__item h5 {
+  text-decoration: none;
+  padding: 0px;
+  position: relative;
+  right: 9px;
+}
+
+.list__item {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  padding: 1px;
+  font-weight: bold;
+  position: relative;
+  top: 0px;
+  left: 27px;
+}
+
+.col-xs-14 {
+  float: left;
+  position: relative;
+  left: 80px;
+  top: 100px;
+}
+
+.heading {
+  left: 25px;
+  bottom: 85%;
+  font-size: 30px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.pt-bio {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  width: 700px;
+  line-height: 25px;
+  position: relative;
+  right: 0.3px;
+  top: 15px;
+}
+
+.sport-train {
+  position: relative;
+  right: 58px;
+  bottom: 46px;
+}
+
+.list-sport {
+  padding: 0px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bold;
+  position: relative;
+  bottom: 30px;
+  left: 30px;
+}
+
+.list-experience {
+  position: relative;
+  bottom: 41px;
+  left: 30px;
+  padding: 0px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bold;
+}
+
+.experience-ltem {
+  position: relative;
+  left: 3px;
+  top: 1px;
+}
+
+.sport-tra {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.prgTra {
+  text-align: start;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.location-Class {
+  position: relative;
+  top: 25px;
+  right: 42px;
+}
+
+.phon-Class {
+  position: relative;
+  top: 25px;
+  right: 40px;
+}
+
+.list__phon {
+  position: relative;
+  bottom: 18px;
+  left: 30px;
+  font-weight: bold;
+}
+
+.Sports-Score-Class {
+  position: relative;
+  top: 27px;
+  right: 40px;
+}
+
+.StarBorder-Class {
+  position: relative;
+  top: 25px;
+  right: 42px;
+}
+.gym-block-bottm h3 {
+  font-size: 23px;
+}
+.btnTrainner {
+  border-radius: 30px;
+  background-color: black;
+  border: none;
+  color: #ffffff;
+  padding: 15px 25px;
+  font-size: 16px;
+
+  width: 180px;
+  font-weight: 800;
+  margin-right: 10px;
+}
+
+.btnTrainner:hover {
+  cursor: pointer;
+  background-color: #ffcd08;
+  color: black;
+  border: none;
+}
+.list--gym-address a {
+  color: black;
+  text-decoration: none;
+}

@@ -1,0 +1,40 @@
+.AllResturants {
+  width: 70%;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 70px auto;
+  justify-content: center;
+  gap: 70px;
+  align-items: center;
+}
+.cardRestrurant {
+  height: 300px;
+  width: 350px;
+  background-color: #ececec;
+  margin-left: 30px;
+  border-radius: 5px;
+  max-width: 200px;
+  text-align: center;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 30%);
+}
+
+.imgRestaurant {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  margin-top: 40px;
+}
+
+.nameResturant {
+  font-size: 15px;
+  margin-top: 40px;
+  color: #212121;
+  font-family: URWDINCond-Black, Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+.cardRestrurant:hover {
+  background-color: #f8f8f8;
+  box-shadow: 4px 4px 4px 4px #989999;
+}

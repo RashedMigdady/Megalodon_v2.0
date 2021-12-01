@@ -1,0 +1,62 @@
+.commentPerant {
+  width: 100%;
+  padding: 30px 20px;
+  background-color: #f3f3f7;
+  margin-top: 100px;
+}
+.container33 {
+  width: 60%;
+  margin: 15px auto;
+  background-color: #fff;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e3e3e3;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.form44 {
+  margin: 20px auto;
+  width: 80%;
+}
+
+.container22 {
+  padding: 10px;
+}
+
+.textareaaa {
+  width: 100%;
+  padding: 15px;
+
+  display: inline-block;
+  border: none;
+  background: #f3f3f7;
+}
+
+.form44 .signupbtnn {
+  background-color: #ffcd08;
+  font-size: "16px";
+  border-width: 0;
+  border-radius: 3px;
+  color: black;
+  padding: 10px 15px;
+  margin: 30px 0;
+  border: none;
+  cursor: pointer;
+  width: 60%;
+}
+
+.clearrr {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.signupbtnn:hover {
+  opacity: 1;
+}
+
+@media (max-width: 1040px) {
+  .container33 {
+    width: 100%;
+  }
+}

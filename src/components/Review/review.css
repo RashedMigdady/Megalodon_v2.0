@@ -1,0 +1,84 @@
+.divRev {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 200px;
+}
+.imgReview img {
+  width: 170px;
+  height: 170px;
+}
+.divRev .inforReview {
+  display: grid;
+  align-items: left;
+  justify-content: left;
+  width: 500px;
+  height: 200px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 30%);
+  text-align: left;
+  background-color: #ececec;
+}
+.inforReview img {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  margin-top: 10px;
+  margin-left: 29px;
+}
+.inforReview h5 {
+  margin-top: -50px;
+  margin-bottom: 0px;
+  padding-top: -30px;
+  padding-bottom: 0px;
+  font-size: small;
+}
+.review .hdrrev .reh3 {
+  font-size: x-large;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 5px #c9cc04;
+  margin-left: 10px;
+}
+.review .reh5 {
+  font-size: small;
+  font-weight: normal;
+  margin-top: -35px;
+  margin-left: 15px;
+}
+.review {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+.hdrrev {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 80px 0px 0px 0px;
+}
+.inforReview:hover {
+  background-color: #ffffff;
+  box-shadow: 2px 2px 4px #575858;
+}
+.inforReview {
+  padding: 0px;
+  font-size: 15px;
+  margin-top: 15px;
+  color: #212121;
+  font-family: cursive;
+}
+.review h5,
+.reh5 {
+  padding: 30px 0px 0px 30px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.dateReview {
+  font-size: 10px;
+  margin-left: 430px;
+  margin-bottom: -45px;
+}

@@ -1,0 +1,41 @@
+.container_carousel{
+  margin-top: 50px;
+ 
+}
+.container_carousel img{
+  border-radius: 5px;
+}
+.list_main {
+  list-style: none;
+  text-align: center;
+  
+  margin-top: 5%;
+}
+.list_main .name {
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  list-style: none;
+  font-weight: bold;
+  padding-top: 20px;
+}
+.list__item {
+  font-size: 15px;
+}
+.resButton {
+  width: 120px;
+  height: 50px;
+  border-radius: 3px;
+  background: black;
+  margin-top: 20px;
+  font-size: 15px;
+  color: white;
+  cursor: pointer;
+  
+}
+
+.resButton:hover {
+  border: 1px solid#E8B900;
+  background-color: #E8B900;
+  color: #080808;
+ 
+}

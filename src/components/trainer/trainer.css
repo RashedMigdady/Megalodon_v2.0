@@ -1,0 +1,49 @@
+.AllTrainersClass {
+  width: 70%;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 70px auto;
+  justify-content: center;
+  gap: 70px;
+  align-items: center;
+}
+.trainrClass {
+  margin: 10px;
+  height: 300px;
+  width: 350px;
+  background-color: #ececec;
+  border-radius: 5px;
+  max-width: 200px;
+  text-align: center;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 30%);
+}
+.imgTrainer {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  margin-top: 40px;
+}
+.nameTrainer {
+  padding: 0px;
+  font-size: 15px;
+  margin-top: 40px;
+  font-weight: bold;
+  color: #212121;
+  font-family: URWDINCond-Black, Helvetica, Arial, sans-serif;
+}
+.trainrClass:hover {
+  background-color: #ffffff;
+  box-shadow: 2px 2px 4px #575858;
+}
+
+.Theading {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.searchTrainer {
+  width: 350px;
+  margin-left: 600px;
+  margin-top: 50px;
+}
