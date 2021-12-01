@@ -49,9 +49,9 @@ const Navigation = () => {
               <Link to="/home">
                 <Image
                   className="logo"
-                  src="/logo.png"
-                  width="45%"
-                  height="45%"
+                  src="/logo_2.png"
+                  width="55%"
+                  height="55%"
                   onClick={() => history.push("/home")}
                   style={{ cursor: "pointer" }}
                 />

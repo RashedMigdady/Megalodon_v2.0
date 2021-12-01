@@ -3,6 +3,8 @@ import axios from "axios";
 import "./signUp.css";
 import { useHistory } from "react-router-dom";
 import { Overlay, Tooltip } from "react-bootstrap";
+import { Col, Container, Row, Image } from "react-bootstrap";
+
 
 export default function Register() {
   const [firstName, setFirstName] = useState("");
@@ -46,6 +48,13 @@ export default function Register() {
       </div>
       <div className="contentBox">
         <div className="formBox">
+          <Container>
+            <Row>
+              <Col xs={6} md={4}>
+                <Image src="./logo.png" rounded className="imgSignUp" />
+              </Col>
+            </Row>
+          </Container>
           <h2>Create Account</h2>
 
           <div className="inputBox">
@@ -105,9 +114,9 @@ export default function Register() {
             </button>
           </div>
           <div className="inputBox">
-            <p style={{ color: "red", fontSize: "15px" }}>{message}</p>
+            <p style={{ color: "black", fontSize: "15px" , textDecoration:"underline" }}>{message}</p>
             <p>
-              Do You have an account? <a href="/login"> Login</a>{" "}
+              Do You have an account? <a href="/login" style={{color:"black" , textDecoration:"underline"}}> Login</a>{" "}
             </p>
           </div>
           <ul className="scil"></ul>

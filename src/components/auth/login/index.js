@@ -8,6 +8,7 @@ import { setToken } from "../../../redux/action/loginToken";
 import { addToCart } from "../../../redux/action/cart";
 import { addSubscription } from "../../../redux/action/cart";
 import swal from "sweetalert";
+import { Col, Container, Row, Image } from "react-bootstrap";
 export const Login = () => {
   const [email, setEmail] = useState(0);
   const [password, setPassword] = useState(0);
@@ -121,6 +122,14 @@ export const Login = () => {
       </div>
       <div className="contentBx">
         <div className="formBx">
+          {/* <img src="./logo.png"  */}
+          <Container>
+            <Row>
+              <Col xs={6} md={4}>
+                <Image src="./logo.png" rounded className="imgLogin" />
+              </Col>
+            </Row>
+          </Container>
           <h2>LOGIN</h2>
 
           <div className="inputBx">
@@ -150,15 +159,15 @@ export const Login = () => {
           <div className="inputBx">
             <p style={{ color: "red", fontSize: "15px" }}>{message}</p>
             <div>
-              <p>
-                <a onClick={restPass}> Forget Your Password ? </a>{" "}
+              <p style={{display:"flex" , marginLeft:"30%"}}>
+                <a style={{ fontSize:"15px"}}> Forget your  </a><a onClick={restPass} style={{fontSize:"15px" , textDecoration:"underline" , marginLeft:"5px"}}>{" "} Password?</a>{" "}
               </p>
             </div>
 
             <div className="with-gmail">
               <GoogleLogin
                 clientId={clientId}
-                buttonText="Login"
+                buttonText="Login with Google"
                 onSuccess={onSuccess}
                 onFailure={onFailure}
                 cookiePolicy={"single_host_origin"}

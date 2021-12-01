@@ -6,7 +6,9 @@
   top: 0px;
   display: flex;
 }
-
+.imgLogin{
+  margin-left:40% ;
+}
 .section .imgBx {
   position: relative;
   width: 60%;

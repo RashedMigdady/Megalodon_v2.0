@@ -88,7 +88,7 @@ const Main = () => {
       <div className="Main-text-center">
         <div className="container">
           <div className="titleMain">
-            <h1>OUR SECTIONS </h1>
+            <h1>OUR SERVICES </h1>
           </div>
           <div className="row" style={{ marginTop: "50px" }}>
             <div className="col-md-4 col-sm-12">
@@ -117,6 +117,7 @@ const Main = () => {
                       backgroundColor: "#ffcd08",
                       color: "black",
                       border: "none",
+                      marginLeft:"20%"
                     }}
                     variant="dark"
                     onClick={() => history.push("/AllTrainers")}
@@ -143,7 +144,7 @@ const Main = () => {
                   <Card.Text style={{ fontSize: "16px" }}>
                     The food you eat can eather be either the safest and most
                     powerful form of midicine OR the slowest form of poison Dont
-                    forget that health needs healthy food
+                    forget that health needs healthy food, and more .
                   </Card.Text>
                   <Button
                     style={{
@@ -152,7 +153,9 @@ const Main = () => {
                       backgroundColor: "#ffcd08",
                       color: "black",
                       border: "none",
+                      marginLeft:"20%"
                     }}
+                    className="btnAll"
                     variant="dark"
                     onClick={() => history.push("/AllRestaurnats")}
                   >
@@ -187,6 +190,7 @@ const Main = () => {
                       backgroundColor: "#ffcd08",
                       color: "black",
                       border: "none",
+                      marginLeft:"20%"
                     }}
                     variant="dark"
                     onClick={() => history.push("/ALLGyms")}
