@@ -55,7 +55,7 @@ export default function Register() {
               </Col>
             </Row>
           </Container>
-          <h2>Create Account</h2>
+          <h2>Create Accountc</h2>
 
           <div className="inputBox">
             <input
