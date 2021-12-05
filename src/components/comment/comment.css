@@ -60,3 +60,19 @@
     width: 100%;
   }
 }
+
+.detailsComment{
+  display: flex;
+  gap: 5%;
+  margin-left: 1.5%;
+  width: 97%;
+ 
+}
+
+.detalisUser{
+ border-radius: 7px;
+  width: 50%;
+  background-color: rgb(235, 232, 232);
+  height: 45px;
+  padding-left: 7px;
+}

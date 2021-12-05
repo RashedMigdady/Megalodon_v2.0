@@ -26,12 +26,13 @@ export const AddComment = () => {
         <div className="container33">
           <div className="form44">
             <h4> Send us a Message</h4>
+            <div className="detailsComment"><input className="detalisUser" placeholder="your Name" type="text"/> <input type="email" className="detalisUser" placeholder="your Email"/></div>
             <div className="container22">
               <textarea
                 className="textareaaa"
                 cols="30"
                 rows="6"
-                placeholder="Write you opinion . . .
+                placeholder="Write your opinion . . .
               "
                 onChange={(e) => {
                   setComment(e.target.value);

@@ -49,7 +49,7 @@ const Navigation = () => {
               <Link to="/home">
                 <Image
                   className="logo"
-                  src="/logo_2.png"
+                  src="https://github.com/RashedMigdady/Megalodon_v2.0/blob/main/src/components/auth/login/logo.png?raw=true"
                   width="55%"
                   height="55%"
                   onClick={() => history.push("/home")}
@@ -69,7 +69,7 @@ const Navigation = () => {
                   </Link>
                 </Nav.Link>
                 <NavDropdown title="Our Sections" id="collasible-nav-dropdown">
-                  <NavDropdown.Item>
+                  <NavDropdown.Item onClick={e=>{history.push("/AllTrainers")}}>
                     <Link
                       to="/AllTrainers"
                       style={{ textDecoration: "none", color: "gray" }}
@@ -77,7 +77,7 @@ const Navigation = () => {
                       Trainers
                     </Link>
                   </NavDropdown.Item>
-                  <NavDropdown.Item>
+                  <NavDropdown.Item onClick={e=>{history.push("/ALLGyms")}}>
                     <Link
                       to="/ALLGyms"
                       style={{ textDecoration: "none", color: "gray" }}
@@ -85,7 +85,7 @@ const Navigation = () => {
                       Gyms
                     </Link>
                   </NavDropdown.Item>
-                  <NavDropdown.Item>
+                  <NavDropdown.Item onClick={e=>{history.push("/AllRestaurnats")}}>
                     <Link
                       to="/AllRestaurnats"
                       style={{ textDecoration: "none", color: "gray" }}

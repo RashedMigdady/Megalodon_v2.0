@@ -51,11 +51,11 @@ export default function Register() {
           <Container>
             <Row>
               <Col xs={6} md={4}>
-                <Image src="./logo.png" rounded className="imgSignUp" />
+                <Image src="https://github.com/RashedMigdady/Megalodon_v2.0/blob/main/src/components/auth/login/logo.png?raw=true" rounded className="imgSignUp" />
               </Col>
             </Row>
           </Container>
-          <h2>Create Accountc</h2>
+          <h2>Create Account</h2>
 
           <div className="inputBox">
             <input

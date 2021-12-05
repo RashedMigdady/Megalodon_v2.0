@@ -122,11 +122,11 @@ export const Login = () => {
       </div>
       <div className="contentBx">
         <div className="formBx">
-          {/* <img src="./logo.png"  */}
+          
           <Container>
             <Row>
               <Col xs={6} md={4}>
-                <Image src="./logo.png" rounded className="imgLogin" />
+                <Image src="https://github.com/RashedMigdady/Megalodon_v2.0/blob/main/src/components/auth/login/logo.png?raw=true" rounded className="imgLogin" />
               </Col>
             </Row>
           </Container>
