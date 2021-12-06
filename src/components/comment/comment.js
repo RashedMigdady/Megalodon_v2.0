@@ -4,6 +4,8 @@ import axios from "axios";
 import swal from "sweetalert";
 export const AddComment = () => {
   const [comment, setComment] = useState("");
+  const [name , setName] = useState("");
+  const [email , setEmail] = useState("");
   const token = localStorage.getItem("token");
   const createComment = () => {
    

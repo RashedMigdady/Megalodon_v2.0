@@ -1,6 +1,8 @@
 .contfooter {
     margin: auto;
     max-width: 1170px;
+    display: flex;
+    gap: 150px;
   }
   ul {
     list-style-type: none;
@@ -8,6 +10,7 @@
   .row-footerfooter {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
   }
   .footerfooter {
     width: 100%;

@@ -1,6 +1,9 @@
 import React from "react";
 import "./footer.css";
 import "./About";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import { GoLocation } from "react-bootstrap";
+import { GoLocation, GoMail } from "react-icons/go";
 import { useHistory } from "react-router";
 
 export const Footer = () => {
@@ -8,6 +11,52 @@ export const Footer = () => {
   return (
     <div class="footerfooter">
       <div class="contfooter">
+        <div style={{ display: "grid" }}>
+          <div style={{ display: "flex" }}>
+            <img
+              style={{ width: "80px", height: "80px", marginRight: "20px" }}
+              onClick={() => {
+                history.push("/home");
+              }}
+              src="https://github.com/RashedMigdady/Megalodon_v2.0/blob/main/src/components/auth/login/logo.png?raw=true"
+              alt="Megalodon logo"
+            />{" "}
+            <p
+              style={{
+                paddingTop: "40px",
+                marginRight: "30px",
+                color: "white",
+              }}
+              onClick={() => {
+                history.push("/home");
+              }}
+            >
+              MEGALODON
+            </p>
+          </div>
+          <div style={{ display: "flex" }}>
+            <GoLocation
+              style={{
+                height: "20px",
+                width: "20px",
+                marginRight: "20px",
+                color: "yellow",
+              }}
+            />
+            <p style={{ color: "white" ,paddingBottom:"2px" }}>Jordan, Amman</p>
+          </div>
+          <div style={{ display: "flex" }}>
+            <GoMail
+              style={{
+                height: "20px",
+                width: "20px",
+                marginRight: "20px",
+                color: "yellow",
+              }}
+            />
+            <p style={{ color: "white" ,paddingBottom:"2px"}}>rashedmeg231@gmail.com</p>
+          </div>
+        </div>
         <div class="row-footerfooter">
           <div class="col-footerfooter">
             <h4

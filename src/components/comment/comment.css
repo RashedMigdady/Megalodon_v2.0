@@ -27,7 +27,6 @@
 .textareaaa {
   width: 100%;
   padding: 15px;
-
   display: inline-block;
   border: none;
   background: #f3f3f7;
@@ -70,9 +69,11 @@
 }
 
 .detalisUser{
- border-radius: 7px;
+  border-radius: 7px;
   width: 50%;
-  background-color: rgb(235, 232, 232);
+  background-color: #f3f3f7;
   height: 45px;
-  padding-left: 7px;
+  padding-left: 15px;
+  border: none;
+
 }
