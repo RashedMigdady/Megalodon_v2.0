@@ -3,7 +3,7 @@ import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
-import axios from "axios";
+import { host, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import React, { useEffect, useState } from "react";
 
 export default function TrainerList() {
@@ -11,8 +11,8 @@ export default function TrainerList() {
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
-    axios
-      .delete(`https://c3megalodon.herokuapp.com/trainer/${id}`)
+    HTTPServices
+      .delete(`http://localhost:5000/trainer/${id}`)
       .then((result) => {
         swal({
           title: "Deleted Trainer Success ",
@@ -24,8 +24,8 @@ export default function TrainerList() {
   };
 
   useEffect(() => {
-    axios
-      .get("https://c3megalodon.herokuapp.com/trainer")
+    HTTPServices
+      .get("http://localhost:5000/trainer")
       .then((result) => {
         setData(result.data.allTrainers);
       })

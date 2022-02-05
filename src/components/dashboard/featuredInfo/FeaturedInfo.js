@@ -1,7 +1,7 @@
 import style from "./featuredInfo.module.css";
 import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { host, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 
 export default function FeaturedInfo() {
   const [trainer, setTrainer] = useState();
@@ -9,8 +9,7 @@ export default function FeaturedInfo() {
   const [allgyms, setAllGyms] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://c3megalodon.herokuapp.com/gym")
+    HTTPServices.get("http://localhost:5000/gym")
       .then((res) => {
         setAllGyms([...res.data.result]);
       })
@@ -18,14 +17,13 @@ export default function FeaturedInfo() {
   }, []);
 
   useEffect(async () => {
-    await axios.get("https://c3megalodon.herokuapp.com/trainer").then((res) => {
+    await HTTPServices.get("http://localhost:5000/trainer").then((res) => {
       setTrainer(res.data.allTrainers);
     });
   }, []);
 
   useEffect(async () => {
-    await axios
-      .get("https://c3megalodon.herokuapp.com/resturan")
+    await HTTPServices.get("http://localhost:5000/resturan")
       .then((res) => {
         setResturants([...res.data.result]);
       })

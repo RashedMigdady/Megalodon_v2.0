@@ -1,7 +1,7 @@
 import { LocationSearching, PhoneAndroid } from "@material-ui/icons";
 import { Link, useParams } from "react-router-dom";
 import style from "./trainer.module.css";
-import axios from "axios";
+import { host, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import React, { useEffect, useState } from "react";
 
 export default function Trainer() {
@@ -19,8 +19,8 @@ export default function Trainer() {
   const [message, setMessage] = useState("");
 
   const updateTrainers = async () => {
-    await axios
-      .put(`https://c3megalodon.herokuapp.com/trainer/${trainerId}`, {
+    await HTTPServices
+      .put(`http://localhost:5000/trainer/${trainerId}`, {
         firstName,
         lastName,
         phoneNumber,
@@ -37,8 +37,8 @@ export default function Trainer() {
   };
 
   useEffect(async () => {
-    await axios
-      .get(`https://c3megalodon.herokuapp.com/trainer/${trainerId}`)
+    await HTTPServices
+      .get(`http://localhost:5000/trainer/${trainerId}`)
       .then((res) => {
         setTrainer(res.data.Trainer[0]);
       })

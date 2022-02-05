@@ -1,6 +1,5 @@
 import "./login.css";
 import React, { useState } from "react";
-import axios from "axios";
 import { GoogleLogin } from "react-google-login";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,6 +8,7 @@ import { addToCart } from "../../../redux/action/cart";
 import { addSubscription } from "../../../redux/action/cart";
 import swal from "sweetalert";
 import { Col, Container, Row, Image } from "react-bootstrap";
+import { host, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 export const Login = () => {
   const [email, setEmail] = useState(0);
   const [password, setPassword] = useState(0);
@@ -23,8 +23,8 @@ export const Login = () => {
 
   const userLogin = async (e) => {
     e.preventDefault();
-    await axios
-      .post("https://c3megalodon.herokuapp.com/login", {
+    await HTTPServices
+      .post("http://localhost:5000/login", {
         email,
         password,
       })
@@ -52,8 +52,8 @@ export const Login = () => {
   };
 
   const onSuccess = async (res) => {
-    await axios
-      .post("https://c3megalodon.herokuapp.com/login/loginGoogle", {
+    await HTTPServices
+      .post("http://localhost:5000/login/loginGoogle", {
         tokenId: res.tokenId,
       })
       .then((res) => {
@@ -88,8 +88,8 @@ export const Login = () => {
         return;
       }
 
-      axios
-        .post("https://c3megalodon.herokuapp.com/login/restPass", {
+      HTTPServices
+        .post("http://localhost:5000/login/restPass", {
           email,
         })
         .then((results) => {

@@ -1,8 +1,8 @@
 import style from "../trainer/trainer.module.css";
 import { Link, useParams } from "react-router-dom";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { LocationSearching } from "@material-ui/icons";
+import { host, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 
 export default function Resturant() {
   const [resturant, setResturant] = useState();
@@ -14,8 +14,8 @@ export default function Resturant() {
   const [message, setMessage] = useState("");
   let restaurantId = useParams().restaurantId;
   const updateRestaurant = async () => {
-    await axios
-      .put(`https://c3megalodon.herokuapp.com/resturan/${restaurantId}`, {
+    await HTTPServices
+      .put(`http://localhost:5000/resturan/${restaurantId}`, {
         name,
         location,
         image,
@@ -27,8 +27,8 @@ export default function Resturant() {
       });
   };
   useEffect(async () => {
-    await axios
-      .get(`https://c3megalodon.herokuapp.com/resturan/${restaurantId}`)
+    await HTTPServices
+      .get(`http://localhost:5000/resturan/${restaurantId}`)
       .then((res) => {
         setResturant(res.data.Resturant[0]);
       })

@@ -1,4 +1,4 @@
-import axios from "axios";
+import { host, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import React, { useEffect, useState } from "react";
 import style from "./widgetLg.module.css";
 import { Restaurant } from "@material-ui/icons";
@@ -11,9 +11,9 @@ export default function WidgetLg() {
   };
 
   useEffect(() => {
-    axios
+    HTTPServices
       .get(
-        "https://c3megalodon.herokuapp.com/subscribtion/allResturantsSubscribtion"
+        "http://localhost:5000/subscribtion/allResturantsSubscribtion"
       )
       .then((result) => {
         setSubRest(result.data.result);

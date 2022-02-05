@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { host, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 
 export const GymAdmin = () => {
   const [gyms, setAllGym] = useState([]);
@@ -10,8 +10,8 @@ export const GymAdmin = () => {
   const [description, setDescription] = useState("");
 
   const getAllGyms = () => {
-    axios
-      .get("https://c3megalodon.herokuapp.com/gym")
+    HTTPServices
+      .get("http://localhost:5000/gym")
       .then((res) => {
         res.data;
         setAllGym([...res.data.result]);
@@ -26,8 +26,8 @@ export const GymAdmin = () => {
   }, []);
 
   const addNewGym = () => {
-    axios
-      .post("https://c3megalodon.herokuapp.com/gym", {
+    HTTPServices
+      .post("http://localhost:5000/gym", {
         name,
         phoneNumber,
         image,
@@ -43,8 +43,8 @@ export const GymAdmin = () => {
   };
 
   const updateGymById = (id) => {
-    axios
-      .put(`https://c3megalodon.herokuapp.com/gym/${id}`, {
+    HTTPServices
+      .put(`http://localhost:5000/gym/${id}`, {
         name,
         phoneNumber,
         image,
@@ -57,8 +57,8 @@ export const GymAdmin = () => {
   };
 
   const deleteGymById = (id) => {
-    axios
-      .delete(`https://c3megalodon.herokuapp.com/gym/${id}`)
+    HTTPServices
+      .delete(`http://localhost:5000/gym/${id}`)
       .then((result) => {
         getAllGyms();
       });

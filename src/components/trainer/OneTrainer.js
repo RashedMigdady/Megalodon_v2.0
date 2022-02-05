@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { host, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import { useParams } from "react-router-dom";
 import "./OneTrainer.css";
 import Place from "@mui/icons-material/Place";
@@ -18,8 +18,8 @@ export const OneTrainer = () => {
   const all = JSON.parse(localStorage.getItem("subscription"));
 
   useEffect(async () => {
-    await axios
-      .get(`https://c3megalodon.herokuapp.com/trainer/${trainerId}`)
+    await HTTPServices
+      .get(`http://localhost:5000/trainer/${trainerId}`)
       .then((res) => {
         setTrainer(res.data.Trainer);
       })

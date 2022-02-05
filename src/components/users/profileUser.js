@@ -1,4 +1,4 @@
-import axios from "axios";
+import { host, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./profile.css";
@@ -30,8 +30,8 @@ export const ProfileUser = () => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    axios
-      .get("https://c3megalodon.herokuapp.com/users", {
+    HTTPServices
+      .get("http://localhost:5000/users", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((result) => {
@@ -41,9 +41,9 @@ export const ProfileUser = () => {
   }, []);
 
   useEffect(() => {
-    axios
+    HTTPServices
       .get(
-        "https://c3megalodon.herokuapp.com/subscribtion/ResturantsSubscribtion",
+        `${host}/subscribtion/ResturantsSubscribtion`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -56,9 +56,9 @@ export const ProfileUser = () => {
 
   const [subTrainer, setSubTrainer] = useState("");
   useEffect(() => {
-    axios
+    HTTPServices
       .get(
-        "https://c3megalodon.herokuapp.com/subscribtion/TrainersSubscribtion",
+        "http://localhost:5000/subscribtion/TrainersSubscribtion",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -71,8 +71,8 @@ export const ProfileUser = () => {
 
   const [subGym, setSubGym] = useState("");
   useEffect(() => {
-    axios
-      .get("https://c3megalodon.herokuapp.com/subscribtion/GymSubscribtions", {
+    HTTPServices
+      .get("http://localhost:5000/subscribtion/GymSubscribtions", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((result) => {
@@ -115,9 +115,9 @@ export const ProfileUser = () => {
   const AllSubscribtions = [subRest, subTrainer, subGym];
 
   const updateInfo = () => {
-    axios
+    HTTPServices
       .put(
-        "https://c3megalodon.herokuapp.com/users",
+        "http://localhost:5000/users",
         { age, phoneNumber, country, weight, height, diseases },
         { headers: { Authorization: `Bearer: ${token}` } }
       )

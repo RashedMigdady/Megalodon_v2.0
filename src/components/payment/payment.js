@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import swal from "sweetalert";
 import { loadStripe } from "@stripe/stripe-js";
-import axios from "axios";
+import { host, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import {
   CardElement,
   Elements,
@@ -18,26 +18,26 @@ const Payment = ({ gymId, trainerId, restaurantId }) => {
     "your subscribtion has been confirmed check your profile to see your subscribtion ";
 
   function sendMsg() {
-    axios.post(`https://c3megalodon.herokuapp.com/sendMsg`, { confirm });
+    HTTPServices.post(`http://localhost:5000/sendMsg`, { confirm });
   }
   function reqTrainer() {
-    axios.post(
-      `https://c3megalodon.herokuapp.com/subscribtion/trainer`,
+    HTTPServices.post(
+      `http://localhost:5000/subscribtion/trainer`,
       { trainerId },
       { headers: { Authorization: `Bearer ${token}` } }
     );
   }
 
   function reqGym() {
-    axios.post(
-      `https://c3megalodon.herokuapp.com/subscribtion/gym`,
+    HTTPServices.post(
+      `http://localhost:5000/subscribtion/gym`,
       { gymId },
       { headers: { Authorization: `Bearer ${token}` } }
     );
   }
   function reqResturant() {
-    axios.post(
-      `https://c3megalodon.herokuapp.com/subscribtion/rest`,
+    HTTPServices.post(
+      `http://localhost:5000/subscribtion/rest`,
       { restaurantId },
       { headers: { Authorization: `Bearer ${token}` } }
     );

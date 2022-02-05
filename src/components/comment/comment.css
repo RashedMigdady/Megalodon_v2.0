@@ -30,6 +30,7 @@
   display: inline-block;
   border: none;
   background: #f3f3f7;
+  resize: none;
 }
 
 .form44 .signupbtnn {

@@ -1,6 +1,6 @@
 import style from "./newTrainer.module.css";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { host, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 
 export default function NewTrainer () {
   const [firstName, setFirstName] = useState();
@@ -15,8 +15,8 @@ export default function NewTrainer () {
   const [message, setMessage] = useState("");
 
   const createNewTrainer = async () => {
-    await axios
-      .post(`https://c3megalodon.herokuapp.com/trainer`, {
+    await HTTPServices
+      .post(`http://localhost:5000/trainer`, {
         firstName,
         lastName,
         phoneNumber,

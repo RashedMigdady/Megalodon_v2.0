@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { host, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import { Col, Card, Row, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/action/cart";
 import swal from "sweetalert";
+import axios from "axios";
 
 export const Allproduct = () => {
   const [products, setProducts] = useState([]);
@@ -12,7 +13,7 @@ export const Allproduct = () => {
   const token = localStorage.getItem("token");
   const all = JSON.parse(localStorage.getItem("savedData"));
   useEffect(() => {
-    axios.get("https://c3megalodon.herokuapp.com/products").then((result) => {
+    axios.get("http://localhost:5000/products").then((result) => {
       setProducts([...result.data.Products]);
     });
   }, []);
@@ -101,7 +102,7 @@ export const AddProducts = () => {
   const [image, setImage] = useState("");
 
   const addProduct = () => {
-    axios
+    HTTPServices
       .post("http://localhost:5000/products", {
         name,
         price,

@@ -8,7 +8,7 @@ import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
-import axios from "axios";
+import { host, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import { useHistory } from "react-router";
 import { MdAddShoppingCart } from "react-icons/md";
 
@@ -22,8 +22,8 @@ const Navigation = () => {
 
   const [imageUser, setImageUser] = useState("");
   useEffect(() => {
-    axios
-      .get("https://c3megalodon.herokuapp.com/users", {
+    HTTPServices
+      .get("http://localhost:5000/users", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((result) => {
@@ -137,7 +137,7 @@ const Navigation = () => {
             <Navbar.Brand>
               <Image
                 className="logo"
-                src="/logo.png"
+                src="https://github.com/RashedMigdady/Megalodon_v2.0/blob/main/src/components/auth/login/logo.png?raw=true"
                 width="45%"
                 height="45%"
                 onClick={() => history.push("/home")}

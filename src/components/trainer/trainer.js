@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./trainer.css";
-import axios from "axios";
+import { host, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import { useHistory } from "react-router";
 import { Form } from "react-bootstrap";
 
@@ -10,7 +10,7 @@ export const Trainer = () => {
   const [search, setSearch] = useState("");
 
   const getAllTrainers = async () => {
-    await axios.get("https://c3megalodon.herokuapp.com/trainer").then((res) => {
+    await HTTPServices.get("http://localhost:5000/trainer").then((res) => {
       setTrainer(res.data.allTrainers);
     });
   };
@@ -20,7 +20,7 @@ export const Trainer = () => {
 
   return (
     <div>
-      <div className="titleMain" style={{ paddingTop: "50px" }}>
+      <div className="titleMain" style={{ paddingTop: "50px" }}> 
         <h1> Our Professional Trainers </h1>
       </div>
 
@@ -84,8 +84,8 @@ export const AddTrainer = () => {
   const [experience, setExperience] = useState(0);
 
   const addTrainers = async () => {
-    await axios
-      .post("https://c3megalodon.herokuapp.com/trainer", {
+    await HTTPServices
+      .post("http://localhost:5000/trainer", {
         firstName,
         lastName,
         phoneNumber,

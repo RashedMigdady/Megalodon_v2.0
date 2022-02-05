@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./restaurants.css";
-import axios from "axios";
+import { host, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import { useHistory } from "react-router";
 import { Form } from "react-bootstrap";
 
@@ -10,8 +10,8 @@ export const Resturants = () => {
   const history = useHistory();
 
   useEffect(async () => {
-    await axios
-      .get("https://c3megalodon.herokuapp.com/resturan")
+    await HTTPServices
+      .get("http://localhost:5000/resturan")
       .then((res) => {
         setResturants([...res.data.result]);
       })

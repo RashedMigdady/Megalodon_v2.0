@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import axios from "axios";
+import { host, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import "./signUp.css";
 import { useHistory } from "react-router-dom";
 import { Overlay, Tooltip } from "react-bootstrap";
@@ -22,8 +22,8 @@ export default function Register() {
     if (password.length < 6) {
       setShow(true);
     } else {
-      await axios
-        .post("https://c3megalodon.herokuapp.com/register", {
+      await HTTPServices
+        .post("http://localhost:5000/register", {
           firstName,
           lastName,
           email,

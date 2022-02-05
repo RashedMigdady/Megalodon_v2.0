@@ -1,6 +1,7 @@
 import style from "../trainer/newTrainer.module.css";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { host, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+
 
 export default function NewResturant () {
   const [name, setName] = useState();
@@ -11,8 +12,8 @@ export default function NewResturant () {
   const [message, setMessage] = useState("");
 
   const createNewRestaurant = async () => {
-    await axios
-      .post(`https://c3megalodon.herokuapp.com/resturan`, {
+    await HTTPServices
+      .post(`http://localhost:5000/resturan`, {
         name,
         location,
         image,

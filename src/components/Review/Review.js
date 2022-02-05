@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { host, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import "./review.css";
 
 export const Review = () => {
   const [review, setAllReview] = useState("");
 
   useEffect(() => {
-    axios
-      .get("https://c3megalodon.herokuapp.com/comment")
+    HTTPServices
+      .get("http://localhost:5000/comment")
       .then((res) => {
         setAllReview(res.data.comment);
       })

@@ -1,8 +1,8 @@
 import { LocationSearching, PhoneAndroid } from "@material-ui/icons";
 import { Link, useParams } from "react-router-dom";
 import style from "../trainer/trainer.module.css";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { host, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 
 export default function Gym() {
   let gymId = useParams().gymId;
@@ -17,8 +17,8 @@ export default function Gym() {
   const [message, setMessage] = useState("");
 
   const updateGym = async () => {
-    await axios
-      .put(`https://c3megalodon.herokuapp.com/gym/${gymId}`, {
+    await HTTPServices
+      .put(`http://localhost:5000/gym/${gymId}`, {
         name,
         phoneNumber,
         location,
@@ -32,8 +32,8 @@ export default function Gym() {
   };
 
   useEffect(async () => {
-    await axios
-      .get(`https://c3megalodon.herokuapp.com/gym/${gymId}`)
+    await HTTPServices
+      .get(`http://localhost:5000/gym/${gymId}`)
       .then((res) => {
         setGym(res.data.result[0]);
       })

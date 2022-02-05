@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { host, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import "./Gym.css";
 import swal from "sweetalert";
 import { useDispatch } from "react-redux";
@@ -13,8 +13,8 @@ export const Gym = () => {
   const all = JSON.parse(localStorage.getItem("subscription"));
 
   useEffect(() => {
-    axios
-      .get("https://c3megalodon.herokuapp.com/gym")
+    HTTPServices
+      .get("http://localhost:5000/gym")
       .then((res) => {
         setAllGyms([...res.data.result]);
       })

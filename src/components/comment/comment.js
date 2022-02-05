@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import "./comment.css";
-import axios from "axios";
+import { host, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import swal from "sweetalert";
 export const AddComment = () => {
   const [comment, setComment] = useState("");
-  const [name , setName] = useState("");
-  const [email , setEmail] = useState("");
   const token = localStorage.getItem("token");
   const createComment = () => {
    
-    axios
-      .post(`https://c3megalodon.herokuapp.com/comment`, { comment },
+    HTTPServices
+      .post(`http://localhost:5000/comment`, { comment },
       { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
         swal({

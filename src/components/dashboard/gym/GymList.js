@@ -3,15 +3,16 @@ import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { host, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+
 export default function GymList() {
   const [data, setData] = useState([]);
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
-    axios
-      .delete(`https://c3megalodon.herokuapp.com/gym/${id}`)
+    HTTPServices
+      .delete(`http://localhost:5000/gym/${id}`)
       .then((result) => {
         swal({
           title: "deleted gym success ",
@@ -25,8 +26,8 @@ export default function GymList() {
   };
 
   useEffect(() => {
-    axios
-      .get("https://c3megalodon.herokuapp.com/gym")
+    HTTPServices
+      .get("http://localhost:5000/gym")
       .then((result) => {
         setData(result.data.result);
       })
