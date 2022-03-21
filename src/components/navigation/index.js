@@ -8,7 +8,7 @@ import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
-import { host, HTTPServices } from "../../Helper/HTTPMethod.Helper";
+import { serverAddress, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import { useHistory } from "react-router";
 import { MdAddShoppingCart } from "react-icons/md";
 

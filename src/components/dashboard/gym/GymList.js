@@ -4,7 +4,7 @@ import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import React, { useEffect, useState } from "react";
-import { host, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 
 export default function GymList() {
   const [data, setData] = useState([]);

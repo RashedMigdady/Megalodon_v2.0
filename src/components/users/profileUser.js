@@ -1,4 +1,4 @@
-import { host, HTTPServices } from "../../Helper/HTTPMethod.Helper";
+import { serverAddress, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./profile.css";
@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ProgressBar, Button, Image } from "react-bootstrap";
 import { Cancel } from "@mui/icons-material";
 import Modal from "react-modal";
+import { GetuserProfile } from '../../servicesMethods/users/usersServices';
 
 const customStyles = {
   content: {
@@ -29,21 +30,23 @@ export const ProfileUser = () => {
   const [subRest, setSubRest] = useState("");
   const token = localStorage.getItem("token");
 
-  useEffect(() => {
-    HTTPServices
-      .get("http://localhost:5000/users", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((result) => {
-        setProfile(result.data[0]);
-      })
-      .catch((err) => {});
+  useEffect(async () => {
+    // HTTPServices
+    //   .get(`${serverAddress}/users`, {
+    //     headers: { Authorization: `Bearer ${token}` },
+    //   })
+    //   .then((result) => {
+    //     setProfile(result.data[0]);
+    //   })
+    //   .catch((err) => {});
+   const res = await GetuserProfile();
+   setProfile(res.data[0]);
   }, []);
 
   useEffect(() => {
     HTTPServices
       .get(
-        `${host}/subscribtion/ResturantsSubscribtion`,
+        `${serverAddress}/subscribtion/ResturantsSubscribtion`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -170,8 +173,8 @@ export const ProfileUser = () => {
           <Button
             onClick={openModal}
             variant="outline-dark"
-            className="EditInfo"
-            className="profileeeBtn"
+            // className="EditInfo"
+            className="profileBtn"
           >
             {" "}
             Edit Info{" "}

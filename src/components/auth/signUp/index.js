@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { host, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import "./signUp.css";
 import { useHistory } from "react-router-dom";
 import { Overlay, Tooltip } from "react-bootstrap";

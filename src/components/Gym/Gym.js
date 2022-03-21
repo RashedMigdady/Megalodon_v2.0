@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { host, HTTPServices } from "../../Helper/HTTPMethod.Helper";
+import { serverAddress, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import "./Gym.css";
 import swal from "sweetalert";
 import { useDispatch } from "react-redux";

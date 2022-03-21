@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import swal from "sweetalert";
 import { loadStripe } from "@stripe/stripe-js";
-import { host, HTTPServices } from "../../Helper/HTTPMethod.Helper";
+import { serverAddress, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import {
   CardElement,
   Elements,

@@ -1,4 +1,4 @@
-import { host, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import React, { useEffect, useState } from "react";
 import style from "./widgetLg.module.css";
 import { Restaurant } from "@material-ui/icons";

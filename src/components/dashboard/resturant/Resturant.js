@@ -2,7 +2,7 @@ import style from "../trainer/trainer.module.css";
 import { Link, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { LocationSearching } from "@material-ui/icons";
-import { host, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 
 export default function Resturant() {
   const [resturant, setResturant] = useState();

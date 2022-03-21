@@ -1,6 +1,6 @@
 import style from "../trainer/newTrainer.module.css";
 import React, { useEffect, useState } from "react";
-import { host, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 
 export default function NewGym () {
   const [name, setName] = useState();

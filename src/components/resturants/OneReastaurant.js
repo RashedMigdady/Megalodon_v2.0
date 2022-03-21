@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { host, HTTPServices } from "../../Helper/HTTPMethod.Helper";
+import { serverAddress, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import { useParams } from "react-router-dom";
 import "./oneResturant.css";
 import swal from "sweetalert";

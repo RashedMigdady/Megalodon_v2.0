@@ -8,7 +8,7 @@ export const HTTPServices = {
 }
 
 const token = localStorage.getItem("token");
- export const host = "http://localhost:5000";
+ export const serverAddress = "http://localhost:5000";
 
 export const Auth = {Headers: {Authorization: `Bearer ${token}`}};
 

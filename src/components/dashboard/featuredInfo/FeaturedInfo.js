@@ -1,7 +1,7 @@
 import style from "./featuredInfo.module.css";
 import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
-import { host, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 
 export default function FeaturedInfo() {
   const [trainer, setTrainer] = useState();

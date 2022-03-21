@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./comment.css";
-import { host, HTTPServices } from "../../Helper/HTTPMethod.Helper";
+import { serverAddress, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import swal from "sweetalert";
 export const AddComment = () => {
   const [comment, setComment] = useState("");

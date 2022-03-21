@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { host, HTTPServices } from "../../Helper/HTTPMethod.Helper";
+import { serverAddress, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import { Col, Card, Row, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/action/cart";
@@ -24,7 +24,7 @@ export const Allproduct = () => {
       all.push(item);
       localStorage.setItem("savedData", JSON.stringify(all));
       swal({
-        title: "added to cart ",
+        title: "Added to cart ",
         icon: "success",
         button: "OK",
       });
@@ -42,7 +42,7 @@ export const Allproduct = () => {
         className="titleMain"
         style={{ paddingTop: "50px", paddingBottom: "50px" }}
       >
-        <h1>OUR PRODUCTS </h1>
+        <h1>OUR PRODUCTS</h1>
       </div>
 
       <Row xs={1} md={3} className="g-4">

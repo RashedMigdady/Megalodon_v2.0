@@ -8,7 +8,7 @@ import { addToCart } from "../../../redux/action/cart";
 import { addSubscription } from "../../../redux/action/cart";
 import swal from "sweetalert";
 import { Col, Container, Row, Image } from "react-bootstrap";
-import { host, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 export const Login = () => {
   const [email, setEmail] = useState(0);
   const [password, setPassword] = useState(0);

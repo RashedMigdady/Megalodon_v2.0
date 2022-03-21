@@ -1,7 +1,7 @@
 import { LocationSearching, PhoneAndroid } from "@material-ui/icons";
 import { Link, useParams } from "react-router-dom";
 import style from "./trainer.module.css";
-import { host, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import React, { useEffect, useState } from "react";
 
 export default function Trainer() {
