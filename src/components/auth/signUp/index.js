@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
-import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import "./signUp.css";
 import { useHistory } from "react-router-dom";
 import { Overlay, Tooltip } from "react-bootstrap";
 import { Col, Container, Row, Image } from "react-bootstrap";
+import { register } from '../../../servicesMethods/AuthServices/signupServices';
 
 
 export default function Register() {
@@ -22,19 +22,11 @@ export default function Register() {
     if (password.length < 6) {
       setShow(true);
     } else {
-      await HTTPServices
-        .post("http://localhost:5000/register", {
-          firstName,
-          lastName,
-          email,
-          password,
-        })
-        .then((res) => {
-          history.push("/login");
-        })
-        .catch((err) => {
-          setMessage("Error happened while register, please try again");
-        });
+      const res = await register({ firstName, lastName, email, password });
+      if (res) 
+      history.push("/login")
+      else    
+      setMessage("Error happened while register, please try again"); 
     }
   };
 
@@ -114,9 +106,9 @@ export default function Register() {
             </button>
           </div>
           <div className="inputBox">
-            <p style={{ color: "black", fontSize: "15px" , textDecoration:"underline" }}>{message}</p>
+            <p style={{ color: "black", fontSize: "15px", textDecoration: "underline" }}>{message}</p>
             <p>
-              Do You have an account? <a href="/login" style={{color:"black" , textDecoration:"underline"}}> Login</a>{" "}
+              Do You have an account? <a href="/login" style={{ color: "black", textDecoration: "underline" }}> Login</a>{" "}
             </p>
           </div>
           <ul className="scil"></ul>

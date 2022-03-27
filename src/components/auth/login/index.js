@@ -24,7 +24,7 @@ export const Login = () => {
   const userLogin = async (e) => {
     e.preventDefault();
     await HTTPServices
-      .post("http://localhost:5000/login", {
+      .post("http://localhost:5000/login/login", {
         email,
         password,
       })

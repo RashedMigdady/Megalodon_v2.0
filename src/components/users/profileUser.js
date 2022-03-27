@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ProgressBar, Button, Image } from "react-bootstrap";
 import { Cancel } from "@mui/icons-material";
 import Modal from "react-modal";
-import { GetuserProfile } from '../../servicesMethods/users/usersServices';
+import { EditProfile, GetuserProfile } from '../../servicesMethods/UsersServices/usersServices';
 
 const customStyles = {
   content: {
@@ -31,14 +31,6 @@ export const ProfileUser = () => {
   const token = localStorage.getItem("token");
 
   useEffect(async () => {
-    // HTTPServices
-    //   .get(`${serverAddress}/users`, {
-    //     headers: { Authorization: `Bearer ${token}` },
-    //   })
-    //   .then((result) => {
-    //     setProfile(result.data[0]);
-    //   })
-    //   .catch((err) => {});
    const res = await GetuserProfile();
    setProfile(res.data[0]);
   }, []);
@@ -117,19 +109,26 @@ export const ProfileUser = () => {
 
   const AllSubscribtions = [subRest, subTrainer, subGym];
 
-  const updateInfo = () => {
-    HTTPServices
-      .put(
-        "http://localhost:5000/users",
-        { age, phoneNumber, country, weight, height, diseases },
-        { headers: { Authorization: `Bearer: ${token}` } }
-      )
-      .then((result) => {
-        closeModal();
-        history.push("/home");
-        history.push("/profile");
-      })
-      .catch((err) => {});
+  const updateInfo = async () => {
+    console.log("$$" , age, phoneNumber, country, weight, height, diseases);
+   const res = await EditProfile({ age, phoneNumber, country, weight, height, diseases });
+         closeModal();
+         history.push("/home");
+         history.push("/profile");
+         console.log("res" , res);
+    // HTTPServices
+    //   .put(
+    //     "http://localhost:5000/users",
+    //     { age, phoneNumber, country, weight, height, diseases },
+    //     { headers: { Authorization: `Bearer: ${token}` } }
+    //   )
+    //   .then((result) => {
+    //     closeModal();
+    //     history.push("/home");
+    //     history.push("/profile");
+    //   })
+    //   .catch((err) => {});
+
   };
 
   return (
