@@ -1,8 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import Carousel from "react-bootstrap/Carousel";
+import {Card, Button, Carousel} from "react-bootstrap";
 import { Allproduct } from "../products/product";
 import { AddComment } from "../comment/comment";
 import icon1 from "../../imeges/icon-1.png";

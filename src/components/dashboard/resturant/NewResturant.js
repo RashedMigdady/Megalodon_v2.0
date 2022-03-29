@@ -1,9 +1,10 @@
 import style from "../trainer/newTrainer.module.css";
 import React, { useEffect, useState } from "react";
 import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { createNewRestaurant } from '../../../servicesMethods/RestaurantsServices/RestaurantsServices';
 
 
-export default function NewResturant () {
+export default function NewResturant() {
   const [name, setName] = useState();
   const [location, setLocation] = useState();
   const [image, setImage] = useState();
@@ -11,19 +12,9 @@ export default function NewResturant () {
   const rate = 5;
   const [message, setMessage] = useState("");
 
-  const createNewRestaurant = async () => {
-    await HTTPServices
-      .post(`http://localhost:5000/resturan`, {
-        name,
-        location,
-        image,
-        monthlyPrice,
-        rate,
-      })
-      .then((res) => {
-        setMessage(res.data.message);
-       
-      });
+  const addNewRestaurant = async () => {
+    const res = await createNewRestaurant({ name, location, image, monthlyPrice, rate, });
+    setMessage(res);
   };
   return (
     <div className={style.newUser}>
@@ -74,7 +65,7 @@ export default function NewResturant () {
           ></textarea>
         </div>
       </form>
-      <button className={style.newUserButton} onClick={createNewRestaurant}>
+      <button className={style.newUserButton} onClick={addNewRestaurant}>
         Create
       </button>
       <p>{message}</p>

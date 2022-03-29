@@ -3,8 +3,9 @@ import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
-import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import React, { useEffect, useState } from "react";
+import { getAllRestaurants } from '../../../servicesMethods/RestaurantsServices/RestaurantsServices';
 
 export default function ResturantList() {
   const [data, setData] = useState([]);
@@ -20,16 +21,12 @@ export default function ResturantList() {
           button: "OK",
         });
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
-  useEffect(() => {
-    HTTPServices
-      .get("http://localhost:5000/resturan")
-      .then((result) => {
-        setData(result.data.result);
-      })
-      .catch((err) => {});
+  useEffect(async () => {
+    const res = await getAllRestaurants();
+    setData(res);
   }, []);
 
   const columns = [

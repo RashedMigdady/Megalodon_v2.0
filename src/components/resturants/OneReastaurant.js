@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { serverAddress, HTTPServices } from "../../Helper/HTTPMethod.Helper";
+import { token } from "../../Helper/HTTPMethod.Helper";
 import { useParams } from "react-router-dom";
 import "./oneResturant.css";
 import swal from "sweetalert";
@@ -8,21 +8,18 @@ import { addSubscription } from "../../redux/action/cart";
 import Carousel from "react-bootstrap/Carousel";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { getRestaurantById } from '../../servicesMethods/RestaurantsServices/RestaurantsServices';
 
 export const OneResturant = () => {
   const [resturant, setResturant] = useState(0);
-  const token = localStorage.getItem("token");
   let restaurantId = useParams().id;
   const dispatch = useDispatch();
   const all = JSON.parse(localStorage.getItem("subscription"));
 
   useEffect(async () => {
-    await HTTPServices
-      .get(`http://localhost:5000/resturan/${restaurantId}`)
-      .then((res) => {
-        setResturant(res.data.Resturant);
-      })
-      .catch((err) => {});
+    const res = await getRestaurantById(restaurantId);
+    if (res)
+      setResturant(res);
   }, []);
 
   const addSubsecRestaurant = async (elem) => {

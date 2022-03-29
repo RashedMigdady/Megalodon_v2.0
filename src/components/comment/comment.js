@@ -1,23 +1,14 @@
 import React, { useState } from "react";
 import "./comment.css";
-import { serverAddress, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import swal from "sweetalert";
+import { addComment } from '../../servicesMethods/CommentsServices/commentsServices';
+
 export const AddComment = () => {
   const [comment, setComment] = useState("");
-  const token = localStorage.getItem("token");
-  const createComment = () => {
-   
-    HTTPServices
-      .post(`http://localhost:5000/comment`, { comment },
-      { headers: { Authorization: `Bearer ${token}` } })
-      .then((res) => {
-        swal({
-          title: "Thank you for giving us your opinion ",
-          icon: "success",
-          button: "OK",
-        });
-      })
-      .catch((err) => {});
+
+  const createComment = async () => {
+    const res = await addComment({ comment });
+    swal(res);
   };
 
   return (
@@ -26,7 +17,7 @@ export const AddComment = () => {
         <div className="container33">
           <div className="form44">
             <h4> Send us a Message</h4>
-            <div className="detailsComment"><input className="detalisUser" placeholder="your Name" type="text"/> <input type="email" className="detalisUser" placeholder="your Email"/></div>
+            <div className="detailsComment"><input className="detalisUser" placeholder="your Name" type="text" /> <input type="email" className="detalisUser" placeholder="your Email" /></div>
             <div className="container22">
               <textarea
                 className="textareaaa"

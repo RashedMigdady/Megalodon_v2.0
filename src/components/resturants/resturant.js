@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./restaurants.css";
-import { serverAddress, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import { useHistory } from "react-router";
 import { Form } from "react-bootstrap";
+import { getAllRestaurants } from '../../servicesMethods/RestaurantsServices/RestaurantsServices';
 
 export const Resturants = () => {
   const [resturants, setResturants] = useState([]);
@@ -10,12 +10,8 @@ export const Resturants = () => {
   const history = useHistory();
 
   useEffect(async () => {
-    await HTTPServices
-      .get("http://localhost:5000/resturan")
-      .then((res) => {
-        setResturants([...res.data.result]);
-      })
-      .catch((error) => {});
+    const res = getAllRestaurants();
+    setResturants([...res]);
   }, []);
 
   return (
@@ -25,7 +21,7 @@ export const Resturants = () => {
       </div>
       <Form >
         <Form.Group className="searchGym" controlId="exampleForm.ControlInput1">
-          <Form.Control 
+          <Form.Control
             type="text"
             placeholder="  Search..."
             onChange={(e) => {

@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { LocationSearching } from "@material-ui/icons";
 import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { getRestaurantById, UpdateRestaurant } from '../../../servicesMethods/RestaurantsServices/RestaurantsServices';
 
 export default function Resturant() {
   const [resturant, setResturant] = useState();
@@ -14,25 +15,12 @@ export default function Resturant() {
   const [message, setMessage] = useState("");
   let restaurantId = useParams().restaurantId;
   const updateRestaurant = async () => {
-    await HTTPServices
-      .put(`http://localhost:5000/resturan/${restaurantId}`, {
-        name,
-        location,
-        image,
-        monthlyPrice,
-        rate,
-      })
-      .then((res) => {
-        setMessage(res.data.message);
-      });
+    const res = UpdateRestaurant(restaurantId, { name, location, image, monthlyPrice, rate });
+    setMessage(res);
   };
   useEffect(async () => {
-    await HTTPServices
-      .get(`http://localhost:5000/resturan/${restaurantId}`)
-      .then((res) => {
-        setResturant(res.data.Resturant[0]);
-      })
-      .catch((err) => {});
+    const res = await getRestaurantById(restaurantId);
+    setResturant(res);
   }, []);
   return (
     <div className={style.user}>

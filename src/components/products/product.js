@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { serverAddress, HTTPServices } from "../../Helper/HTTPMethod.Helper";
+import { token } from "../../Helper/HTTPMethod.Helper";
 import { Col, Card, Row, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/action/cart";
 import swal from "sweetalert";
-import axios from "axios";
+import { getProducts } from '../../servicesMethods/ProductServices/productServices';
 
 export const Allproduct = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState();
   const dispatch = useDispatch();
 
-  const token = localStorage.getItem("token");
   const all = JSON.parse(localStorage.getItem("savedData"));
-  useEffect(() => {
-    axios.get("http://localhost:5000/products").then((result) => {
-      setProducts([...result.data.Products]);
-    });
+  useEffect(async () => {
+    const res = await getProducts();
+    setProducts([...res])
   }, []);
 
   const addCart = (item) => {
@@ -53,19 +51,19 @@ export const Allproduct = () => {
                 <Card
                   style={{ textAlign: "left", width: "90%", height: "100%" }}
                 >
-                  <Card.Img
+                  {/* <Card.Img
                     variant="top"
                     src={item.image}
                     height="200px"
                     width="200px"
-                  />
+                  /> */}
                   <Card.Body>
                     <Card.Title style={{ fontSize: "18px" }}>
                       {item.name}
                     </Card.Title>
-                    <Card.Text style={{ fontSize: "13px" }}>
+                    {/* <Card.Text style={{ fontSize: "13px" }}>
                       {item.description}
-                    </Card.Text>
+                    </Card.Text> */}
                     <Card.Text style={{ fontSize: "16px" }}>
                       Price: {item.price} $
                     </Card.Text>
@@ -101,15 +99,8 @@ export const AddProducts = () => {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
 
-  const addProduct = () => {
-    HTTPServices
-      .post("http://localhost:5000/products", {
-        name,
-        price,
-        description,
-        image,
-      })
-      .then((result) => {});
+  const addProduct = async () => {
+    await addProduct({ name, price, description, image });
   };
 
   return (
