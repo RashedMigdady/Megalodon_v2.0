@@ -4,7 +4,7 @@ import { Auth, HTTPServices, serverAddress } from '../../Helper/HTTPMethod.Helpe
 export const addComment = async (body) => {
     const result = HTTPServices.post(`${serverAddress}/comment`, body, Auth)
         .then(() => { return { title: "Thank you for giving us your opinion ", icon: "success", button: "OK" } })
-        .catch(err => err.response);
+        .catch(err => err.response.data.success.data.success);
     return result;
 
 

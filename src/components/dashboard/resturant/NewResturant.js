@@ -14,6 +14,7 @@ export default function NewResturant() {
 
   const addNewRestaurant = async () => {
     const res = await createNewRestaurant({ name, location, image, monthlyPrice, rate, });
+    if(res)
     setMessage(res);
   };
   return (

@@ -1,8 +1,9 @@
 import style from "./newTrainer.module.css";
 import React, { useEffect, useState } from "react";
 import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { addNewTrainer } from '../../../servicesMethods/TrainersServices/trainersServices';
 
-export default function NewTrainer () {
+export default function NewTrainer() {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [phoneNumber, setPhoneNumber] = useState();
@@ -15,26 +16,13 @@ export default function NewTrainer () {
   const [message, setMessage] = useState("");
 
   const createNewTrainer = async () => {
-    await HTTPServices
-      .post(`http://localhost:5000/trainer`, {
-        firstName,
-        lastName,
-        phoneNumber,
-        location,
-        image,
-        sport,
-        priceMonthly,
-        description,
-        experience,
-      })
-      .then((res) => {
-        setMessage(res.data.message);
-        
-      });
+    const res = await addNewTrainer({ firstName, lastName, phoneNumber, location, image, sport, priceMonthly, description, experience });
+    if(res)
+    setMessage(res);
   };
   return (
     <div className={style.newUser}>
-    <h1 className={style.newUserTitle}>New Trainer</h1>
+      <h1 className={style.newUserTitle}>New Trainer</h1>
       <form className={style.newUserForm}>
         <div className={style.newUserItem}>
           <label>First Name</label>

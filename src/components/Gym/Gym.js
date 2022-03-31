@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { serverAddress, HTTPServices } from "../../Helper/HTTPMethod.Helper";
+import { serverAddress, HTTPServices, token } from "../../Helper/HTTPMethod.Helper";
 import "./Gym.css";
 import swal from "sweetalert";
 import { useDispatch } from "react-redux";
 import { addSubscription } from "../../redux/action/cart";
 import { Form } from "react-bootstrap";
+import { getAllGyms } from '../../servicesMethods/GymsServices/gymsServices';
 export const Gym = () => {
   const [allgyms, setAllGyms] = useState([]);
   const [search, setSearch] = useState("");
-  const token = localStorage.getItem("token");
+  // const token = localStorage.getItem("token");
   const dispatch = useDispatch();
   const all = JSON.parse(localStorage.getItem("subscription"));
 
-  useEffect(() => {
-    HTTPServices
-      .get("http://localhost:5000/gym")
-      .then((res) => {
-        setAllGyms([...res.data.result]);
-      })
-      .catch((error) => {});
+  useEffect(async () => {
+    const res = await getAllGyms();
+    if(res)
+    setAllGyms([...res]);
   }, []);
 
   const addSubsGym = (element) => {

@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import style from "../trainer/trainer.module.css";
 import React, { useEffect, useState } from "react";
 import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { getGymById, UpdateOneGym } from '../../../servicesMethods/GymsServices/gymsServices';
 
 export default function Gym() {
   let gymId = useParams().gymId;
@@ -17,27 +18,16 @@ export default function Gym() {
   const [message, setMessage] = useState("");
 
   const updateGym = async () => {
-    await HTTPServices
-      .put(`http://localhost:5000/gym/${gymId}`, {
-        name,
-        phoneNumber,
-        location,
-        image,
-        priceMonthly,
-        description,
-      })
-      .then((res) => {
-        setMessage(res.data.message);
-      });
+
+    const res = await UpdateOneGym(gymId, { name, phoneNumber, location, image, priceMonthly, description });
+    if(res)
+    setMessage(res);
   };
 
   useEffect(async () => {
-    await HTTPServices
-      .get(`http://localhost:5000/gym/${gymId}`)
-      .then((res) => {
-        setGym(res.data.result[0]);
-      })
-      .catch((err) => {});
+    const res = await getGymById(gymId);
+    if(res)
+    setGym(res);
   }, []);
 
   return (

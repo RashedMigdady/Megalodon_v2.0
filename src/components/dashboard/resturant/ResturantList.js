@@ -26,6 +26,7 @@ export default function ResturantList() {
 
   useEffect(async () => {
     const res = await getAllRestaurants();
+    if(res)
     setData(res);
   }, []);
 

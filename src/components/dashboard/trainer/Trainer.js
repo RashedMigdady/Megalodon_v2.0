@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import style from "./trainer.module.css";
 import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import React, { useEffect, useState } from "react";
+import { getTrainerById, updateTrainer } from '../../../servicesMethods/TrainersServices/trainersServices';
 
 export default function Trainer() {
   let trainerId = useParams().trainerId;
@@ -19,30 +20,15 @@ export default function Trainer() {
   const [message, setMessage] = useState("");
 
   const updateTrainers = async () => {
-    await HTTPServices
-      .put(`http://localhost:5000/trainer/${trainerId}`, {
-        firstName,
-        lastName,
-        phoneNumber,
-        location,
-        image,
-        sport,
-        priceMonthly,
-        description,
-        experience,
-      })
-      .then((res) => {
-        setMessage(res.data.message);
-      });
+    const res = await updateTrainer(trainerId, { firstName, lastName, phoneNumber, location, image, sport, priceMonthly, description, experience });
+    if(res)
+    setMessage(res);
   };
 
   useEffect(async () => {
-    await HTTPServices
-      .get(`http://localhost:5000/trainer/${trainerId}`)
-      .then((res) => {
-        setTrainer(res.data.Trainer[0]);
-      })
-      .catch((err) => {});
+    const res = await getTrainerById(trainerId);
+    if(res)
+    setTrainer(res);
   }, []);
 
   return (

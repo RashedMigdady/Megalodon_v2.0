@@ -8,7 +8,8 @@ export const AddComment = () => {
 
   const createComment = async () => {
     const res = await addComment({ comment });
-    swal(res);
+    if(res)
+     swal(res);
   };
 
   return (

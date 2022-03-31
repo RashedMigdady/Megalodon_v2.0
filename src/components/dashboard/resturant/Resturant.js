@@ -20,6 +20,7 @@ export default function Resturant() {
   };
   useEffect(async () => {
     const res = await getRestaurantById(restaurantId);
+    if(res)
     setResturant(res);
   }, []);
   return (

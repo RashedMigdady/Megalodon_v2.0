@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import React, { useEffect, useState } from "react";
+import { getAllTrainers } from '../../../servicesMethods/TrainersServices/trainersServices';
 
 export default function TrainerList() {
   const [data, setData] = useState([]);
@@ -20,16 +21,13 @@ export default function TrainerList() {
           button: "OK",
         });
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
-  useEffect(() => {
-    HTTPServices
-      .get("http://localhost:5000/trainer")
-      .then((result) => {
-        setData(result.data.allTrainers);
-      })
-      .catch((err) => {});
+  useEffect(async () => {
+    const res = await getAllTrainers();
+    if(res)
+    setData(res);
   }, []);
 
   const columns = [

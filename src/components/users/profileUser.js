@@ -7,6 +7,7 @@ import { ProgressBar, Button, Image } from "react-bootstrap";
 import { Cancel } from "@mui/icons-material";
 import Modal from "react-modal";
 import { EditProfile, GetuserProfile } from '../../servicesMethods/UsersServices/usersServices';
+import { getGymsSubscribtions, getRestaurantSubscriptions, getTrainersSubscribtions } from '../../servicesMethods/SubscriptionsServices/subscriptionService';
 
 const customStyles = {
   content: {
@@ -28,107 +29,73 @@ const customStyles = {
 export const ProfileUser = () => {
   const [profile, setProfile] = useState("");
   const [subRest, setSubRest] = useState("");
-  const token = localStorage.getItem("token");
-
-  useEffect(async () => {
-   const res = await GetuserProfile();
-   setProfile(res.data[0]);
-  }, []);
-
-  useEffect(() => {
-    HTTPServices
-      .get(
-        `${serverAddress}/subscribtion/ResturantsSubscribtion`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
-      .then((result) => {
-        setSubRest(result.data.result[0]);
-      })
-      .catch((err) => {});
-  }, []);
-
-  const [subTrainer, setSubTrainer] = useState("");
-  useEffect(() => {
-    HTTPServices
-      .get(
-        "http://localhost:5000/subscribtion/TrainersSubscribtion",
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
-      .then((result) => {
-        setSubTrainer(result.data.result[0]);
-      })
-      .catch((err) => {});
-  }, []);
-
-  const [subGym, setSubGym] = useState("");
-  useEffect(() => {
-    HTTPServices
-      .get("http://localhost:5000/subscribtion/GymSubscribtions", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((result) => {
-        setSubGym(result.data.result[0]);
-      })
-      .catch((err) => {});
-  }, []);
-
-  function dateDiffInDays(a) {
-    const d = new Date();
-    const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
-    const utc2 = Date.UTC(d.getFullYear(), d.getMonth(), d.getDate());
-    return Math.abs(Math.floor((utc2 - utc1) / 86400000));
-  }
-
-  let subtitle;
-  const [modalIsOpen, setIsOpen] = useState(false);
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    // subtitle.style.color = "black";
-    // subtitle.style.textAlign = "center";
-    // subtitle.style.fontFamily = "bold";
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
   const [age, setAge] = useState(0);
   const [phoneNumber, setPhoneNumber] = useState(0);
   const [country, setCountry] = useState("");
   const [weight, setWeight] = useState(0);
   const [height, setHeight] = useState(0);
   const [diseases, setDiseases] = useState("");
+  const [subTrainer, setSubTrainer] = useState("");
+  const [subGym, setSubGym] = useState("");
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+
   const history = useHistory();
 
   const AllSubscribtions = [subRest, subTrainer, subGym];
 
-  const updateInfo = async () => {
-    console.log("$$" , age, phoneNumber, country, weight, height, diseases);
-   const res = await EditProfile({ age, phoneNumber, country, weight, height, diseases });
-         closeModal();
-         history.push("/home");
-         history.push("/profile");
-         console.log("res" , res);
-    // HTTPServices
-    //   .put(
-    //     "http://localhost:5000/users",
-    //     { age, phoneNumber, country, weight, height, diseases },
-    //     { headers: { Authorization: `Bearer: ${token}` } }
-    //   )
-    //   .then((result) => {
-    //     closeModal();
-    //     history.push("/home");
-    //     history.push("/profile");
-    //   })
-    //   .catch((err) => {});
+  useEffect(async () => {
+    const res = await GetuserProfile();
+    if(res)
+    setProfile(res.data[0]);
+  }, []);
 
+  useEffect(async () => {
+    const res = await getRestaurantSubscriptions();
+    if(res)
+    setSubRest(res);
+  }, []);
+
+  useEffect(async () => {
+    const res = await getTrainersSubscribtions();
+    if(res)
+    setSubTrainer(res);
+  }, []);
+
+  useEffect(async () => {
+    const res = await getGymsSubscribtions();
+    if(res)
+    setSubGym(res);
+  }, []);
+
+  const dateDiffInDays = (dateTo) => {
+    const today = new Date();
+    const utc1 = Date.UTC(dateTo.getFullYear(), dateTo.getMonth(), dateTo.getDate());
+    const utc2 = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+    return Math.abs(Math.floor((utc2 - utc1) / 86400000));
+  }
+
+  const openModal = () => {
+    setIsOpen(true);
+  }
+
+  let subtitle;
+  const afterOpenModal = () => {
+    // subtitle.style.color = "black";
+    // subtitle.style.textAlign = "center";
+    // subtitle.style.fontFamily = "bold";
+  }
+
+  const closeModal = () => {
+    setIsOpen(false);
+  }
+
+
+  const updateInfo = async () => {
+    const res = await EditProfile({ age, phoneNumber, country, weight, height, diseases });
+    closeModal();
+    history.push("/home");
+    history.push("/profile");
   };
 
   return (
@@ -231,24 +198,24 @@ export const ProfileUser = () => {
               type="text"
               className="inputModal"
               placeholder="Country"
-              onChange={(e)=>setCountry(e.target.value)} 
-              />
-              <lebel className="lebelDiseases">
+              onChange={(e) => setCountry(e.target.value)}
+            />
+            <lebel className="lebelDiseases">
               {" "}
               • Do you have any Diseases ?
             </lebel>
 
-              <input
+            <input
               type="text"
               className="inputModalDiseases"
               value={profile && profile.diseases}
               onChange={(e) => {
                 setDiseases(e.target.value);
               }}
-              
+
             />
-            
-            
+
+
             <Button
               variant="outline-dark"
               className="EnterInfo"

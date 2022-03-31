@@ -9,6 +9,7 @@ import StarBorder from "@mui/icons-material/StarBorder";
 import swal from "sweetalert";
 import { useDispatch } from "react-redux";
 import { addSubscription } from "../../redux/action/cart";
+import { getTrainerById } from '../../servicesMethods/TrainersServices/trainersServices';
 
 export const OneTrainer = () => {
   const [trainer, setTrainer] = useState(0);
@@ -18,12 +19,9 @@ export const OneTrainer = () => {
   const all = JSON.parse(localStorage.getItem("subscription"));
 
   useEffect(async () => {
-    await HTTPServices
-      .get(`http://localhost:5000/trainer/${trainerId}`)
-      .then((res) => {
-        setTrainer(res.data.Trainer);
-      })
-      .catch((err) => {});
+    const res = await getTrainerById(trainerId);
+    if(res)
+    setTrainer(res);
   }, []);
 
   const addSubsecribtionTrainer = async (elem) => {

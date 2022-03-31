@@ -3,24 +3,22 @@ import "./trainer.css";
 import { serverAddress, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import { useHistory } from "react-router";
 import { Form } from "react-bootstrap";
+import { addNewTrainer, getAllTrainers } from '../../servicesMethods/TrainersServices/trainersServices';
 
 export const Trainer = () => {
   const [trainers, setTrainer] = useState([]);
   const history = useHistory();
   const [search, setSearch] = useState("");
 
-  const getAllTrainers = async () => {
-    await HTTPServices.get("http://localhost:5000/trainer").then((res) => {
-      setTrainer(res.data.allTrainers);
-    });
-  };
-  useEffect(() => {
-    getAllTrainers();
+  useEffect(async () => {
+    const res = await getAllTrainers();
+    if(res)
+    setTrainer(res)
   }, []);
 
   return (
     <div>
-      <div className="titleMain" style={{ paddingTop: "50px" }}> 
+      <div className="titleMain" style={{ paddingTop: "50px" }}>
         <h1> Our Professional Trainers </h1>
       </div>
 
@@ -84,19 +82,10 @@ export const AddTrainer = () => {
   const [experience, setExperience] = useState(0);
 
   const addTrainers = async () => {
-    await HTTPServices
-      .post("http://localhost:5000/trainer", {
-        firstName,
-        lastName,
-        phoneNumber,
-        location,
-        image,
-        sport,
-        priceMonthly,
-        description,
-        experience,
-      })
-      .then((res) => {});
+    const res = await addNewTrainer({
+      firstName, lastName, phoneNumber, location, image, sport, priceMonthly, description, experience,
+    });
+
   };
 
   return (

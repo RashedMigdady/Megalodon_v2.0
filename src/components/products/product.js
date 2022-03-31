@@ -13,6 +13,7 @@ export const Allproduct = () => {
   const all = JSON.parse(localStorage.getItem("savedData"));
   useEffect(async () => {
     const res = await getProducts();
+    if (res)
     setProducts([...res])
   }, []);
 

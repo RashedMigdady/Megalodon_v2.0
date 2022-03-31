@@ -12,9 +12,7 @@ import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 export const Login = () => {
   const [email, setEmail] = useState(0);
   const [password, setPassword] = useState(0);
-
   const [message, setMessage] = useState("");
-
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -101,7 +99,7 @@ export const Login = () => {
         })
 
         .catch((err) => {
-          if (err.response.status === 404) {
+          if (err.response.data.success.status === 404) {
             swal("Oh noes!", `email doesn't exist`, "error");
           } else {
             swal("Oh noes!", "The request failed!", "error");

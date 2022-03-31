@@ -2,18 +2,18 @@ import style from "./featuredInfo.module.css";
 import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { getAllGyms } from '../../../servicesMethods/GymsServices/gymsServices'
+import { getAllRestaurants } from '../../../servicesMethods/RestaurantsServices/RestaurantsServices';
 
 export default function FeaturedInfo() {
   const [trainer, setTrainer] = useState();
   const [resturants, setResturants] = useState([]);
   const [allgyms, setAllGyms] = useState([]);
 
-  useEffect(() => {
-    HTTPServices.get("http://localhost:5000/gym")
-      .then((res) => {
-        setAllGyms([...res.data.result]);
-      })
-      .catch((error) => {});
+  useEffect(async () => {
+    const res = await getAllGyms();
+    if(res)
+    setAllGyms([...res]);
   }, []);
 
   useEffect(async () => {
@@ -23,11 +23,9 @@ export default function FeaturedInfo() {
   }, []);
 
   useEffect(async () => {
-    await HTTPServices.get("http://localhost:5000/resturan")
-      .then((res) => {
-        setResturants([...res.data.result]);
-      })
-      .catch((error) => {});
+    const res = await getAllRestaurants();
+    if(res)
+    setResturants([...res]);
   }, []);
 
   return (

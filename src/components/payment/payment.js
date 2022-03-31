@@ -10,17 +10,18 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 import "./payment.css";
+import { sendMessage } from '../../servicesMethods/PaymentServices/paymentServices';
 
 const Payment = ({ gymId, trainerId, restaurantId }) => {
   const token = localStorage.getItem("token");
   const [modalIsOpen, setIsOpen] = React.useState(false);
-  let confirm =
-    "your subscribtion has been confirmed check your profile to see your subscribtion ";
+  let confirm = "your subscribtion has been confirmed check your profile to see your subscribtion ";
 
-  function sendMsg() {
-    HTTPServices.post(`http://localhost:5000/sendMsg`, { confirm });
+  const sendMsg = async () => {
+    const res = await sendMessage({ confirm });
   }
   function reqTrainer() {
+    // const res = 
     HTTPServices.post(
       `http://localhost:5000/subscribtion/trainer`,
       { trainerId },
@@ -52,7 +53,7 @@ const Payment = ({ gymId, trainerId, restaurantId }) => {
           button: "OK",
         });
       })
-      .catch((errors) => {});
+      .catch((errors) => { });
   };
 
   const CARD_OPTIONS = {
@@ -294,8 +295,8 @@ const Payment = ({ gymId, trainerId, restaurantId }) => {
 
   return (
     <>
-      <Button variant="primary" onClick={() => setIsOpen(true)} 
-       style={{width: "200px"}}>
+      <Button variant="primary" onClick={() => setIsOpen(true)}
+        style={{ width: "200px" }}>
         Pay
       </Button>
 

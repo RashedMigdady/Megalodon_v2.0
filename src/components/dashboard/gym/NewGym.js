@@ -1,8 +1,9 @@
 import style from "../trainer/newTrainer.module.css";
 import React, { useEffect, useState } from "react";
 import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { addNewGym } from '../../../servicesMethods/GymsServices/gymsServices';
 
-export default function NewGym () {
+export default function NewGym() {
   const [name, setName] = useState();
   const [location, setLocation] = useState();
   const [image, setImage] = useState();
@@ -12,18 +13,9 @@ export default function NewGym () {
   const [message, setMessage] = useState("");
 
   const createNewGym = async () => {
-    await HTTPServices
-      .post(`http://localhost:5000/gym`, {
-        name,
-        location,
-        image,
-        monthlyPrice,
-        phoneNumber,
-        description,
-      })
-      .then((res) => {
-        setMessage(res.data.message);
-      });
+    const res = await addNewGym({ name, location, image, monthlyPrice, phoneNumber, description });
+    if(res)
+    setMessage(res);
   };
   return (
     <div className={style.newUser}>

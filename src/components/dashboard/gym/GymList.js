@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import React, { useEffect, useState } from "react";
 import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { getAllGyms } from '../../../servicesMethods/GymsServices/gymsServices';
 
 export default function GymList() {
   const [data, setData] = useState([]);
@@ -21,19 +22,14 @@ export default function GymList() {
         });
       })
       .catch((err) => {
-      
+
       });
   };
 
-  useEffect(() => {
-    HTTPServices
-      .get("http://localhost:5000/gym")
-      .then((result) => {
-        setData(result.data.result);
-      })
-      .catch((err) => {
-      
-      });
+  useEffect(async () => {
+    const res = await getAllGyms();
+    if(res)
+    setData(res);
   }, []);
 
   const columns = [
