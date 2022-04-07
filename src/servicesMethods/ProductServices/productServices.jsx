@@ -4,7 +4,7 @@ import { HTTPServices, serverAddress } from '../../Helper/HTTPMethod.Helper'
 
 export const getProducts = async () => {
     const result = HTTPServices.get(`${serverAddress}/products`)
-        .then(res => res.data.Products)
+        .then(res => console.log("FF" ,res))
         .catch(err => err.response.data.success)
 
     return result;
