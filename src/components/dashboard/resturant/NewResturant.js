@@ -1,6 +1,5 @@
 import style from "../trainer/newTrainer.module.css";
 import React, { useEffect, useState } from "react";
-import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import { createNewRestaurant } from '../../../servicesMethods/RestaurantsServices/RestaurantsServices';
 
 

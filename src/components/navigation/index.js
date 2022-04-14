@@ -24,7 +24,8 @@ const Navigation = () => {
   useEffect(async () => {
     const res = await GetuserProfile();
     if (res)
-      setImageUser(res.data[0]);
+    console.log("x",typeof(res));
+      // setImageUser(res.data[0]);
 
   }, []);
 

@@ -1,6 +1,5 @@
 import style from "./newTrainer.module.css";
 import React, { useEffect, useState } from "react";
-import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import { addNewTrainer } from '../../../servicesMethods/TrainersServices/trainersServices';
 
 export default function NewTrainer() {

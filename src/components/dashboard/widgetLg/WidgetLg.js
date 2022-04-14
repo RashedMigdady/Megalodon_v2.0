@@ -1,7 +1,7 @@
-import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import React, { useEffect, useState } from "react";
 import style from "./widgetLg.module.css";
 import { Restaurant } from "@material-ui/icons";
+import { getRestaurantSubscriptions } from '../../../servicesMethods/SubscriptionsServices/subscriptionService';
 
 export default function WidgetLg() {
   const [subRest, setSubRest] = useState();
@@ -10,15 +10,10 @@ export default function WidgetLg() {
     return <button className={"widgetLgButton " + type}>{type}</button>;
   };
 
-  useEffect(() => {
-    HTTPServices
-      .get(
-        "http://localhost:5000/subscribtion/allResturantsSubscribtion"
-      )
-      .then((result) => {
-        setSubRest(result.data.result);
-      })
-      .catch((err) => {});
+  useEffect(async () => {
+    const res = await getRestaurantSubscriptions();
+    if (res)
+      setSubRest(res);
   }, []);
   return (
     <div className={style.widgetLg}>

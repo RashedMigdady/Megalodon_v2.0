@@ -2,7 +2,6 @@ import { LocationSearching, PhoneAndroid } from "@material-ui/icons";
 import { Link, useParams } from "react-router-dom";
 import style from "../trainer/trainer.module.css";
 import React, { useEffect, useState } from "react";
-import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import { getGymById, UpdateOneGym } from '../../../servicesMethods/GymsServices/gymsServices';
 
 export default function Gym() {

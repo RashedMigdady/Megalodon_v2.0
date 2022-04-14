@@ -48,6 +48,7 @@ export const ProfileUser = () => {
     const res = await GetuserProfile();
     if(res)
     setProfile(res.data[0]);
+    // console.log("res",res.data[0]);
   }, []);
 
   useEffect(async () => {

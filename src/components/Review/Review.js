@@ -39,7 +39,7 @@ export const Review = () => {
                     <h5>{element.firstName}</h5>
                     <h5>{element.comment}</h5>
                     <p className="dateReview">
-                      {element.date_created.slice(0, 10)}
+                      {element&&element.date_created.slice(0, 10)}
                     </p>
                   </div>
                   <div className="imgReview">

@@ -13,8 +13,9 @@ export const Allproduct = () => {
   const all = JSON.parse(localStorage.getItem("savedData"));
   useEffect(async () => {
     const res = await getProducts();
+    console.log(res);
     if (res)
-    setProducts([...res])
+    setProducts([...res.Products])
   }, []);
 
   const addCart = (item) => {

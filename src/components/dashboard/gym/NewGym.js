@@ -1,6 +1,5 @@
 import style from "../trainer/newTrainer.module.css";
 import React, { useEffect, useState } from "react";
-import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import { addNewGym } from '../../../servicesMethods/GymsServices/gymsServices';
 
 export default function NewGym() {

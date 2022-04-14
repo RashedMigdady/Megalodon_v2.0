@@ -1,9 +1,9 @@
 import style from "./featuredInfo.module.css";
 import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
-import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import { getAllGyms } from '../../../servicesMethods/GymsServices/gymsServices'
 import { getAllRestaurants } from '../../../servicesMethods/RestaurantsServices/RestaurantsServices';
+import { getAllTrainers } from '../../../servicesMethods/TrainersServices/trainersServices';
 
 export default function FeaturedInfo() {
   const [trainer, setTrainer] = useState();
@@ -17,9 +17,9 @@ export default function FeaturedInfo() {
   }, []);
 
   useEffect(async () => {
-    await HTTPServices.get("http://localhost:5000/trainer").then((res) => {
-      setTrainer(res.data.allTrainers);
-    });
+    const res = await getAllTrainers();
+    if (res)
+    setTrainer(res);
   }, []);
 
   useEffect(async () => {
