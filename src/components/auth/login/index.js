@@ -9,6 +9,7 @@ import { addSubscription } from "../../../redux/action/cart";
 import swal from "sweetalert";
 import { Col, Container, Row, Image } from "react-bootstrap";
 import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import {AiOutlineEye} from 'react-icons/ai';
 export const Login = () => {
   const [email, setEmail] = useState(0);
   const [password, setPassword] = useState(0);
@@ -147,6 +148,7 @@ export const Login = () => {
                 setPassword(e.target.value);
               }}
             />
+            <AiOutlineEye/>
           </div>
 
           <div className="inputBx">
