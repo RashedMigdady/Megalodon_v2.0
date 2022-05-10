@@ -58,9 +58,9 @@ export const Trainer = () => {
                   className="trainrClass"
                   onClick={() => history.push(`/trainer/${elem.id}`)}
                 >
-                  <img src={elem.image} className="imgTrainer" />
+                  <img src={elem && elem.image} className="imgTrainer" />
                   <p className="nameTrainer">
-                    {elem.firstName + " " + elem.lastName}
+                    {elem && elem.firstName + " " + elem && elem.lastName}
                   </p>
                 </div>
               );

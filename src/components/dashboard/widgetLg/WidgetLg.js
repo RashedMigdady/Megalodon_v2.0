@@ -40,12 +40,12 @@ export default function WidgetLg() {
                     className={style.widgetLgImg}
                   />
                   <span className={style.widgetLgName}>
-                    {elem.firstName} {elem.lastName}
+                    {elem && elem.firstName +" "+elem && elem.lastName}
                   </span>
                 </td>
-                <td className={style.widgetLgDate}>{elem.date_to}</td>
-                <td className={style.widgetLgAmount}>{elem.monthlyPrice}$</td>
-                <td className={style.widgetLgUser}>{elem.name}</td>
+                <td className={style.widgetLgDate}>{elem && elem.date_to}</td>
+                <td className={style.widgetLgAmount}>{elem && elem.monthlyPrice}$</td>
+                <td className={style.widgetLgUser}>{elem && elem.name}</td>
                 <td className={style.widgetLgStatus}>
                   <Button type="Approved" />
                 </td>

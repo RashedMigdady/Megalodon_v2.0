@@ -74,22 +74,22 @@ export const Gym = () => {
               <>
                 {index % 2 == 0 ? (
                   <div key={index} className="OneGym">
-                    <img src={element.image} className="imgGym" />
+                    <img src={element && element.image} className="imgGym" />
                     <div className="childtwo">
-                      <h5 className="NameOfTheGym">{element.name}</h5>
+                      <h5 className="NameOfTheGym">{element && element.name}</h5>
                       <h5 className="name2">
                         {" "}
-                        Phone Number :{element.phoneNumber}{" "}
+                        Phone Number :{element && element.phoneNumber}{" "}
                       </h5>
                       <h5 className="name2">
                         {" "}
-                        Monthly payment : {element.priceMonthly} $
+                        Monthly payment : {element && element.priceMonthly} $
                       </h5>
-                      <h5 className="name2"> {element.description}</h5>
+                      <h5 className="name2"> {element && element.description}</h5>
                       <h5
                         className="name2"
                         onClick={() => {
-                          window.open(element.location, "_blank");
+                          window.open(element && element.location, "_blank");
                         }}
                       >
                         {" "}
@@ -108,20 +108,20 @@ export const Gym = () => {
                 ) : (
                   <div key={index} className="OneGym">
                     <div className="childtwo">
-                      <h5 className="NameOfTheGym">{element.name}</h5>
+                      <h5 className="NameOfTheGym">{element && element.name}</h5>
                       <h5 className="name2">
                         {" "}
-                        Phone Number :{element.phoneNumber}{" "}
+                        Phone Number :{element && element.phoneNumber}{" "}
                       </h5>
                       <h5 className="name2">
                         {" "}
-                        Monthly payment : {element.priceMonthly} $
+                        Monthly payment : {element && element.priceMonthly} $
                       </h5>
-                      <h5 className="name2"> {element.description}</h5>
+                      <h5 className="name2"> {element && element.description}</h5>
                       <h5
                         className="name2"
                         onClick={() => {
-                          window.open(element.location, "_blank");
+                          window.open(element && element.location, "_blank");
                         }}
                       >
                         {" "}
@@ -137,7 +137,7 @@ export const Gym = () => {
                       </button>
                     </div>
 
-                    <img src={element.image} className="imgGym" />
+                    <img src={element && element.image} className="imgGym" />
                   </div>
                 )}
               </>

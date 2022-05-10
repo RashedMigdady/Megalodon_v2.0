@@ -39,14 +39,14 @@ export const Cart = () => {
         <h5 className="cartTitle">Your subscribtions</h5>
         {state.subscription &&
           state.subscription.map((elem, index) => {
-            total = total + (elem.priceMonthly || elem.monthlyPrice);
-            if (elem.provider === "resturant") {
+            total = total + (elem && elem.priceMonthly || elem && elem.monthlyPrice);
+            if (elem && elem.provider === "resturant") {
               restaurantId = elem.id;
             }
-            if (elem.provider === "trainer") {
+            if (elem && elem.provider === "trainer") {
               trainerId = elem.id;
             }
-            if (elem.provider === "gym") {
+            if (elem && elem.provider === "gym") {
               gymId = elem.id;
             }
             if (elem != null) {

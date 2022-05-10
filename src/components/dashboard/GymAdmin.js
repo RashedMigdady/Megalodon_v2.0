@@ -79,7 +79,7 @@ export const GymAdmin = () => {
             return (
               <div key={index}>
                 <div className="childtwo">
-                  <h5>{element.name}</h5>
+                  <h5>{element && element.name}</h5>
                   <button
                     onClick={() => {
                       deleteGymById(element.id);

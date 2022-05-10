@@ -42,15 +42,15 @@ export const Resturants = () => {
                 return val;
               }
             })
-            .map((Element, i) => {
+            .map((element, i) => {
               return (
                 <div
                   key={i}
                   className="cardRestrurant"
-                  onClick={() => history.push(`/resturan/${Element.id}`)}
+                  onClick={() => history.push(`/resturan/${element && element.id}`)}
                 >
-                  <img src={Element.image} className="imgRestaurant" />
-                  <h2 className="nameResturant">{Element.name}</h2>
+                  <img src={element && element.image} className="imgRestaurant" />
+                  <h2 className="nameResturant">{element && element.name}</h2>
                 </div>
               );
             })}

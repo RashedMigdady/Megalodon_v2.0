@@ -8,6 +8,7 @@ import { Cancel } from "@mui/icons-material";
 import Modal from "react-modal";
 import { EditProfile, GetuserProfile } from '../../servicesMethods/UsersServices/usersServices';
 import { getGymsSubscribtions, getRestaurantSubscriptions, getTrainersSubscribtions } from '../../servicesMethods/SubscriptionsServices/subscriptionService';
+import { dateDiffInDays } from "../../Helper/dateDiffInDays.Helper";
 
 const customStyles = {
   content: {
@@ -69,12 +70,7 @@ export const ProfileUser = () => {
     setSubGym(res);
   }, []);
 
-  const dateDiffInDays = (dateTo) => {
-    const today = new Date();
-    const utc1 = Date.UTC(dateTo.getFullYear(), dateTo.getMonth(), dateTo.getDate());
-    const utc2 = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
-    return Math.abs(Math.floor((utc2 - utc1) / 86400000));
-  }
+  
 
   const openModal = () => {
     setIsOpen(true);

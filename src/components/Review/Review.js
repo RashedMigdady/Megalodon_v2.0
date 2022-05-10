@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { serverAddress, HTTPServices } from "../../Helper/HTTPMethod.Helper";
+import { getAllReviews } from "../../servicesMethods/ReviewsServices/reviewsServices";
 import "./review.css";
 
 export const Review = () => {
   const [review, setAllReview] = useState("");
 
-  useEffect(() => {
-    HTTPServices
-      .get("http://localhost:5000/comment")
-      .then((res) => {
-        setAllReview(res.data.comment);
-      })
-      .catch((error) => {});
+  useEffect(async () => {
+    const res = await getAllReviews();
+    if (res)
+      setAllReview(res.data.comment);
   }, []);
 
   return (
@@ -34,12 +31,12 @@ export const Review = () => {
               {index % 2 == 0 ? (
                 <div className="divRev">
                   <div className="inforReview">
-                    
-                    <img src={element.image || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} />
-                    <h5>{element.firstName}</h5>
-                    <h5>{element.comment}</h5>
+
+                    <img src={element && element.image || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} />
+                    <h5>{element && element.firstName}</h5>
+                    <h5>{element && element.comment}</h5>
                     <p className="dateReview">
-                      {element&&element.date_created.slice(0, 10)}
+                      {element && element.date_created.slice(0, 10)}
                     </p>
                   </div>
                   <div className="imgReview">
@@ -52,9 +49,9 @@ export const Review = () => {
                     <img src="https://www.pngall.com/wp-content/uploads/2018/04/Gym-Free-Download-PNG.png" />
                   </div>
                   <div className="inforReview">
-                    <img src={element.image} />
-                    <h5>{element.firstName}</h5>
-                    <h5>{element.comment}</h5>
+                    <img src={element && element.image} />
+                    <h5>{element && element.firstName}</h5>
+                    <h5>{element && element.comment}</h5>
                   </div>
                 </div>
               )}
