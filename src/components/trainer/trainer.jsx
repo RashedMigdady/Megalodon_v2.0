@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./trainer.css";
-import { serverAddress, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import { useHistory } from "react-router";
 import { Form } from "react-bootstrap";
 import { addNewTrainer, getAllTrainers } from '../../servicesMethods/TrainersServices/trainersServices';

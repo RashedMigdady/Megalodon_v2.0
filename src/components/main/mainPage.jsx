@@ -1,8 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Card, Button, Carousel} from "react-bootstrap";
-import { Allproduct } from "../products/product";
-import { AddComment } from "../comment/comment";
+import { Allproduct } from "../products/product.jsx";
+import { AddComment } from "../comment/comment.jsx";
 import icon1 from "../../imeges/icon-1.png";
 import icon2 from "../../imeges/icon-2.png";
 import icon3 from "../../imeges/icon-3.png";
@@ -96,7 +96,7 @@ const Main = () => {
               >
                 <Card.Img
                   variant="top"
-                  src="https://www.britishclub.org.sg/wp-content/uploads/2020/12/WB_PT.jpg"
+                  src="https://www.challengeacad.com/wp-content/uploads/2021/05/personaltrainer_0.jpg"
                   height="250px"
                   width="350px"
                 />
@@ -133,7 +133,7 @@ const Main = () => {
               >
                 <Card.Img
                   variant="top"
-                  src="https://cdn.vox-cdn.com/thumbor/BBzIzBTtIXF1HG_5Lm7BvMkPNXk=/0x0:960x673/1200x900/filters:focal(404x261:556x413)/cdn.vox-cdn.com/uploads/chorus_image/image/62771444/realgood_stuff.1546466894.jpg"
+                  src="https://assets.gqindia.com/photos/61e9413280921e2614920381/master/pass/top-image-01%20(35).jpg"
                   height="250px"
                   width="350px"
                 />
