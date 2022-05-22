@@ -8,5 +8,5 @@ export const Logout = () => {
   localStorage.clear();
   dispatch(setToken(""));
   history.push("/home");
-  return <div></div>;
+  return <></>;
 };

@@ -35,7 +35,7 @@ const Main = () => {
           <button
             className="button1"
             onClick={() => {
-              history.push("./boutUs");
+              history.push("./aboutUs");
             }}
           >
             {" "}

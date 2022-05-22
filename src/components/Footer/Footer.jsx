@@ -13,6 +13,13 @@ export const Footer = () => {
       <div class="contfooter">
         <div style={{ display: "grid" }}>
           <div style={{ display: "flex" }}>
+            {/* <div class="mapouter">
+            <div class="gmap_canvas">
+              <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                </iframe>
+                <a href="https://2piratebay.org"></a>
+                <style>.mapouter{position:"relative;text-align:right;height:500px;width:600px;"}</style><a href="https://www.embedgooglemap.net">how to add map to website</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style>
+                </div></div> */}
             <img
               style={{ width: "80px", height: "80px", marginRight: "20px" }}
               onClick={() => {
@@ -43,7 +50,7 @@ export const Footer = () => {
                 color: "yellow",
               }}
             />
-            <p style={{ color: "white" ,paddingBottom:"2px" }}>Jordan, Amman</p>
+            <p style={{ color: "white", paddingBottom: "2px" }}>Jordan, Amman</p>
           </div>
           <div style={{ display: "flex" }}>
             <GoMail
@@ -54,7 +61,7 @@ export const Footer = () => {
                 color: "yellow",
               }}
             />
-            <p style={{ color: "white" ,paddingBottom:"2px"}}>rashedmeg231@gmail.com</p>
+            <p style={{ color: "white", paddingBottom: "2px" }}>rashedmeg231@gmail.com</p>
           </div>
         </div>
         <div class="row-footerfooter">
@@ -62,7 +69,7 @@ export const Footer = () => {
             <h4
               className="footer_h4"
               onClick={() => {
-                history.push("/boutUs");
+                history.push("/aboutUs");
               }}
             >
               About us

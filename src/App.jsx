@@ -15,7 +15,7 @@ import Policy from "./components/Footer/Policy.jsx";
 import Payment from "./components/payment/payment.jsx";
 import { OneResturant } from "./components/resturants/OneReastaurant.jsx";
 import { ProfileUser } from "./components/users/profileUser.jsx";
-import ScrollToTop from "./components/scroll/scroll.jsx";
+import  { ScrollToTop } from "./components/scroll/scroll.jsx";
  import {Review} from "./components/Review/Review.jsx";
 import Dashboard from "./components/dashboard/Dashboard";
 import Main from "./components/main/mainPage";
@@ -38,7 +38,7 @@ const App = () => {
         <Route path="/logout" component={Logout} />
         <Route path="/cart" component={Cart} />
         <Route path="/home" component={Main} />
-        <Route path="/allproduct" component={Allproduct} />
+        <Route path="/products" component={Allproduct} />
         <Route path="/payment" component={Payment} />
         <Route path="/gymsview" component={GymsView} />
         <Route path="/ALLGyms" component={Gym} />
@@ -46,7 +46,7 @@ const App = () => {
         <Route path="/AllRestaurnats" component={Resturants} />
         <Route exact path="/trainer/:id" component={OneTrainer} />
         <Route exact path='/profile' component={ProfileUser}/>
-        <Route path="/boutUs" component={About} />
+        <Route path="/aboutUs" component={About} />
         <Route path="/ourPolicy" component={Policy} />
         <Route exact path="/resturan/:id" component={OneResturant} />
         <Route path="/" component={Main} />

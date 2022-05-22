@@ -14,7 +14,7 @@ export const Allproduct = () => {
   useEffect(async () => {
     const res = await getProducts();
     if (res)
-    setProducts([...res.Products])
+      setProducts([...res.Products])
   }, []);
 
   const addCart = (item) => {
@@ -37,12 +37,12 @@ export const Allproduct = () => {
   };
   return (
     <div className="container">
-      <div
+      {products && <div
         className="titleMain"
         style={{ paddingTop: "50px", paddingBottom: "50px" }}
       >
         <h1>OUR PRODUCTS</h1>
-      </div>
+      </div>}
 
       <Row xs={1} md={3} className="g-4">
         {products &&
@@ -52,21 +52,21 @@ export const Allproduct = () => {
                 <Card
                   style={{ textAlign: "left", width: "90%", height: "100%" }}
                 >
-                  {/* <Card.Img
+                  <Card.Img
                     variant="top"
-                    src={item.image}
+                    src={item?.image}
                     height="200px"
                     width="200px"
-                  /> */}
+                  />
                   <Card.Body>
                     <Card.Title style={{ fontSize: "18px" }}>
-                      {item.name}
+                      {item?.name}
                     </Card.Title>
-                    {/* <Card.Text style={{ fontSize: "13px" }}>
-                      {item.description}
-                    </Card.Text> */}
+                    <Card.Text style={{ fontSize: "13px" }}>
+                      {item?.description}
+                    </Card.Text>
                     <Card.Text style={{ fontSize: "16px" }}>
-                      Price: {item.price} $
+                      Price: {item?.price} $
                     </Card.Text>
                     <Button
                       style={{
