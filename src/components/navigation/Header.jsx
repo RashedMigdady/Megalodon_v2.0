@@ -65,25 +65,25 @@ const Navigation = () => {
                 </Link>
               </Nav.Link>
               <NavDropdown title="Our Sections" id="collasible-nav-dropdown">
-                <NavDropdown.Item onClick={e => { history.push("/AllTrainers") }}>
+                <NavDropdown.Item onClick={e => { history.push("/Trainers") }}>
                   <Link
-                    to="/AllTrainers"
+                    to="/Trainers"
                     style={{ textDecoration: "none", color: "gray" }}
                   >
                     Trainers
                   </Link>
                 </NavDropdown.Item>
-                <NavDropdown.Item onClick={e => { history.push("/ALLGyms") }}>
+                <NavDropdown.Item onClick={e => { history.push("/Gyms") }}>
                   <Link
-                    to="/ALLGyms"
+                    to="/Gyms"
                     style={{ textDecoration: "none", color: "gray" }}
                   >
                     Gyms
                   </Link>
                 </NavDropdown.Item>
-                <NavDropdown.Item onClick={e => { history.push("/AllRestaurnats") }}>
+                <NavDropdown.Item onClick={e => { history.push("/Restaurnats") }}>
                   <Link
-                    to="/AllRestaurnats"
+                    to="/Restaurnats"
                     style={{ textDecoration: "none", color: "gray" }}
                   >
                     Restaurants

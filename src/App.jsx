@@ -24,7 +24,7 @@ import { Gym } from "./components/Gym/Gym.jsx";
 
 
 const App = () => {
- 
+
   return (
     <>      
       <Navigation />
@@ -41,9 +41,9 @@ const App = () => {
         <Route path="/products" component={Allproduct} />
         <Route path="/payment" component={Payment} />
         <Route path="/gymsview" component={GymsView} />
-        <Route path="/ALLGyms" component={Gym} />
-        <Route path="/AllTrainers" component={Trainer} />
-        <Route path="/AllRestaurnats" component={Resturants} />
+        <Route path="/Gyms" component={Gym} />
+        <Route path="/Trainers" component={Trainer} />
+        <Route path="/Restaurnats" component={Resturants} />
         <Route exact path="/trainer/:id" component={OneTrainer} />
         <Route exact path='/profile' component={ProfileUser}/>
         <Route path="/aboutUs" component={About} />

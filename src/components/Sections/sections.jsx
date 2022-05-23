@@ -2,48 +2,35 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export const GymsView = () => {
+  const styleGyms = {
+    width: "200px",
+    height: "500px",
+    backgroundColor: "lightblue",
+    fontSize: "20px",
+    textAlign: "center",
+    marginLeft: "50px",
+  }
   return (
     <div style={{ display: "flex" }}>
-      <Link to="/ALLGyms">
+      <Link to="/Gyms">
         <div
-          style={{
-            width: "200px",
-            height: "500px",
-            backgroundColor: "lightblue",
-            fontSize: "20px",
-            textAlign: "center",
-            marginLeft: "50px",
-          }}
+          style={styleGyms}
         >
           Gyms
         </div>
       </Link>
 
-      <Link to="/AllTrainers">
+      <Link to="/Trainers">
         <div
-          style={{
-            width: "200px",
-            height: "500px",
-            backgroundColor: "lightblue",
-            fontSize: "20px",
-            textAlign: "center",
-            marginLeft: "50px",
-          }}
+          style={styleGyms}
         >
           All Trainers
         </div>
       </Link>
 
-      <Link to="/AllRestaurnats">
+      <Link to="/Restaurnats">
         <div
-          style={{
-            width: "200px",
-            height: "500px",
-            backgroundColor: "lightblue",
-            fontSize: "20px",
-            textAlign: "center",
-            marginLeft: "50px",
-          }}
+          style={styleGyms}
         >
           All Restaurnats
         </div>

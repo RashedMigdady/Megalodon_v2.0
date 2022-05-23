@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Card, Button, Carousel} from "react-bootstrap";
+import { Card, Button, Carousel } from "react-bootstrap";
 import { Allproduct } from "../products/product.jsx";
 import { AddComment } from "../comment/comment.jsx";
 import icon1 from "../../imeges/icon-1.png";
@@ -11,6 +11,14 @@ import { useHistory } from "react-router";
 
 const Main = () => {
   const history = useHistory();
+  const styleButton = {
+    width: "60%",
+    fontSize: "16px",
+    backgroundColor: "#ffcd08",
+    color: "black",
+    border: "none",
+    marginLeft: "20%"
+  }
   return (
     <div>
       <div className="landing">
@@ -88,7 +96,7 @@ const Main = () => {
           <div className="titleMain">
             <h1>OUR SERVICES </h1>
           </div>
-          <div className="row" style={{ marginTop: "50px" }}>
+          <div className="row">
             <div className="col-md-4 col-sm-12">
               <Card
                 className="cardS"
@@ -109,16 +117,9 @@ const Main = () => {
                     amember of us !
                   </Card.Text>
                   <Button
-                    style={{
-                      width: "60%",
-                      fontSize: "16px",
-                      backgroundColor: "#ffcd08",
-                      color: "black",
-                      border: "none",
-                      marginLeft:"20%"
-                    }}
+                    style={styleButton}
                     variant="dark"
-                    onClick={() => history.push("/AllTrainers")}
+                    onClick={() => history.push("/Trainers")}
                   >
                     Find Your Trainer{" "}
                   </Button>
@@ -145,17 +146,10 @@ const Main = () => {
                     forget that health needs healthy food, and more .
                   </Card.Text>
                   <Button
-                    style={{
-                      width: "60%",
-                      fontSize: "16px",
-                      backgroundColor: "#ffcd08",
-                      color: "black",
-                      border: "none",
-                      marginLeft:"20%"
-                    }}
+                    style={styleButton}
                     className="btnAll"
                     variant="dark"
-                    onClick={() => history.push("/AllRestaurnats")}
+                    onClick={() => history.push("/Restaurnats")}
                   >
                     Find Your Restaurant{" "}
                   </Button>
@@ -182,16 +176,9 @@ const Main = () => {
                     weight, lower blood pressure, boost mental focus, and more .
                   </Card.Text>
                   <Button
-                    style={{
-                      width: "60%",
-                      fontSize: "16px",
-                      backgroundColor: "#ffcd08",
-                      color: "black",
-                      border: "none",
-                      marginLeft:"20%"
-                    }}
+                    style={styleButton}
                     variant="dark"
-                    onClick={() => history.push("/ALLGyms")}
+                    onClick={() => history.push("/Gyms")}
                   >
                     Find Your Gym
                   </Button>
@@ -270,6 +257,7 @@ const Main = () => {
           </Carousel>
         </div>
       </div>
+
       <Allproduct />
 
       <AddComment />

@@ -10,7 +10,8 @@ export const Resturants = () => {
   const history = useHistory();
 
   useEffect(async () => {
-    const res = getAllRestaurants();
+    const res = await getAllRestaurants();
+    if(res)
     setResturants([...res]);
   }, []);
 
@@ -42,10 +43,10 @@ export const Resturants = () => {
                 return val;
               }
             })
-            .map((element, i) => {
+            .map((element, index) => {
               return (
                 <div
-                  key={i}
+                  key={index}
                   className="cardRestrurant"
                   onClick={() => history.push(`/resturan/${element && element.id}`)}
                 >

@@ -17,6 +17,9 @@
     background-color:  rgb(14, 13, 13);
     padding: 70px 0;
     margin-top: 50px;
+    /* position: fixed; */
+    left: 0;
+    bottom: 0;
   }
   .col-footerfooter {
     width: 25%;
