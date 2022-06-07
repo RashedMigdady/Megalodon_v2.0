@@ -4,7 +4,7 @@ import style from "./trainer.module.css";
 import React, { useEffect, useState } from "react";
 import { getTrainerById, updateTrainer } from '../../../servicesMethods/TrainersServices/trainersServices';
 
-export default function Trainer() {
+export const Trainer = () => {
   let trainerId = useParams().trainerId;
   const [Trainer, setTrainer] = useState({ image: "ds" });
   const [firstName, setFirstName] = useState();
@@ -20,14 +20,14 @@ export default function Trainer() {
 
   const updateTrainers = async () => {
     const res = await updateTrainer(trainerId, { firstName, lastName, phoneNumber, location, image, sport, priceMonthly, description, experience });
-    if(res)
-    setMessage(res);
+    if (res)
+      setMessage(res);
   };
 
   useEffect(async () => {
     const res = await getTrainerById(trainerId);
-    if(res)
-    setTrainer(res);
+    if (res)
+      setTrainer(res);
   }, []);
 
   return (

@@ -11,7 +11,7 @@ export const GymAdmin = () => {
 
   const getAllGyms = () => {
     HTTPServices
-      .get("http://localhost:5000/gym")
+      .get(`${serverAddress}/gym`)
       .then((res) => {
         res.data;
         setAllGym([...res.data.result]);
@@ -44,7 +44,7 @@ export const GymAdmin = () => {
 
   const updateGymById = (id) => {
     HTTPServices
-      .put(`http://localhost:5000/gym/${id}`, {
+      .put(`${serverAddress}/gym/${id}`, {
         name,
         phoneNumber,
         image,
@@ -58,7 +58,7 @@ export const GymAdmin = () => {
 
   const deleteGymById = (id) => {
     HTTPServices
-      .delete(`http://localhost:5000/gym/${id}`)
+      .delete(`${serverAddress}/gym/${id}`)
       .then((result) => {
         getAllGyms();
       });

@@ -5,27 +5,27 @@ import { getAllGyms } from '../../../servicesMethods/GymsServices/gymsServices'
 import { getAllRestaurants } from '../../../servicesMethods/RestaurantsServices/RestaurantsServices';
 import { getAllTrainers } from '../../../servicesMethods/TrainersServices/trainersServices';
 
-export default function FeaturedInfo() {
+export const FeaturedInfo = () => {
   const [trainer, setTrainer] = useState();
   const [resturants, setResturants] = useState([]);
   const [allgyms, setAllGyms] = useState([]);
 
   useEffect(async () => {
     const res = await getAllGyms();
-    if(res)
-    setAllGyms([...res]);
+    if (res)
+      setAllGyms([...res]);
   }, []);
 
   useEffect(async () => {
     const res = await getAllTrainers();
     if (res)
-    setTrainer(res);
+      setTrainer(res);
   }, []);
 
   useEffect(async () => {
     const res = await getAllRestaurants();
-    if(res)
-    setResturants([...res]);
+    if (res)
+      setResturants([...res]);
   }, []);
 
   return (

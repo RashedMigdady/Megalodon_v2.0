@@ -3,39 +3,41 @@ import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
-import { HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import React, { useEffect, useState } from "react";
-import { getAllRestaurants } from '../../../servicesMethods/RestaurantsServices/RestaurantsServices';
+import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { getAllGyms } from '../../../servicesMethods/GymsServices/gymsServices';
 
-export default function ResturantList() {
+export const GymList = () => {
   const [data, setData] = useState([]);
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
     HTTPServices
-      .delete(`http://localhost:5000/resturan/${id}`)
+      .delete(`${serverAddress}/gym/${id}`)
       .then((result) => {
         swal({
-          title: "Deleted Resturant Success ",
+          title: "deleted gym success ",
           icon: "success",
           button: "OK",
         });
       })
-      .catch((err) => { });
+      .catch((err) => {
+
+      });
   };
 
   useEffect(async () => {
-    const res = await getAllRestaurants();
-    if(res)
-    setData(res);
+    const res = await getAllGyms();
+    if (res)
+      setData(res);
   }, []);
 
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
       field: "name",
-      headerName: "Restaurants",
-      width: 300,
+      headerName: "Gym",
+      width: 200,
       renderCell: (params) => {
         return (
           <div className={style.userListUser}>
@@ -45,18 +47,17 @@ export default function ResturantList() {
         );
       },
     },
-
+    { field: "phoneNumber", headerName: "phoneNumber", width: 200 },
     {
       field: "status",
       headerName: "Status",
       width: 120,
     },
     {
-      field: "monthlyPrice",
+      field: "priceMonthly",
       headerName: "priceMonthly",
       width: 160,
     },
-
     {
       field: "action",
       headerName: "Action",
@@ -64,7 +65,7 @@ export default function ResturantList() {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/dashboard/restaurant/" + params.row.id}>
+            <Link to={"/dashboard/gym/" + params.row.id}>
               <button className={style.userListEdit}>Edit</button>
             </Link>
             <DeleteOutline
@@ -80,8 +81,8 @@ export default function ResturantList() {
   return (
     <div className={style.userList}>
       <div className={style.userTitleContainer}>
-        <h1 className={style.userTitle}>Restaurant List</h1>
-        <Link to="/dashboard/newRestaurant">
+        <h1 className={style.userTitle}>Gym List</h1>
+        <Link to="/dashboard/newGym">
           <button className={style.userAddButton}>Create</button>
         </Link>
       </div>

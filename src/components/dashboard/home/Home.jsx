@@ -1,16 +1,13 @@
-import FeaturedInfo from "../featuredInfo/FeaturedInfo";
+import { FeaturedInfo } from "../featuredInfo/FeaturedInfo.jsx";
 import style from "./home.module.css";
+import { WidgetLg } from "../widgetLg/WidgetLg.jsx";
 
-
-import WidgetLg from "../widgetLg/WidgetLg";
-
-export default function Home() {
+export const Home = () => {
   return (
     <div className={style.home}>
       <FeaturedInfo />
       <div className={style.homeWidgets}>
-        
-        <WidgetLg/>
+        <WidgetLg />
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import { addToCart } from "../../redux/action/cart";
 import swal from "sweetalert";
 import { getProducts } from '../../servicesMethods/ProductServices/productServices';
 
-export const Allproduct = () => {
+export const Products = () => {
   const [products, setProducts] = useState();
   const dispatch = useDispatch();
 

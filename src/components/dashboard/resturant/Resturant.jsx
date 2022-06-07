@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { LocationSearching } from "@material-ui/icons";
 import { getRestaurantById, UpdateRestaurant } from '../../../servicesMethods/RestaurantsServices/RestaurantsServices';
 
-export default function Resturant() {
+export const Resturant = () => {
   const [resturant, setResturant] = useState();
   const [name, setName] = useState();
   const [location, setLocation] = useState();
@@ -19,8 +19,8 @@ export default function Resturant() {
   };
   useEffect(async () => {
     const res = await getRestaurantById(restaurantId);
-    if(res)
-    setResturant(res);
+    if (res)
+      setResturant(res);
   }, []);
   return (
     <div className={style.user}>

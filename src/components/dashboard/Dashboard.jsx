@@ -1,19 +1,19 @@
 import Sidebar from "./sidebar/Sidebar";
 import Topbar from "./topbar/Topbar";
 import style from "./dashboard.module.css";
-import Home from "./home/Home";
+import { Home } from "./home/Home.jsx";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import TrainerList from "./trainer/TrainerList";
-import Trainer from "./trainer/Trainer";
+import { TrainerList } from './trainer/TrainerList.jsx'
+import { Trainer } from "./trainer/Trainer.jsx";
 import NewTrainer from "./trainer/NewTrainer";
-import Resturant from "./resturant/Resturant";
-import NewResturant from "./resturant/NewResturant";
-import ResturantList from "./resturant/ResturantList";
-import GymList from "./gym/GymList";
-import NewGym from "./gym/NewGym";
-import Gym from "./gym/Gym";
+import { Resturant } from "./resturant/Resturant.jsx";
+import { NewResturant } from "./resturant/NewResturant.jsx";
+import { ResturantList } from "./resturant/ResturantList.jsx";
+import { GymList } from "./gym/GymList.jsx";
+import { NewGym } from "./gym/NewGym.jsx";
+import { Gym } from "./gym/Gym.jsx";
 
-export default function Dashboard() {
+export const Dashboard = () => {
   return (
     <Router>
       <Topbar />
@@ -24,7 +24,7 @@ export default function Dashboard() {
             <Home />
           </Route>
           <Route path="/dashboard/trainers">
-            <TrainerList/>
+            <TrainerList />
           </Route>
           <Route path="/dashboard/trainer/:trainerId">
             <Trainer />

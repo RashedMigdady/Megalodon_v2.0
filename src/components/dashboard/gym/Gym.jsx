@@ -4,7 +4,7 @@ import style from "../trainer/trainer.module.css";
 import React, { useEffect, useState } from "react";
 import { getGymById, UpdateOneGym } from '../../../servicesMethods/GymsServices/gymsServices';
 
-export default function Gym() {
+export const Gym = () => {
   let gymId = useParams().gymId;
   const [gym, setGym] = useState();
   const [name, setName] = useState();
@@ -19,14 +19,14 @@ export default function Gym() {
   const updateGym = async () => {
 
     const res = await UpdateOneGym(gymId, { name, phoneNumber, location, image, priceMonthly, description });
-    if(res)
-    setMessage(res);
+    if (res)
+      setMessage(res);
   };
 
   useEffect(async () => {
     const res = await getGymById(gymId);
-    if(res)
-    setGym(res);
+    if (res)
+      setGym(res);
   }, []);
 
   return (

@@ -3,11 +3,11 @@ import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
-import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import React, { useEffect, useState } from "react";
 import { getAllTrainers } from '../../../servicesMethods/TrainersServices/trainersServices';
 
-export default function TrainerList() {
+export const TrainerList = () => {
   const [data, setData] = useState([]);
 
   const handleDelete = (id) => {
@@ -26,8 +26,8 @@ export default function TrainerList() {
 
   useEffect(async () => {
     const res = await getAllTrainers();
-    if(res)
-    setData(res);
+    if (res)
+      setData(res);
   }, []);
 
   const columns = [

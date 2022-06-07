@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Button, Carousel } from "react-bootstrap";
-import { Allproduct } from "../products/product.jsx";
+import { Products } from "../products/product.jsx";
 import { AddComment } from "../comment/comment.jsx";
 import icon1 from "../../imeges/icon-1.png";
 import icon2 from "../../imeges/icon-2.png";
@@ -258,7 +258,7 @@ const Main = () => {
         </div>
       </div>
 
-      <Allproduct />
+      <Products />
 
       <AddComment />
     </div>

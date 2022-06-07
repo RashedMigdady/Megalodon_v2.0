@@ -3,7 +3,7 @@ import style from "./widgetLg.module.css";
 import { Restaurant } from "@material-ui/icons";
 import { getRestaurantSubscriptions } from '../../../servicesMethods/SubscriptionsServices/subscriptionService';
 
-export default function WidgetLg() {
+export const WidgetLg = () => {
   const [subRest, setSubRest] = useState();
 
   const Button = ({ type }) => {
@@ -40,7 +40,7 @@ export default function WidgetLg() {
                     className={style.widgetLgImg}
                   />
                   <span className={style.widgetLgName}>
-                    {elem && elem.firstName +" "+elem && elem.lastName}
+                    {elem && elem.firstName + " " + elem && elem.lastName}
                   </span>
                 </td>
                 <td className={style.widgetLgDate}>{elem && elem.date_to}</td>
