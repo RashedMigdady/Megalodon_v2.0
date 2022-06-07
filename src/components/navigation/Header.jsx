@@ -13,7 +13,7 @@ import { useHistory } from "react-router";
 import { MdAddShoppingCart } from "react-icons/md";
 import { GetuserProfile } from '../../servicesMethods/UsersServices/usersServices';
 
-const Navigation = () => {
+export const Navigation = () => {
   const state = useSelector((state) => {
     return {
       token: state.token.token,
@@ -161,5 +161,3 @@ const Navigation = () => {
     </>
   );
 };
-
-export default Navigation;

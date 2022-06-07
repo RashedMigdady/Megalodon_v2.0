@@ -9,7 +9,7 @@ import icon3 from "../../imeges/icon-3.png";
 import "./main.css";
 import { useHistory } from "react-router";
 
-const Main = () => {
+export const Main = () => {
   const history = useHistory();
   const styleButton = {
     width: "60%",
@@ -264,5 +264,3 @@ const Main = () => {
     </div>
   );
 };
-
-export default Main;

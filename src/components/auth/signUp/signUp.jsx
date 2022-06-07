@@ -6,7 +6,7 @@ import { Col, Container, Row, Image } from "react-bootstrap";
 import { register } from '../../../servicesMethods/AuthServices/signupServices';
 
 
-export default function Register() {
+export const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -23,10 +23,10 @@ export default function Register() {
       setShow(true);
     } else {
       const res = await register({ firstName, lastName, email, password });
-      if (res) 
-      history.push("/login")
-      else    
-      setMessage("Error happened while register, please try again"); 
+      if (res)
+        history.push("/login")
+      else
+        setMessage("Error happened while register, please try again");
     }
   };
 

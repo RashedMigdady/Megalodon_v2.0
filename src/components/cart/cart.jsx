@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { removeItem, removeSubscription } from "../../redux/action/cart";
-import Payment from "../payment/payment";
+import { Payment } from "../payment/payment";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./cart.css";
 

@@ -12,7 +12,7 @@ import {
 import "./payment.css";
 import { sendMessage } from '../../servicesMethods/PaymentServices/paymentServices';
 
-const Payment = ({ gymId, trainerId, restaurantId }) => {
+export const Payment = ({ gymId, trainerId, restaurantId }) => {
   const token = localStorage.getItem("token");
   const [modalIsOpen, setIsOpen] = React.useState(false);
   let confirm = "your subscribtion has been confirmed check your profile to see your subscribtion ";
@@ -307,5 +307,3 @@ const Payment = ({ gymId, trainerId, restaurantId }) => {
     </>
   );
 };
-
-export default Payment;
