@@ -3,6 +3,7 @@ import "./trainer.css";
 import { useHistory } from "react-router";
 import { Form } from "react-bootstrap";
 import { addNewTrainer, getAllTrainers } from '../../servicesMethods/TrainersServices/trainersServices';
+import { showinfo } from "../../Helper/Toastify.Helper";
 
 export const Trainer = () => {
   const [trainers, setTrainer] = useState([]);
@@ -11,8 +12,8 @@ export const Trainer = () => {
 
   useEffect(async () => {
     const res = await getAllTrainers();
-    if(res)
-    setTrainer(res)
+    if (res)
+      setTrainer(res)
   }, []);
 
   return (
@@ -84,7 +85,7 @@ export const AddTrainer = () => {
     const res = await addNewTrainer({
       firstName, lastName, phoneNumber, location, image, sport, priceMonthly, description, experience,
     });
-
+    showinfo('Add new trainer is done!')
   };
 
   return (

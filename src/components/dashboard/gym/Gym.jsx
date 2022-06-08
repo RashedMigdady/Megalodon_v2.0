@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import style from "../trainer/trainer.module.css";
 import React, { useEffect, useState } from "react";
 import { getGymById, UpdateOneGym } from '../../../servicesMethods/GymsServices/gymsServices';
+import { showSuccess } from "../../../Helper/Toastify.Helper";
 
 export const Gym = () => {
   let gymId = useParams().gymId;
@@ -14,13 +15,14 @@ export const Gym = () => {
   const [priceMonthly, setPriceMonthly] = useState();
   const [description, setDescription] = useState();
 
-  const [message, setMessage] = useState("");
+  // const [message, setMessage] = useState("");
 
   const updateGym = async () => {
 
     const res = await UpdateOneGym(gymId, { name, phoneNumber, location, image, priceMonthly, description });
     if (res)
-      setMessage(res);
+    showSuccess(res)
+      // setMessage(res);
   };
 
   useEffect(async () => {
@@ -153,7 +155,7 @@ export const Gym = () => {
             <button className={style.userUpdateButton} onClick={updateGym}>
               Update
             </button>
-            <p>{message}</p>
+            {/* <p>{message}</p> */}
           </div>
         </div>
       </div>

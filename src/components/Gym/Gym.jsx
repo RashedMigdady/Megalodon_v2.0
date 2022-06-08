@@ -28,7 +28,7 @@ export const Gym = () => {
       });
     } else if (localStorage.getItem("gym") !== null) {
       swal({
-        title: "You cant subsicribe in more than one gym",
+        title: "You can't subsicribe in more than one gym",
         text: "go to your cart if you want to replace you subsicribtion  ",
         icon: "error",
         button: "OK",

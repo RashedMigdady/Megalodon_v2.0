@@ -21,12 +21,14 @@ import { Dashboard } from "./components/dashboard/Dashboard.jsx";
 import { Main } from "./components/main/mainPage";
 import { Logout } from "./components/logout/Logout.jsx";
 import { Gym } from "./components/Gym/Gym.jsx";
+import { GlobalToasterGenerator } from "./Helper/Toastify.Helper.jsx";
 
 
 const App = () => {
 
   return (
     <>
+    <GlobalToasterGenerator />
       <Navigation />
       <ScrollToTop />
       <Switch>

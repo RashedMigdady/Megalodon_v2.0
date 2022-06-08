@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { Overlay, Tooltip } from "react-bootstrap";
 import { Col, Container, Row, Image } from "react-bootstrap";
 import { register } from '../../../servicesMethods/AuthServices/signupServices';
+import { showError } from "../../../Helper/Toastify.Helper";
 
 
 export const Register = () => {
@@ -11,7 +12,6 @@ export const Register = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
   const [show, setShow] = useState(false);
   const target = useRef(null);
 
@@ -19,6 +19,7 @@ export const Register = () => {
 
   const userRegister = async (e) => {
     e.preventDefault();
+
     if (password.length < 6) {
       setShow(true);
     } else {
@@ -26,7 +27,7 @@ export const Register = () => {
       if (res)
         history.push("/login")
       else
-        setMessage("Error happened while register, please try again");
+        showError("Error happened while register, please try again")
     }
   };
 
@@ -106,7 +107,6 @@ export const Register = () => {
             </button>
           </div>
           <div className="inputBox">
-            <p style={{ color: "black", fontSize: "15px", textDecoration: "underline" }}>{message}</p>
             <p>
               Do You have an account? <a href="/login" style={{ color: "black", textDecoration: "underline" }}> Login</a>{" "}
             </p>

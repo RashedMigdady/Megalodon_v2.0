@@ -9,6 +9,7 @@ import Modal from "react-modal";
 import { EditProfile, GetuserProfile } from '../../servicesMethods/UsersServices/usersServices';
 import { getGymsSubscribtions, getRestaurantSubscriptions, getTrainersSubscribtions } from '../../servicesMethods/SubscriptionsServices/subscriptionService';
 import { dateDiffInDays } from "../../Helper/dateDiffInDays.Helper";
+import { showSuccess } from "../../Helper/Toastify.Helper";
 
 const customStyles = {
   content: {
@@ -49,7 +50,6 @@ export const ProfileUser = () => {
     const res = await GetuserProfile();
     if(res)
     setProfile(res.data[0]);
-    // console.log("res",res.data[0]);
   }, []);
 
   useEffect(async () => {
@@ -91,7 +91,8 @@ export const ProfileUser = () => {
   const updateInfo = async () => {
     const res = await EditProfile({ age, phoneNumber, country, weight, height, diseases });
     closeModal();
-    history.push("/home");
+    showSuccess('Updating Your Information is Done')
+    history.push("/home"); // rerender force
     history.push("/profile");
   };
 

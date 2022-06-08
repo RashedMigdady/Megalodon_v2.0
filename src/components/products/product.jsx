@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/action/cart";
 import swal from "sweetalert";
 import { getProducts } from '../../servicesMethods/ProductServices/productServices';
+import { showError, showSuccess } from "../../Helper/Toastify.Helper";
 
 export const Products = () => {
   const [products, setProducts] = useState();
@@ -22,18 +23,10 @@ export const Products = () => {
       dispatch(addToCart(item));
       all.push(item);
       localStorage.setItem("savedData", JSON.stringify(all));
-      swal({
-        title: "Added to cart ",
-        icon: "success",
-        button: "OK",
-      });
-    } else {
-      swal({
-        title: "You have to login first so you can buy",
-        icon: "error",
-        button: "OK",
-      });
-    }
+      showSuccess('Added to cart');
+    } else 
+      showError('You have to login first so you can buy');
+    
   };
   return (
     <div className="container">
@@ -102,6 +95,7 @@ export const AddProducts = () => {
 
   const addProduct = async () => {
     await addProduct({ name, price, description, image });
+    showSuccess("Add new product is done")
   };
 
   return (

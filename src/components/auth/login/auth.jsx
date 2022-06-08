@@ -10,10 +10,10 @@ import swal from "sweetalert";
 import { Col, Container, Row, Image } from "react-bootstrap";
 import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import {AiOutlineEye} from 'react-icons/ai';
+import { showError } from "../../../Helper/Toastify.Helper";
 export const Login = () => {
   const [email, setEmail] = useState(0);
   const [password, setPassword] = useState(0);
-  const [message, setMessage] = useState("");
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -23,7 +23,7 @@ export const Login = () => {
   const userLogin = async (e) => {
     e.preventDefault();
     await HTTPServices
-      .post("http://localhost:5000/login/login", {
+      .post(`${serverAddress}/login/login`, {
         email,
         password,
       })
@@ -35,7 +35,7 @@ export const Login = () => {
         localStorage.setItem("subscription", JSON.stringify([]));
         dispatch(setToken(res.data.token));
         dispatch(addSubscription([]));
-        //dispatch(addToCart([]));
+        // dispatch(addToCart([]));
         if (res.data.role === "admin") {
           history.push("/dashboard");
         } else {
@@ -45,14 +45,14 @@ export const Login = () => {
 
       .catch((error) => {
         if (error) {
-          setMessage("Email or Password incorrect, please try again");
+          showError('Email or Password incorrect, please try again')
         }
       });
   };
 
   const onSuccess = async (res) => {
     await HTTPServices
-      .post("http://localhost:5000/login/loginGoogle", {
+      .post(`${serverAddress}/login/loginGoogle`, {
         tokenId: res.tokenId,
       })
       .then((res) => {
@@ -67,13 +67,13 @@ export const Login = () => {
         } else throw Error;
       })
       .catch((err) => {
-        setMessage("Email or Password incorrect, please try again");
+        showError('Email or Password incorrect, please try again')
       });
   };
 
   const onFailure = (res) => {};
 
-  const restPass = () => {
+  const restPassword = () => {
     swal({
       text: 'Please Enter your email".',
       content: "input",
@@ -88,13 +88,13 @@ export const Login = () => {
       }
 
       HTTPServices
-        .post("http://localhost:5000/login/restPass", {
+        .post(`${serverAddress}/login/restPass`, {
           email,
         })
         .then((results) => {
           swal({
             title: "Success",
-            text: "please check yor email to get new password",
+            text: "Please check your email to get new password",
             icon: "success",
           });
         })
@@ -157,10 +157,9 @@ export const Login = () => {
             </button>
           </div>
           <div className="inputBx">
-            <p style={{ color: "red", fontSize: "15px" }}>{message}</p>
             <div>
               <p style={{display:"flex" , marginLeft:"30%"}}>
-                <a style={{ fontSize:"15px"}}> Forget your  </a><a onClick={restPass} style={{fontSize:"15px" , textDecoration:"underline" , marginLeft:"5px"}}>{" "} Password?</a>{" "}
+                <a style={{ fontSize:"15px"}}> Forget your  </a><a onClick={restPassword} style={{fontSize:"15px" , textDecoration:"underline" , marginLeft:"5px"}}>{" "} Password?</a>{" "}
               </p>
             </div>
 
