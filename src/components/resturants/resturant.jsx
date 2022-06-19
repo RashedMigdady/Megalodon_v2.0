@@ -3,7 +3,7 @@ import "./restaurants.css";
 import { useHistory } from "react-router";
 import { Form } from "react-bootstrap";
 import { getAllRestaurants } from '../../servicesMethods/RestaurantsServices/RestaurantsServices';
-
+import { DameDataResturants } from "../../DameData";
 export const Resturants = () => {
   const [resturants, setResturants] = useState([]);
   const [search, setSearch] = useState("");
@@ -13,6 +13,8 @@ export const Resturants = () => {
     const res = await getAllRestaurants();
     if(res)
     setResturants([...res]);
+    else
+    setResturants(DameDataResturants)
   }, []);
 
   return (

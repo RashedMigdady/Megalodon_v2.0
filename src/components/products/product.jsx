@@ -6,6 +6,7 @@ import { addToCart } from "../../redux/action/cart";
 import swal from "sweetalert";
 import { getProducts } from '../../servicesMethods/ProductServices/productServices';
 import { showError, showSuccess } from "../../Helper/Toastify.Helper";
+import { DameDataProducts } from "../../DameData";
 
 export const Products = () => {
   const [products, setProducts] = useState();
@@ -16,6 +17,9 @@ export const Products = () => {
     const res = await getProducts();
     if (res)
       setProducts([...res.Products])
+      else
+      setProducts(DameDataProducts)
+      
   }, []);
 
   const addCart = (item) => {

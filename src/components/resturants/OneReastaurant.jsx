@@ -9,7 +9,7 @@ import Carousel from "react-bootstrap/Carousel";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { getRestaurantById } from '../../servicesMethods/RestaurantsServices/RestaurantsServices';
-
+import { DameDataResturants } from "../../DameData";
 export const OneResturant = () => {
   const [resturant, setResturant] = useState(0);
   let restaurantId = useParams().id;
@@ -20,6 +20,8 @@ export const OneResturant = () => {
     const res = await getRestaurantById(restaurantId);
     if (res)
       setResturant(res);
+      else
+      setResturant([DameDataResturants[restaurantId - 1]])
   }, []);
 
   const addSubsecRestaurant = async (elem) => {
@@ -114,7 +116,7 @@ export const OneResturant = () => {
           <button
             className="resButton"
             onClick={() => {
-              addSubsecRestaurant(resturant && resturant[0]);
+              addSubsecRestaurant(resturant && resturant[0].id);
             }}
           >
             Subscribe Now{" "}
