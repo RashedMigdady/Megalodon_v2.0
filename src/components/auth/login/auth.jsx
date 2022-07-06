@@ -23,7 +23,7 @@ export const Login = () => {
   const userLogin = async (e) => {
     e.preventDefault();
     await HTTPServices
-      .post(`${serverAddress}/login/login`, {
+      .post(`${serverAddress}/login/`, {
         email,
         password,
       })
@@ -42,7 +42,6 @@ export const Login = () => {
           history.push("/home");
         }
       })
-
       .catch((error) => {
         if (error) {
           showError('Email or Password incorrect, please try again')

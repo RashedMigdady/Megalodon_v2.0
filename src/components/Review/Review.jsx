@@ -8,8 +8,8 @@ export const Review = () => {
   useEffect(async () => {
     const res = await getAllReviews();
     if (res)
-      setAllReview(res.data.comment);
-  }, []);
+      setAllReview(res);
+  }, [getAllReviews]);
 
   return (
     <div className="review">
@@ -36,7 +36,7 @@ export const Review = () => {
                     <h5>{element && element.firstName}</h5>
                     <h5>{element && element.comment}</h5>
                     <p className="dateReview">
-                      {element && element.date_created.slice(0, 10)}
+                      {(element && element.date_created || "N/A").slice(0, 10)}
                     </p>
                   </div>
                   <div className="imgReview">

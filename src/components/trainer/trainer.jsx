@@ -14,14 +14,13 @@ export const Trainer = () => {
     const res = await getAllTrainers();
     if (res)
       setTrainer(res)
-  }, []);
+  }, [getAllTrainers]);
 
   return (
     <div>
       <div className="titleMain" style={{ paddingTop: "50px" }}>
         <h1> Our Professional Trainers </h1>
       </div>
-
       <Form>
         <Form.Group
           className="searchTrainer"

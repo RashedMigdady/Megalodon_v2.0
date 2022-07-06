@@ -56,7 +56,8 @@ export const OneTrainer = () => {
     <div className="big-div">
       <div className="col-xs-12">
         <div className="gym-block-img">
-          <img src={trainer && trainer[0].image} alt="" className="gym-img" />
+          {/* fixNeed */}
+          {/* <img src={trainer && trainer.image || imageTest} alt="" className="gym-img" /> */} 
         </div>
         <div className="gym-block-bottm">
           <h3 className="gym-block__title">Contact</h3>
@@ -65,7 +66,7 @@ export const OneTrainer = () => {
               <h5
                 className="text-link"
                 onClick={() => {
-                  window.open(trainer[0].location, "_blank");
+                  window.open(trainer.location, "_blank");
                 }}
               >
                 <div className="location-Class">
@@ -81,7 +82,7 @@ export const OneTrainer = () => {
                 <Phone />
               </div>
               Phone {": "}
-              <a className="phone-link">{trainer && trainer[0].phoneNumber}</a>
+              <a className="phone-link">{trainer && trainer.phoneNumber}</a>
             </li>
 
             <li className="list-sport">
@@ -90,7 +91,7 @@ export const OneTrainer = () => {
                 <SportsScore />
               </div>
               Sport {": "}
-              <a className="sport-ltem">{trainer && trainer[0].sport}</a>
+              <a className="sport-ltem">{trainer && trainer.sport}</a>
             </li>
             <li className="list-experience">
               <div className="StarBorder-Class">
@@ -99,7 +100,7 @@ export const OneTrainer = () => {
               </div>
               Experience {": "}
               <a className="experience-ltem">
-                {trainer && trainer[0].experience} Years
+                {trainer && trainer.experience} Years
               </a>
             </li>
           </ul>
@@ -108,14 +109,14 @@ export const OneTrainer = () => {
 
       <div className="col-xs-14">
         <h2 className="Theading">
-          {trainer && trainer[0].firstName + " " + trainer[0].lastName}
+          {trainer && trainer.firstName + " " + trainer.lastName}
         </h2>
         <div className="pt-bio">
-          <p className="prgTra">{trainer && trainer[0].description}</p>
+          <p className="prgTra">{trainer && trainer.description}</p>
           <button
             className="btnTrainner"
             onClick={() => {
-              addSubsecribtionTrainer(trainer && trainer[0]);
+              addSubsecribtionTrainer(trainer && trainer);
             }}
           >
             {" "}
