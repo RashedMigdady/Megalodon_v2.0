@@ -9,11 +9,13 @@ import { addSubscription } from "../../../redux/action/cart";
 import swal from "sweetalert";
 import { Col, Container, Row, Image } from "react-bootstrap";
 import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
-import {AiOutlineEye} from 'react-icons/ai';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { showError } from "../../../Helper/Toastify.Helper";
 export const Login = () => {
   const [email, setEmail] = useState(0);
   const [password, setPassword] = useState(0);
+  const [showPassword, setShowPassword] = useState(false);
+  const [typeOfPasswordInput , setTypeOfPasswordInput] = useState('password');
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -70,7 +72,7 @@ export const Login = () => {
       });
   };
 
-  const onFailure = (res) => {};
+  const onFailure = (res) => { };
 
   const restPassword = () => {
     swal({
@@ -120,7 +122,7 @@ export const Login = () => {
       </div>
       <div className="contentBx">
         <div className="formBx">
-          
+
           <Container>
             <Row>
               <Col xs={6} md={4}>
@@ -141,13 +143,14 @@ export const Login = () => {
           </div>
           <div className="inputBx">
             <input
-              type="password"
+              type={typeOfPasswordInput}
               placeholder="Password"
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
+              
             />
-            <AiOutlineEye/>
+            <span style={{position:'absolute' , marginTop:"-2.3rem" , marginLeft:'15rem'}}>{showPassword?<AiOutlineEye onClick={()=>{setShowPassword(false) ; setTypeOfPasswordInput('password');}}/>:<AiOutlineEyeInvisible onClick={()=>{ setShowPassword(true);setTypeOfPasswordInput('text')}}/>}</span>
           </div>
 
           <div className="inputBx">
@@ -157,8 +160,8 @@ export const Login = () => {
           </div>
           <div className="inputBx">
             <div>
-              <p style={{display:"flex" , marginLeft:"30%"}}>
-                <a style={{ fontSize:"15px"}}> Forget your  </a><a onClick={restPassword} style={{fontSize:"15px" , textDecoration:"underline" , marginLeft:"5px"}}>{" "} Password?</a>{" "}
+              <p style={{ display: "flex", marginLeft: "30%" }}>
+                <a style={{ fontSize: "15px" }}> Forget your  </a><a onClick={restPassword} style={{ fontSize: "15px", textDecoration: "underline", marginLeft: "5px" }}>{" "} Password?</a>{" "}
               </p>
             </div>
 
