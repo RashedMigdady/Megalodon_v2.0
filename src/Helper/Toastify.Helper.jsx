@@ -29,7 +29,6 @@ export const showError = (
     autoDismissTimeout: 4000,
   },
 ) => {
-    console.log("WEWEWEW" , GlobalAddToaster);
   if (GlobalAddToaster)
     GlobalAddToaster.addToast(message, { ...configuration, onDismiss });
 };

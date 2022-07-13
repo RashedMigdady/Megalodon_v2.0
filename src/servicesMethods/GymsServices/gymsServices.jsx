@@ -12,7 +12,7 @@ export const getAllGyms = async () => {
 export const UpdateOneGym = async (id, body) => {
     const result = await HTTPServices.put(`${serverAddress}/gym/${id}`, body)
         .then(res => res.data.message)
-        .catch(err => false);
+        .catch(err => err.response);
     return result;
 }
 

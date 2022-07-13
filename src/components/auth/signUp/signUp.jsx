@@ -24,10 +24,10 @@ export const Register = () => {
       setShow(true);
     } else {
       const res = await register({ firstName, lastName, email, password });
-      if (res)
+      if (res && res.data && res.data.success)
         history.push("/login")
       else
-        showError("Error happened while register, please try again")
+        showError(res && res.data && res.data.message)
     }
   };
 
