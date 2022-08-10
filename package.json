@@ -23,6 +23,7 @@
     "gh-pages": "^2.0.1",
     "i18next": "^21.8.9",
     "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-rc.1",
     "react-bootstrap-sweetalert": "^5.2.0",
@@ -35,10 +36,10 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-social-icons": "^5.6.1",
+    "react-toast-notifications": "^2.5.1",
     "redux": "^4.1.1",
     "sweetalert": "^2.1.2",
-    "web-vitals": "^1.1.2",
-    "react-toast-notifications": "^2.5.1"
+    "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

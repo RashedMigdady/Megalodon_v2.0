@@ -30,18 +30,17 @@ export const Login = () => {
         password,
       })
       .then((res) => {
-        const token = res.data.token;
         localStorage.setItem("role", res.data.role);
-        localStorage.setItem("token", token);
+        localStorage.setItem("token", res.data.token);
         localStorage.setItem("savedData", JSON.stringify([]));
         localStorage.setItem("subscription", JSON.stringify([]));
         dispatch(setToken(res.data.token));
         dispatch(addSubscription([]));
         // dispatch(addToCart([]));
         if (res.data.role === "admin") {
-          history.push("/dashboard");
+          history.replace("/dashboard");
         } else {
-          history.push("/home");
+          history.replace("/home");
         }
       })
       .catch((error) => {

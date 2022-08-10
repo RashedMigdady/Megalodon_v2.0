@@ -19,7 +19,7 @@ import { ScrollToTop } from "./components/scroll/scroll.jsx";
 import { Review } from "./components/Review/Review.jsx";
 import { Dashboard } from "./components/dashboard/Dashboard.jsx";
 import { Main } from "./components/main/mainPage";
-import { Logout } from "./components/logout/Logout.jsx";
+import { Logout } from "./Helper/logout.Helper";
 import { Gym } from "./components/Gym/Gym.jsx";
 import { GlobalToasterGenerator } from "./Helper/Toastify.Helper.jsx";
 

@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { token } from "../../Helper/HTTPMethod.Helper";
+import jwtDecode from 'jwt-decode'
 import { Col, Card, Row, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/action/cart";
 import swal from "sweetalert";
 import { getProducts } from '../../servicesMethods/ProductServices/productServices';
 import { showError, showSuccess } from "../../Helper/Toastify.Helper";
+import { useHistory } from 'react-router-dom';
 
 export const Products = () => {
   const [products, setProducts] = useState();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const all = JSON.parse(localStorage.getItem("savedData"));
   useEffect(async () => {
@@ -20,10 +23,15 @@ export const Products = () => {
 
   const addCart = (item) => {
     if (token) {
-      dispatch(addToCart(item));
-      all.push(item);
-      localStorage.setItem("savedData", JSON.stringify(all));
-      showSuccess('Added to cart');
+      try {
+        jwtDecode(token)
+        dispatch(addToCart(item));
+        all.push(item);
+        localStorage.setItem("savedData", JSON.stringify(all));
+        showSuccess('Added to cart');
+      } catch (error) {
+        history.push('/login')
+      }
     } else
       showError('You have to login first so you can buy');
   };
