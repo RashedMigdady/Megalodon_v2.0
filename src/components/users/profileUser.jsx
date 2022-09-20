@@ -10,6 +10,7 @@ import { EditProfile, GetuserProfile } from '../../servicesMethods/UsersServices
 import { getGymsSubscribtions, getRestaurantSubscriptions, getTrainersSubscribtions } from '../../servicesMethods/SubscriptionsServices/subscriptionService';
 import { dateDiffInDays } from "../../Helper/dateDiffInDays.Helper";
 import { showSuccess } from "../../Helper/Toastify.Helper";
+import { useTitle } from '../../Hooks/Title.Hook';
 
 const customStyles = {
   content: {
@@ -29,16 +30,17 @@ const customStyles = {
 };
 
 export const ProfileUser = () => {
+  useTitle('Profile');
   const [profile, setProfile] = useState("");
-  const [subRest, setSubRest] = useState("");
+  const [subRest, setSubRest] = useState([]);
   const [age, setAge] = useState(0);
   const [phoneNumber, setPhoneNumber] = useState(0);
   const [country, setCountry] = useState("");
   const [weight, setWeight] = useState(0);
   const [height, setHeight] = useState(0);
   const [diseases, setDiseases] = useState("");
-  const [subTrainer, setSubTrainer] = useState("");
-  const [subGym, setSubGym] = useState("");
+  const [subTrainer, setSubTrainer] = useState([]);
+  const [subGym, setSubGym] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
 
 
@@ -229,7 +231,7 @@ export const ProfileUser = () => {
         {AllSubscribtions.map((elem, i) => {
           return (
             <>
-              {elem !== undefined ? (
+              {elem.length != 0 ? (
                 <fieldset className="restaurantSubscirption">
                   <legend className="titleSubscription"> </legend>
                   <p
@@ -250,18 +252,18 @@ export const ProfileUser = () => {
                         marginLeft: "10px",
                       }}
                     />
-
+{console.log("ras", elem)}
                     <ProgressBar
                       variant="dark"
                       animated
                       now={
                         3.3 *
                         dateDiffInDays(
-                          new Date(elem && elem.date_to.slice(0, 10))
+                          new Date(elem && elem.date_to && elem.date_to.slice(0, 10))
                         )
                       }
                       label={`${dateDiffInDays(
-                        new Date(elem && elem.date_to.slice(0, 10))
+                        new Date(elem && elem.date_to && elem.date_to.slice(0, 10))
                       )} day`}
                       className="progress"
                       style={{
@@ -272,7 +274,7 @@ export const ProfileUser = () => {
                       }}
                     />
                   </div>{" "}
-                  Expier Date: {elem && elem.date_to.slice(0, 10)}
+                  Expier Date: {elem && elem.date_to && elem.date_to.slice(0, 10)}
                 </fieldset>
               ) : (
                 <div></div>

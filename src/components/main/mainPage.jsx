@@ -8,8 +8,10 @@ import icon2 from "../../imeges/icon-2.png";
 import icon3 from "../../imeges/icon-3.png";
 import "./main.css";
 import { useHistory } from "react-router";
+import { useTitle } from '../../Hooks/Title.Hook.jsx';
 
 export const Main = () => {
+  useTitle('Megalodon');
   const history = useHistory();
   const styleButton = {
     width: "60%",

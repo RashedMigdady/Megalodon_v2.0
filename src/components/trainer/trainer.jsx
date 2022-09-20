@@ -4,8 +4,10 @@ import { useHistory } from "react-router";
 import { Form } from "react-bootstrap";
 import { addNewTrainer, getAllTrainers } from '../../servicesMethods/TrainersServices/trainersServices';
 import { showinfo } from "../../Helper/Toastify.Helper";
+import { useTitle } from '../../Hooks/Title.Hook';
 
 export const Trainer = () => {
+  useTitle('Trainers');
   const [trainers, setTrainer] = useState([]);
   const history = useHistory();
   const [search, setSearch] = useState("");

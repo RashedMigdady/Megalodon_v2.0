@@ -11,7 +11,9 @@ import { Col, Container, Row, Image } from "react-bootstrap";
 import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { showError } from "../../../Helper/Toastify.Helper";
+import { useTitle } from '../../../Hooks/Title.Hook';
 export const Login = () => {
+  useTitle('Login');
   const [email, setEmail] = useState(0);
   const [password, setPassword] = useState(0);
   const [showPassword, setShowPassword] = useState(false);

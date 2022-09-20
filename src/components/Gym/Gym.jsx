@@ -6,7 +6,9 @@ import { useDispatch } from "react-redux";
 import { addSubscription } from "../../redux/action/cart";
 import { Form } from "react-bootstrap";
 import { getAllGyms } from '../../servicesMethods/GymsServices/gymsServices';
+import { useTitle } from '../../Hooks/Title.Hook';
 export const Gym = () => {
+  useTitle('Gyms')
   const [allgyms, setAllGyms] = useState([]);
   const [search, setSearch] = useState("");
   // const token = localStorage.getItem("token");

@@ -4,17 +4,19 @@ import { useHistory } from "react-router";
 import { Form } from "react-bootstrap";
 import { getAllRestaurants } from '../../servicesMethods/RestaurantsServices/RestaurantsServices';
 import { DameDataResturants } from "../../DameData";
+import { useTitle } from '../../Hooks/Title.Hook';
 export const Resturants = () => {
+  useTitle('Restaurants');
   const [resturants, setResturants] = useState([]);
   const [search, setSearch] = useState("");
   const history = useHistory();
 
   useEffect(async () => {
     const res = await getAllRestaurants();
-    if(res)
-    setResturants([...res]);
+    if (res)
+      setResturants([...res]);
     else
-    setResturants(DameDataResturants)
+      setResturants(DameDataResturants)
   }, []);
 
   return (
@@ -39,11 +41,8 @@ export const Resturants = () => {
             .filter((val) => {
               if (search == "") {
                 return val;
-              } else if (
-                val.name.toLowerCase().includes(search.toLowerCase())
-              ) {
+              } else if (val.name.toLowerCase().includes(search.toLowerCase()))
                 return val;
-              }
             })
             .map((element, index) => {
               return (

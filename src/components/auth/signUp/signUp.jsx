@@ -5,9 +5,11 @@ import { Overlay, Tooltip } from "react-bootstrap";
 import { Col, Container, Row, Image } from "react-bootstrap";
 import { register } from '../../../servicesMethods/AuthServices/signupServices';
 import { showError } from "../../../Helper/Toastify.Helper";
+import { useTitle } from '../../../Hooks/Title.Hook';
 
 
 export const Register = () => {
+  useTitle('Register')
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -19,7 +21,6 @@ export const Register = () => {
 
   const userRegister = async (e) => {
     e.preventDefault();
-
     if (password.length < 6) {
       setShow(true);
     } else {

@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setToken } from "../../redux/action/loginToken";
+import { setToken } from "../../src/redux/action/loginToken";
 export const Logout = () => {
   const dispatch = useDispatch();
   const history = useHistory();
