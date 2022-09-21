@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./widgetLg.module.css";
-import { Restaurant } from "@material-ui/icons";
+import { Restaurant } from "@mui/icons-material";
 import { getRestaurantSubscriptions } from '../../../servicesMethods/SubscriptionsServices/subscriptionService';
 
 export const WidgetLg = () => {

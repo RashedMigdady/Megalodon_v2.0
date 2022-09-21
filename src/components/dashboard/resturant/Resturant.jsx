@@ -1,7 +1,7 @@
 import style from "../trainer/trainer.module.css";
 import { Link, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { LocationSearching } from "@material-ui/icons";
+import { LocationSearching } from "@mui/icons-material";
 import { getRestaurantById, UpdateRestaurant } from '../../../servicesMethods/RestaurantsServices/RestaurantsServices';
 
 export const Resturant = () => {

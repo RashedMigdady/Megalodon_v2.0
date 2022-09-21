@@ -11,6 +11,9 @@ import { getGymsSubscribtions, getRestaurantSubscriptions, getTrainersSubscribti
 import { dateDiffInDays } from "../../Helper/dateDiffInDays.Helper";
 import { showSuccess } from "../../Helper/Toastify.Helper";
 import { useTitle } from '../../Hooks/Title.Hook';
+import { Autocomplete, TextField } from '@mui/material';
+import { getCountries } from '../../servicesMethods/LookUpsIds/StaticLookUpsIds';
+
 
 const customStyles = {
   content: {
@@ -33,15 +36,16 @@ export const ProfileUser = () => {
   useTitle('Profile');
   const [profile, setProfile] = useState("");
   const [subRest, setSubRest] = useState([]);
-  const [age, setAge] = useState(0);
-  const [phoneNumber, setPhoneNumber] = useState(0);
+  const [age, setAge] = useState(null);
+  const [phoneNumber, setPhoneNumber] = useState(null);
   const [country, setCountry] = useState("");
-  const [weight, setWeight] = useState(0);
-  const [height, setHeight] = useState(0);
+  const [weight, setWeight] = useState(null);
+  const [height, setHeight] = useState(null);
   const [diseases, setDiseases] = useState("");
   const [subTrainer, setSubTrainer] = useState([]);
   const [subGym, setSubGym] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [countries, setCountries] = useState(null);
 
 
   const history = useHistory();
@@ -50,29 +54,29 @@ export const ProfileUser = () => {
 
   useEffect(async () => {
     const res = await GetuserProfile();
-    if(res)
-    setProfile(res.data[0]);
+    if (res)
+      setProfile(res.data[0]);
   }, []);
 
   useEffect(async () => {
     const res = await getRestaurantSubscriptions();
-    if(res)
-    setSubRest(res);
+    if (res)
+      setSubRest(res);
   }, []);
 
   useEffect(async () => {
     const res = await getTrainersSubscribtions();
-    if(res)
-    setSubTrainer(res);
+    if (res)
+      setSubTrainer(res);
   }, []);
 
   useEffect(async () => {
     const res = await getGymsSubscribtions();
-    if(res)
-    setSubGym(res);
+    if (res)
+      setSubGym(res);
   }, []);
 
-  
+
 
   const openModal = () => {
     setIsOpen(true);
@@ -88,6 +92,17 @@ export const ProfileUser = () => {
   const closeModal = () => {
     setIsOpen(false);
   }
+
+  const getLookUpIdCountries = async () => {
+    const res = await getCountries(231);
+    console.log(res);
+    if (res && res.success)
+      setCountries(res && res.countries)
+  }
+
+  useEffect(() => {
+    getLookUpIdCountries();
+  }, [])
 
 
   const updateInfo = async () => {
@@ -157,48 +172,47 @@ export const ProfileUser = () => {
         >
           <Cancel onClick={closeModal} className="closeButton" />
           <div className="AllInputs">
-            <input
+            <TextField
+              id="outlined-basic"
+              label="Your Phone"
+              variant="outlined"
+              value={phoneNumber}
+              onChange={(event => setPhoneNumber(event.target.value))}
               type="number"
-              className="inputModal"
-              placeholder="Your Phone"
-              onChange={(e) => {
-                setPhoneNumber(e.target.value);
-              }}
+            />
+            <TextField
+              id="outlined-basic"
+              label="Weight"
+              variant="outlined"
+              value={weight}
+              onChange={(event => setWeight(event.target.value))}
+              type="number"
             />
 
-            <input
+            <TextField
+              id="outlined-basic"
+              label='Height'
+              variant="outlined"
+              value={height}
+              onChange={(event => setHeight(event.target.value))}
               type="number"
-              value={profile && profile.weigh}
-              className="inputModal"
-              placeholder="Weight"
-              onChange={(e) => {
-                setWeight(e.target.value);
-              }}
             />
-
-            <input
+            <TextField
+              id="outlined-basic"
+              label='Your Age'
+              variant="outlined"
+              value={age}
+              onChange={(event => setAge(event.target.value))}
               type="number"
-              className="inputModal"
-              placeholder="Height"
-              onChange={(e) => {
-                setHeight(e.target.value);
-              }}
             />
-
-            <input
-              type="number"
-              className="inputModal"
-              placeholder="Your Age"
-              onChange={(e) => {
-                setAge(e.target.value);
-              }}
-            />
-
-            <input
-              type="text"
-              className="inputModal"
-              placeholder="Country"
-              onChange={(e) => setCountry(e.target.value)}
+            <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              options={countries}
+              getOptionLabel={(option) => option.country_name}
+              sx={{ width: 300 }}
+              renderInput={(params) => <TextField {...params} label="Country" />}
+              onChange={(event, newValue) => setCountry(newValue.country_name)}
             />
             <lebel className="lebelDiseases">
               {" "}
@@ -212,16 +226,14 @@ export const ProfileUser = () => {
               onChange={(e) => {
                 setDiseases(e.target.value);
               }}
-
             />
-
 
             <Button
               variant="outline-dark"
               className="EnterInfo"
               onClick={updateInfo}
             >
-              Enter
+              Save
             </Button>
           </div>
         </Modal>
@@ -252,7 +264,6 @@ export const ProfileUser = () => {
                         marginLeft: "10px",
                       }}
                     />
-{console.log("ras", elem)}
                     <ProgressBar
                       variant="dark"
                       animated

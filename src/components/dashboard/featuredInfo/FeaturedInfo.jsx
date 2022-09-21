@@ -1,5 +1,5 @@
 import style from "./featuredInfo.module.css";
-import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
+import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import { getAllGyms } from '../../../servicesMethods/GymsServices/gymsServices'
 import { getAllRestaurants } from '../../../servicesMethods/RestaurantsServices/RestaurantsServices';

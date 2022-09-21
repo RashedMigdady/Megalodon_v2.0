@@ -37,7 +37,7 @@ export const Products = () => {
   };
   return (
     <div className="container">
-      {products && <div
+      {products && products.length && <div
         className="titleMain"
         style={{ paddingTop: "50px", paddingBottom: "50px" }}
       >
@@ -45,7 +45,7 @@ export const Products = () => {
       </div>}
 
       <Row xs={1} md={3} className="g-4">
-        {products &&
+        {products && products.length &&
           products.map((item) => {
             return (<Col key={item}>
               <Card

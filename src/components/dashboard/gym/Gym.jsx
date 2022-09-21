@@ -1,4 +1,4 @@
-import { LocationSearching, PhoneAndroid } from "@material-ui/icons";
+import { LocationSearching, PhoneAndroid } from "@mui/icons-material";
 import { Link, useParams } from "react-router-dom";
 import style from "../trainer/trainer.module.css";
 import React, { useEffect, useState } from "react";
