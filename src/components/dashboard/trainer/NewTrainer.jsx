@@ -46,7 +46,7 @@ export default function NewTrainer() {
         <div className={style.newUserItem}>
           <label>Phone Number</label>
           <input
-            type="number"
+            type="tel"
             placeholder="12345678"
             onChange={(e) => {
               setPhoneNumber(e.target.value);

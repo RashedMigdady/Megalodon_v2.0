@@ -8,17 +8,21 @@ import swal from "sweetalert";
 import { getProducts } from '../../servicesMethods/ProductServices/productServices';
 import { showError, showSuccess } from "../../Helper/Toastify.Helper";
 import { useHistory } from 'react-router-dom';
+import { Spinner } from '../../ShareComponents/SpinnerComponent/Spinner';
 
 export const Products = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const [products, setProducts] = useState();
   const dispatch = useDispatch();
   const history = useHistory();
 
   const all = JSON.parse(localStorage.getItem("savedData"));
   useEffect(async () => {
+    setIsLoading(true);
     const res = await getProducts();
     if (res)
       setProducts(res && res.Products);
+    setIsLoading(false);
   }, [getProducts]);
 
   const addCart = (item) => {
@@ -37,15 +41,15 @@ export const Products = () => {
   };
   return (
     <div className="container">
-      {products && products.length && <div
+      <Spinner isActive={isLoading} />
+      {products != [] && <div
         className="titleMain"
         style={{ paddingTop: "50px", paddingBottom: "50px" }}
       >
         <h1>OUR PRODUCTS</h1>
       </div>}
-
       <Row xs={1} md={3} className="g-4">
-        {products && products.length &&
+        {products && products != [] &&
           products.map((item) => {
             return (<Col key={item}>
               <Card

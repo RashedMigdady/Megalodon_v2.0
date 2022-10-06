@@ -27,7 +27,7 @@ export const GymAdmin = () => {
 
   const addNewGym = () => {
     HTTPServices
-      .post("http://localhost:5000/gym", {
+      .post(`${serverAddress}/gym`, {
         name,
         phoneNumber,
         image,

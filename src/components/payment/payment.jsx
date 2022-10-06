@@ -11,6 +11,7 @@ import {
 } from "@stripe/react-stripe-js";
 import "./payment.css";
 import { sendMessage } from '../../servicesMethods/PaymentServices/paymentServices';
+import { createSubscribeWithGym, createSubscribeWithResturant, createSubscribeWithTrainer } from '../../servicesMethods/SubscriptionsServices/subscriptionService';
 
 export const Payment = ({ gymId, trainerId, restaurantId }) => {
   const token = localStorage.getItem("token");
@@ -20,31 +21,18 @@ export const Payment = ({ gymId, trainerId, restaurantId }) => {
   const sendMsg = async () => {
     const res = await sendMessage({ confirm });
   }
-  function reqTrainer() {
-    // const res = 
-    HTTPServices.post(
-      `http://localhost:5000/subscribtion/trainer`,
-      { trainerId },
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
+  const addNewSubsicribeTrainer = async (trainerId) => {
+    const res = await createSubscribeWithTrainer(trainerId);
   }
 
-  function reqGym() {
-    HTTPServices.post(
-      `http://localhost:5000/subscribtion/gym`,
-      { gymId },
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
+  const addNewSubsicribeGym = async (gymId) => {
+    const res = await createSubscribeWithGym(gymId);
   }
-  function reqResturant() {
-    HTTPServices.post(
-      `http://localhost:5000/subscribtion/rest`,
-      { restaurantId },
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
+  const reqResturant = async (restaurantId) => {
+    const res = await createSubscribeWithResturant(restaurantId);
   }
   const addSUB = () => {
-    Promise.all([reqTrainer(), reqGym(), reqResturant()])
+    Promise.all([addNewSubsicribeTrainer(), addNewSubsicribeGym(), reqResturant()])
       .then(function (results) {
         swal({
           title: "Success !! ",

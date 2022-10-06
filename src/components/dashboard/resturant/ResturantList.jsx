@@ -3,7 +3,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
-import { HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { HTTPServices, serverAddress } from "../../../Helper/HTTPMethod.Helper";
 import React, { useEffect, useState } from "react";
 import { getAllRestaurants } from '../../../servicesMethods/RestaurantsServices/RestaurantsServices';
 
@@ -13,7 +13,7 @@ export const ResturantList = () => {
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
     HTTPServices
-      .delete(`http://localhost:5000/resturan/${id}`)
+      .delete(`${serverAddress}/resturan/${id}`)
       .then((result) => {
         swal({
           title: "Deleted Resturant Success ",

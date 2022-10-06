@@ -6,6 +6,7 @@ import { Col, Container, Row, Image } from "react-bootstrap";
 import { register } from '../../../servicesMethods/AuthServices/signupServices';
 import { showError } from "../../../Helper/Toastify.Helper";
 import { useTitle } from '../../../Hooks/Title.Hook';
+import { TextField } from '@mui/material';
 
 
 export const Register = () => {
@@ -51,42 +52,45 @@ export const Register = () => {
           </Container>
           <h2>Create Account</h2>
 
-          <div className="inputBox">
-            <input
-              type="text"
-              placeholder="First Name"
-              onChange={(e) => {
-                setFirstName(e.target.value);
-              }}
+          <div className="inputBo">
+            <TextField
+              id="standard-basic"
+              label="First name"
+              variant="standard"
+              value={firstName}
+              onChange={(event => setFirstName(event.target.value))}
+              type='text'
             />
           </div>
-          <div className="inputBox">
-            <input
-              type="text"
-              placeholder="Last Name"
-              onChange={(e) => {
-                setLastName(e.target.value);
-              }}
+          <div className="inputBo">
+            <TextField
+              id="standard-basic"
+              label="Last Name"
+              variant="standard"
+              value={lastName}
+              onChange={(event => setLastName(event.target.value))}
+              type='text'
             />
           </div>
-          <div className="inputBox">
-            <input
-              type="email"
-              placeholder="Email"
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
+          <div className="inputBo">
+        
+            <TextField
+              id="standard-basic"
+              label="Email"
+              variant="standard"
+              value={email}
+              onChange={(event => setEmail(event.target.value))}
+              type='email'
             />
           </div>
-          <div className="inputBox">
-            <input
-              ref={target}
-              onClick={() => setShow(!show)}
-              type="Password"
-              placeholder="Password"
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
+          <div className="inputBo">
+             <TextField
+              id="standard-basic"
+              label="Password"
+              variant="standard"
+              value={password}
+              onChange={(event => setPassword(event.target.value))}
+              type='password'
             />
             <Overlay
               className="tooltip"
@@ -102,12 +106,12 @@ export const Register = () => {
             </Overlay>
           </div>
 
-          <div className="inputBox">
+          <div className="inputBo">
             <button className="submit" onClick={userRegister}>
               Sign up
             </button>
           </div>
-          <div className="inputBox">
+          <div className="inputBo">
             <p>
               Do You have an account? <a href="/login" style={{ color: "black", textDecoration: "underline" }}> Login</a>{" "}
             </p>

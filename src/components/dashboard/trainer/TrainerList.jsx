@@ -3,7 +3,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
-import { HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { HTTPServices, serverAddress } from "../../../Helper/HTTPMethod.Helper";
 import React, { useEffect, useState } from "react";
 import { getAllTrainers } from '../../../servicesMethods/TrainersServices/trainersServices';
 
@@ -13,7 +13,7 @@ export const TrainerList = () => {
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
     HTTPServices
-      .delete(`http://localhost:5000/trainer/${id}`)
+      .delete(`${serverAddress}/trainer/${id}`)
       .then((result) => {
         swal({
           title: "Deleted Trainer Success ",

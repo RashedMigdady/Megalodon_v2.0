@@ -5,21 +5,26 @@ import { Form } from "react-bootstrap";
 import { addNewTrainer, getAllTrainers } from '../../servicesMethods/TrainersServices/trainersServices';
 import { showinfo } from "../../Helper/Toastify.Helper";
 import { useTitle } from '../../Hooks/Title.Hook';
+import { Spinner } from '../../ShareComponents/SpinnerComponent/Spinner';
 
 export const Trainer = () => {
   useTitle('Trainers');
   const [trainers, setTrainer] = useState([]);
   const history = useHistory();
   const [search, setSearch] = useState("");
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(async () => {
+    setIsLoading(true);
     const res = await getAllTrainers();
     if (res)
       setTrainer(res)
+    setIsLoading(false);
   }, [getAllTrainers]);
 
   return (
     <div>
+      <Spinner isActive={isLoading} />
       <div className="titleMain" style={{ paddingTop: "50px" }}>
         <h1> Our Professional Trainers </h1>
       </div>

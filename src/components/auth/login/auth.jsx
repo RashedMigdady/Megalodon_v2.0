@@ -12,12 +12,13 @@ import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { showError } from "../../../Helper/Toastify.Helper";
 import { useTitle } from '../../../Hooks/Title.Hook';
+import { Button, TextField } from '@mui/material';
 export const Login = () => {
   useTitle('Login');
-  const [email, setEmail] = useState(0);
-  const [password, setPassword] = useState(0);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
-  const [typeOfPasswordInput , setTypeOfPasswordInput] = useState('password');
+  const [typeOfPasswordInput, setTypeOfPasswordInput] = useState('password');
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -132,49 +133,47 @@ export const Login = () => {
             </Row>
           </Container>
           <h2>LOGIN</h2>
+          <TextField
+            id="standard-basic"
+            label="Email"
+            variant="standard"
+            value={email}
+            onChange={(event => setEmail(event.target.value))}
+            type='email'
+          />
 
-          <div className="inputBx">
-            <input
-              type="email"
-              placeholder="Email"
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
+          <TextField
+            id="standard-basic"
+            label="Password"
+            variant="standard"
+            value={password}
+            onChange={(event => setPassword(event.target.value))}
+            type={typeOfPasswordInput}
+          />
+          <span className='eye-password'>
+            {showPassword ?
+              <AiOutlineEye
+                onClick={() => { setShowPassword(false); setTypeOfPasswordInput('password'); }}
+              /> :
+              <AiOutlineEyeInvisible
+                onClick={() => { setShowPassword(true); setTypeOfPasswordInput('text') }}
+              />}
+          </span>
+
+          <div className="Button-login">
+            <Button variant="outlined" color='warning' onClick={userLogin}>Login</Button>
+          </div>
+          <div className='forgot-password'>
+            <span>Forgot <a className='forgot-button' onClick={restPassword} >{" "} password?</a>{" "}</span>
+          </div>
+          <div className="with-gmail">
+            <GoogleLogin
+              clientId={clientId}
+              buttonText="Login with Google"
+              onSuccess={onSuccess}
+              onFailure={onFailure}
+              cookiePolicy={"single_host_origin"}
             />
-          </div>
-          <div className="inputBx">
-            <input
-              type={typeOfPasswordInput}
-              placeholder="Password"
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-              
-            />
-            <span style={{position:'absolute' , marginTop:"-2.3rem" , marginLeft:'15rem'}}>{showPassword?<AiOutlineEye onClick={()=>{setShowPassword(false) ; setTypeOfPasswordInput('password');}}/>:<AiOutlineEyeInvisible onClick={()=>{ setShowPassword(true);setTypeOfPasswordInput('text')}}/>}</span>
-          </div>
-
-          <div className="inputBx">
-            <button className="" onClick={userLogin}>
-              Sign In
-            </button>
-          </div>
-          <div className="inputBx">
-            <div>
-              <p style={{ display: "flex", marginLeft: "30%" }}>
-                <a style={{ fontSize: "15px" }}> Forget your  </a><a onClick={restPassword} style={{ fontSize: "15px", textDecoration: "underline", marginLeft: "5px" }}>{" "} Password?</a>{" "}
-              </p>
-            </div>
-
-            <div className="with-gmail">
-              <GoogleLogin
-                clientId={clientId}
-                buttonText="Login with Google"
-                onSuccess={onSuccess}
-                onFailure={onFailure}
-                cookiePolicy={"single_host_origin"}
-              />
-            </div>
           </div>
         </div>
       </div>
