@@ -1,4 +1,3 @@
-import { serverAddress, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./profile.css";
@@ -13,6 +12,8 @@ import { showSuccess } from "../../Helper/Toastify.Helper";
 import { useTitle } from '../../Hooks/Title.Hook';
 import { Autocomplete, TextField } from '@mui/material';
 import { getCountries } from '../../servicesMethods/LookUpsIds/StaticLookUpsIds';
+import { Spinner } from '../../ShareComponents/SpinnerComponent/Spinner';
+import { countriesLookupId } from '../../LookUpsIds/loookupIds';
 
 
 const customStyles = {
@@ -46,6 +47,7 @@ export const ProfileUser = () => {
   const [subGym, setSubGym] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [countries, setCountries] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
 
   const history = useHistory();
@@ -53,9 +55,11 @@ export const ProfileUser = () => {
   const AllSubscribtions = [subRest, subTrainer, subGym];
 
   useEffect(async () => {
+    setIsLoading(true);
     const res = await GetuserProfile();
     if (res)
       setProfile(res.data[0]);
+    setIsLoading(false);
   }, []);
 
   useEffect(async () => {
@@ -94,14 +98,14 @@ export const ProfileUser = () => {
   }
 
   const getLookUpIdCountries = async () => {
-    const res = await getCountries(231);
+    const res = await getCountries(countriesLookupId);
     if (res && res.success)
-      setCountries(res && res.countries)
+      setCountries(res && res.countries);
   }
 
   useEffect(() => {
-    getLookUpIdCountries();
-  }, [])
+    modalIsOpen && getLookUpIdCountries();
+  }, [modalIsOpen])
 
 
   const updateInfo = async () => {
@@ -114,6 +118,7 @@ export const ProfileUser = () => {
 
   return (
     <div className="userProfile">
+      <Spinner isActive={isLoading}  />
       <div className="leftdiv">
         <div className="profileImg">
           {profile && profile.image !== null ? (
@@ -211,6 +216,7 @@ export const ProfileUser = () => {
               sx={{ width: 300 }}
               renderInput={(params) => <TextField {...params} label="Country" />}
               onChange={(event, newValue) => setCountry(newValue.country_name)}
+              loading={true}
             />
             <lebel className="lebelDiseases">
               {" "}

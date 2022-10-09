@@ -13,6 +13,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { showError } from "../../../Helper/Toastify.Helper";
 import { useTitle } from '../../../Hooks/Title.Hook';
 import { Button, TextField } from '@mui/material';
+import { Spinner } from '../../../ShareComponents/SpinnerComponent/Spinner';
 export const Login = () => {
   useTitle('Login');
   const [email, setEmail] = useState(null);
@@ -21,12 +22,14 @@ export const Login = () => {
   const [typeOfPasswordInput, setTypeOfPasswordInput] = useState('password');
   const history = useHistory();
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
 
   const clientId =
     "707788443358-u05p46nssla3l8tmn58tpo9r5sommgks.apps.googleusercontent.com";
 
   const userLogin = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     await HTTPServices
       .post(`${serverAddress}/login/`, {
         email,
@@ -51,6 +54,7 @@ export const Login = () => {
           showError('Email or Password incorrect, please try again')
         }
       });
+    setIsLoading(false);
   };
 
   const onSuccess = async (res) => {
@@ -116,6 +120,7 @@ export const Login = () => {
 
   return (
     <div className="section">
+      <Spinner isActive={isLoading}/>
       <div className="imgBx">
         <img
           src="https://www.reviewsxp.com/blog/wp-content/uploads/2019/08/Best-gyms-in-jaipur-e1565704535975.jpg"

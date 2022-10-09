@@ -5,22 +5,27 @@ import { Form } from "react-bootstrap";
 import { getAllRestaurants } from '../../servicesMethods/RestaurantsServices/RestaurantsServices';
 import { DameDataResturants } from "../../DameData";
 import { useTitle } from '../../Hooks/Title.Hook';
+import { Spinner } from '../../ShareComponents/SpinnerComponent/Spinner';
 export const Resturants = () => {
   useTitle('Restaurants');
   const [resturants, setResturants] = useState([]);
   const [search, setSearch] = useState("");
   const history = useHistory();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(async () => {
+    setIsLoading(true);
     const res = await getAllRestaurants();
     if (res)
       setResturants([...res]);
     else
-      setResturants(DameDataResturants)
+      setResturants(DameDataResturants);
+    setIsLoading(false);
   }, []);
 
   return (
     <div>
+      <Spinner isActive={isLoading} />
       <div className="titleMain" style={{ paddingTop: "50px" }}>
         <h1> Our Healthy Restaurants </h1>
       </div>

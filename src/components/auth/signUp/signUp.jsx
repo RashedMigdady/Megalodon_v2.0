@@ -17,11 +17,12 @@ export const Register = () => {
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
   const target = useRef(null);
-
+  const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
 
   const userRegister = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     if (password.length < 6) {
       setShow(true);
     } else {
@@ -31,6 +32,7 @@ export const Register = () => {
       else
         showError(res && res.data && res.data.message)
     }
+    setIsLoading(false);
   };
 
   return (

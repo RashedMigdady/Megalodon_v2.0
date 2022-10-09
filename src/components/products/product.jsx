@@ -57,7 +57,7 @@ export const Products = () => {
               >
                 <Card.Img
                   variant="top"
-                  src={item?.image}
+                  src={item && item.image}
                   height="200px"
                   width="200px"
                 />

@@ -15,7 +15,7 @@ import { Policy } from "./components/Footer/Policy.jsx";
 import { Payment } from "./components/payment/payment.jsx";
 import { OneResturant } from "./components/resturants/OneReastaurant.jsx";
 import { ProfileUser } from "./components/users/profileUser.jsx";
-import { ScrollToTop } from "./components/scroll/scroll.jsx";
+import { ScrollToTop } from "./ShareComponents/scrollToTop/scroll.jsx";
 import { Review } from "./components/Review/Review.jsx";
 import { Dashboard } from "./components/dashboard/Dashboard.jsx";
 import { Main } from "./components/main/mainPage";

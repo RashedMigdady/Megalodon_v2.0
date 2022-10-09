@@ -34,7 +34,7 @@
   padding-bottom: 0px;
   font-size: small;
 }
-.review .hdrrev .reh3 {
+.review .image-review .reh3 {
   font-size: x-large;
   font-weight: bold;
   text-transform: uppercase;
@@ -52,7 +52,8 @@
   align-items: center;
   justify-content: center;
 }
-.hdrrev {
+.image-review {
+  
   display: grid;
   align-items: center;
   justify-content: center;

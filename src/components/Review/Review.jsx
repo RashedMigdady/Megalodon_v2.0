@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { getAllReviews } from "../../servicesMethods/ReviewsServices/reviewsServices";
+import { Spinner } from '../../ShareComponents/SpinnerComponent/Spinner';
 import "./review.css";
 
 export const Review = () => {
   const [review, setAllReview] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
 
   useEffect(async () => {
+    setIsLoading(true);
     const res = await getAllReviews();
     if (res)
       setAllReview(res);
+    setIsLoading(false);
   }, [getAllReviews]);
 
   return (
     <div className="review">
-      <div className="hdrrev">
+      <Spinner isActive={isLoading} />
+      <div className="image-review">
         <h3 className="reh3">
           {" "}
           Customers Review{" "}

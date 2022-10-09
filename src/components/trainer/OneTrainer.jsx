@@ -10,6 +10,7 @@ import swal from "sweetalert";
 import { useDispatch } from "react-redux";
 import { addSubscription } from "../../redux/action/cart";
 import { getTrainerById } from '../../servicesMethods/TrainersServices/trainersServices';
+import { Spinner } from '../../ShareComponents/SpinnerComponent/Spinner';
 
 export const OneTrainer = () => {
   const [trainer, setTrainer] = useState(0);
@@ -17,11 +18,14 @@ export const OneTrainer = () => {
   let trainerId = useParams().id;
   const dispatch = useDispatch();
   const all = JSON.parse(localStorage.getItem("subscription"));
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(async () => {
+    setIsLoading(true);
     const res = await getTrainerById(trainerId);
-    if(res)
-    setTrainer(res);
+    if (res)
+      setTrainer(res);
+    setIsLoading(false);
   }, []);
 
   const addSubsecribtionTrainer = async (elem) => {
@@ -54,10 +58,11 @@ export const OneTrainer = () => {
 
   return (
     <div className="big-div">
+      <Spinner isActive={isLoading} />
       <div className="col-xs-12">
         <div className="gym-block-img">
           {/* fixNeed */}
-          {/* <img src={trainer && trainer.image || imageTest} alt="" className="gym-img" /> */} 
+          {/* <img src={trainer && trainer.image || imageTest} alt="" className="gym-img" /> */}
         </div>
         <div className="gym-block-bottm">
           <h3 className="gym-block__title">Contact</h3>

@@ -12,6 +12,7 @@ import {
 import "./payment.css";
 import { sendMessage } from '../../servicesMethods/PaymentServices/paymentServices';
 import { createSubscribeWithGym, createSubscribeWithResturant, createSubscribeWithTrainer } from '../../servicesMethods/SubscriptionsServices/subscriptionService';
+import { Spinner } from '../../ShareComponents/SpinnerComponent/Spinner';
 
 export const Payment = ({ gymId, trainerId, restaurantId }) => {
   const token = localStorage.getItem("token");
@@ -139,10 +140,11 @@ export const Payment = ({ gymId, trainerId, restaurantId }) => {
       phone: "",
       name: "",
     });
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async (event) => {
       event.preventDefault();
-
+      setIsLoading(true);      
       if (!stripe || !elements) {
         return;
       }
@@ -172,6 +174,7 @@ export const Payment = ({ gymId, trainerId, restaurantId }) => {
         addSUB();
         sendMsg();
       }
+      setIsLoading(false);
     };
 
     const reset = () => {
@@ -189,6 +192,7 @@ export const Payment = ({ gymId, trainerId, restaurantId }) => {
       <div className="Result"></div>
     ) : (
       <form className="Form" onSubmit={handleSubmit}>
+        <Spinner isActive={isLoading}/>
         <fieldset className="FormGroup">
           <Field
             label="Name"

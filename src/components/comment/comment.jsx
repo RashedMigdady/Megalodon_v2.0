@@ -2,19 +2,24 @@ import React, { useState } from "react";
 import "./comment.css";
 import swal from "sweetalert";
 import { addComment } from '../../servicesMethods/CommentsServices/commentsServices';
+import { Spinner } from '../../ShareComponents/SpinnerComponent/Spinner';
 
 export const AddComment = () => {
   const [comment, setComment] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const createComment = async () => {
+    setIsLoading(true);
     const res = await addComment({ comment });
-    if(res)
-     swal(res);
+    if (res)
+      swal(res);
+    setIsLoading(false);
   };
 
   return (
     <>
       <div className="commentPerant">
+        <Spinner isActive={isLoading} />
         <div className="container33">
           <div className="form44">
             <h4> Send us a Message</h4>

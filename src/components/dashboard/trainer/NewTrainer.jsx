@@ -4,6 +4,7 @@ import { addNewTrainer } from '../../../servicesMethods/TrainersServices/trainer
 import { Autocomplete, Button, TextareaAutosize, TextField } from '@mui/material';
 import { getSports } from '../../../servicesMethods/LookUpsIds/StaticLookUpsIds';
 import { showError, showinfo } from '../../../Helper/Toastify.Helper';
+import { sportsLookupId } from '../../../LookUpsIds/loookupIds';
 
 export default function NewTrainer() {
   const [firstName, setFirstName] = useState();
@@ -26,7 +27,7 @@ export default function NewTrainer() {
   };
 
   const getAllSports = async () => {
-    const res = await getSports(99);
+    const res = await getSports(sportsLookupId);
     if (res)
       setSports(res && res.sports);
   }

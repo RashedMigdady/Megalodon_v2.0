@@ -10,18 +10,22 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { getRestaurantById } from '../../servicesMethods/RestaurantsServices/RestaurantsServices';
 import { DameDataResturants } from "../../DameData";
+import { Spinner } from '../../ShareComponents/SpinnerComponent/Spinner';
 export const OneResturant = () => {
   const [resturant, setResturant] = useState(0);
   let restaurantId = useParams().id;
   const dispatch = useDispatch();
   const all = JSON.parse(localStorage.getItem("subscription"));
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(async () => {
+    setIsLoading(true);
     const res = await getRestaurantById(restaurantId);
     if (res)
       setResturant(res);
-      else
-      setResturant([DameDataResturants[restaurantId - 1]])
+    else
+      setResturant([DameDataResturants[restaurantId - 1]]);
+    setIsLoading(false);
   }, []);
 
   const addSubsecRestaurant = async (elem) => {
@@ -54,6 +58,7 @@ export const OneResturant = () => {
 
   return (
     <div className="container">
+      <Spinner isActive={isLoading} />
       <div className="container_carousel">
         <Carousel variant="dark">
           <Carousel.Item>
