@@ -26,6 +26,6 @@ export const getTrainerById = async (id) => {
 export const addNewTrainer = async (body) => {
     const result = await HTTPServices.post(`${serverAddress}/trainer`, body)
         .then(res => res.data.message)
-        .catch(err => false);
+        .catch(err => err);
     return result;
 }

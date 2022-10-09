@@ -95,7 +95,6 @@ export const ProfileUser = () => {
 
   const getLookUpIdCountries = async () => {
     const res = await getCountries(231);
-    console.log(res);
     if (res && res.success)
       setCountries(res && res.countries)
   }
@@ -188,7 +187,6 @@ export const ProfileUser = () => {
               onChange={(event => setWeight(event.target.value))}
               type="number"
             />
-
             <TextField
               id="outlined-basic"
               label='Height'

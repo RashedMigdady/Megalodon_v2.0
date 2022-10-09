@@ -1,6 +1,9 @@
 import style from "./newTrainer.module.css";
 import React, { useEffect, useState } from "react";
 import { addNewTrainer } from '../../../servicesMethods/TrainersServices/trainersServices';
+import { Autocomplete, Button, TextareaAutosize, TextField } from '@mui/material';
+import { getSports } from '../../../servicesMethods/LookUpsIds/StaticLookUpsIds';
+import { showError, showinfo } from '../../../Helper/Toastify.Helper';
 
 export default function NewTrainer() {
   const [firstName, setFirstName] = useState();
@@ -12,112 +15,140 @@ export default function NewTrainer() {
   const [priceMonthly, setPriceMonthly] = useState();
   const [description, setDescription] = useState();
   const [experience, setExperience] = useState();
-  const [message, setMessage] = useState("");
+  const [sports, setSports] = useState([])
 
   const createNewTrainer = async () => {
     const res = await addNewTrainer({ firstName, lastName, phoneNumber, location, image, sport, priceMonthly, description, experience });
-    if(res)
-    setMessage(res);
+    if (res)
+      showinfo(res)
+    else
+      showError('something error!!')
   };
+
+  const getAllSports = async () => {
+    const res = await getSports(99);
+    if (res)
+      setSports(res && res.sports);
+  }
+
+  useEffect(() => {
+    getAllSports();
+  }, [])
   return (
     <div className={style.newUser}>
       <h1 className={style.newUserTitle}>New Trainer</h1>
       <form className={style.newUserForm}>
         <div className={style.newUserItem}>
           <label>First Name</label>
-          <input
+          <TextField
+            required
+            id="outlined-basic"
+            label='First name'
+            variant="outlined"
+            value={firstName}
+            onChange={(event => setFirstName(event.target.value))}
             type="text"
-            placeholder="John"
-            onChange={(e) => {
-              setFirstName(e.target.value);
-            }}
           />
         </div>
         <div className={style.newUserItem}>
           <label>Last Name</label>
-          <input
+          <TextField
+            required
+            id="outlined-basic"
+            label='Last name'
+            variant="outlined"
+            value={lastName}
+            onChange={(event => setLastName(event.target.value))}
             type="text"
-            placeholder="Smith"
-            onChange={(e) => {
-              setLastName(e.target.value);
-            }}
           />
         </div>
         <div className={style.newUserItem}>
           <label>Phone Number</label>
-          <input
-            type="tel"
-            placeholder="12345678"
-            onChange={(e) => {
-              setPhoneNumber(e.target.value);
-            }}
+          <TextField
+            required
+            id="outlined-basic"
+            label='Phone'
+            variant="outlined"
+            value={phoneNumber}
+            onChange={(event => setPhoneNumber(event.target.value))}
+            type="number"
           />
         </div>
         <div className={style.newUserItem}>
           <label>Location</label>
-          <input
+          <TextField
+            required
+            id="outlined-basic"
+            label='Location'
+            variant="outlined"
+            value={location}
+            onChange={(event => setLocation(event.target.value))}
             type="text"
-            placeholder="Location URL"
-            onChange={(e) => {
-              setLocation(e.target.value);
-            }}
           />
         </div>
         <div className={style.newUserItem}>
           <label>Sport</label>
-          <input
-            type="text"
-            placeholder="Your Sport"
-            onChange={(e) => {
-              setSport(e.target.value);
-            }}
+          <Autocomplete
+            disablePortal
+            required
+            id="combo-box-demo"
+            options={sports}
+            getOptionLabel={(option) => option.sport_name}
+            sx={{ width: 300 }}
+            renderInput={(params) => <TextField {...params} label="Sports" />}
+            onChange={(event, newValue) => newValue && setSport(newValue.sport_name)}
           />
         </div>
         <div className={style.newUserItem}>
           <label>Experience</label>
-          <input
+          <TextField
+            id="outlined-basic"
+            label='Years of Experience'
+            variant="outlined"
+            value={experience}
+            onChange={(event => setExperience(event.target.value))}
             type="number"
-            placeholder="Years of Experience"
-            onChange={(e) => {
-              setExperience(e.target.value);
-            }}
           />
         </div>
         <div className={style.newUserItem}>
           <label>Price Monthly</label>
-          <input
+          <TextField
+            required
+            id="outlined-basic"
+            label='Price'
+            variant="outlined"
+            value={priceMonthly}
+            onChange={(event => setPriceMonthly(event.target.value))}
             type="number"
-            placeholder="Price"
-            onChange={(e) => {
-              setPriceMonthly(e.target.value);
-            }}
           />
         </div>
         <div className={style.newUserItem}>
           <label>Image</label>
-          <input
+          <TextField
+            id="outlined-basic"
+            label='Image URL'
+            variant="outlined"
+            value={image}
+            onChange={(event => setImage(event.target.value))}
             type="text"
-            placeholder="Image URL"
-            onChange={(e) => {
-              setImage(e.target.value);
-            }}
           />
         </div>
         <div className={style.newUserItem}>
           <label>Description</label>
-          <textarea
-            rows="10"
-            cols="50"
+          <TextareaAutosize
+            aria-label="minimum height"
+            minRows={1}
+            placeholder=""
+            style={{ width: 500 }}
             onChange={(e) => {
               setDescription(e.target.value);
             }}
-          ></textarea>
+            value={description}
+          />
         </div>
       </form>
-      <button className={style.newUserButton} onClick={createNewTrainer}>
-        Create
-      </button>
-      <p>{message}</p>
+
+      <Button  className={style.newUserButton} variant="outlined" onClick={createNewTrainer}>Add New Trainer</Button>
     </div>
   );
 }
