@@ -45,7 +45,7 @@ export const ProfileUser = () => {
   const [subTrainer, setSubTrainer] = useState([]);
   const [subGym, setSubGym] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [countries, setCountries] = useState(null);
+  const [countries, setCountries] = useState([]);
 
 
   const history = useHistory();
