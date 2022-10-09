@@ -51,13 +51,18 @@
   width: 50%;
   color: #080808;
   padding: 0px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+
 }
 
-.section2 .contentBox .formBox .inputBox {
+.section2 .contentBox .formBox .inputBo {
   margin-bottom: 20px;
-  margin-right: 25px;
+  /* margin-right: 25px; */
+  width: 110%;
 }
-.section2 .contentBox .formBox .inputBox span {
+/* .section2 .contentBox .formBox .inputBo span {
   font-size: 16px;
   margin-bottom: 5px;
   display: inline-block;
@@ -65,26 +70,26 @@
   font-weight: 300;
   font-size: 16px;
   letter-spacing: 1px;
-}
+} */
 
-.section2 .contentBox .formBox .inputBox input {
+.section2 .contentBox .formBox .inputBo input {
   width: 100%;
   padding: 10px 5px;
   outline: none;
-  border: 1px solid #080808;
+  /* border: 1px solid #080808; */
   font-size: 16px;
   letter-spacing: 1px;
   color: #080808;
   background: transparent;
-  border-radius: 30px;
-  padding-left: 20px;
+  /* border-radius: 30px; */
+  /* padding-left: 20px; */
 }
-.section2 .contentBox .formBox .inputBox input:hover {
+/* .section2 .contentBox .formBox .inputBox input:hover {
   background-color: #faf9aa;
   border: 1px solid #faf9aa;
-}
+} */
 
-.section2 .contentBox .formBox .inputBox button {
+.section2 .contentBox .formBox .inputBo button {
   width: 45%;
   height: 50px;
   padding: 6px 5px;
@@ -100,10 +105,10 @@
   padding-left: 5px;
 }
 
-.section2 .contentBox .formBox .inputBox button:hover {
-  background: #faf9aa;
+.section2 .contentBox .formBox .inputBo button:hover {
+  background: #f0ed40;
   color: #080808;
-  border: 1px solid #faf9aa;
+  border: 1px solid #ecea5a;
 }
 
 .section2 .contentBox .formBox .remember {
@@ -189,10 +194,10 @@
     z-index: 1;
   }
   .section2 .contentBox .formBox {
-    width: 100%;
+    /* width: 100%;
     padding: 30px;
     background: rgb(255 255 255 / 0.7);
-    margin: 50px;
+    margin: 50px; */
   }
   .section2 .contentBox .formBox h3 {
     width: 100%;

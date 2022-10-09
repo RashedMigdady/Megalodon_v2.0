@@ -7,6 +7,7 @@ import { register } from '../../../servicesMethods/AuthServices/signupServices';
 import { showError } from "../../../Helper/Toastify.Helper";
 import { useTitle } from '../../../Hooks/Title.Hook';
 import { TextField } from '@mui/material';
+import { Spinner } from '../../../ShareComponents/SpinnerComponent/Spinner';
 
 
 export const Register = () => {
@@ -37,6 +38,7 @@ export const Register = () => {
 
   return (
     <div className="section2">
+      <Spinner isLoading={isLoading} />
       <div className="imgBox">
         <img
           src="https://media-cldnry.s-nbcnews.com/image/upload/newscms/2021_10/3455164/210308-gym-masks-bd-2x1.jpg          "
@@ -75,7 +77,7 @@ export const Register = () => {
             />
           </div>
           <div className="inputBo">
-        
+
             <TextField
               id="standard-basic"
               label="Email"
@@ -86,7 +88,7 @@ export const Register = () => {
             />
           </div>
           <div className="inputBo">
-             <TextField
+            <TextField
               id="standard-basic"
               label="Password"
               variant="standard"

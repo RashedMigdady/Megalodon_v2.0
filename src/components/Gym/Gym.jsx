@@ -7,6 +7,7 @@ import { addSubscription } from "../../redux/action/cart";
 import { Form } from "react-bootstrap";
 import { getAllGyms } from '../../servicesMethods/GymsServices/gymsServices';
 import { useTitle } from '../../Hooks/Title.Hook';
+import { Spinner } from '../../ShareComponents/SpinnerComponent/Spinner';
 export const Gym = () => {
   useTitle('Gyms')
   const [allgyms, setAllGyms] = useState([]);
@@ -14,11 +15,14 @@ export const Gym = () => {
   // const token = localStorage.getItem("token");
   const dispatch = useDispatch();
   const all = JSON.parse(localStorage.getItem("subscription"));
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(async () => {
+    setIsLoading(true);
     const res = await getAllGyms();
-    if(res)
+    if (res)
     setAllGyms([...res]);
+    setIsLoading(false);
   }, []);
 
   const addSubsGym = (element) => {
@@ -51,6 +55,7 @@ export const Gym = () => {
 
   return (
     <div className="bigDiv">
+      <Spinner isActive={isLoading} />
       <Form>
         <Form.Group className="searchGym" controlId="exampleForm.ControlInput1">
           <Form.Control

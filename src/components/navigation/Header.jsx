@@ -24,7 +24,7 @@ export const Navigation = () => {
   useEffect(async () => {
     const res = await GetuserProfile();
     if (res)
-    console.log("x",typeof(res));
+    console.log("x");
       // setImageUser(res.data[0]);
 
   }, []);
@@ -100,6 +100,14 @@ export const Navigation = () => {
                   Home
                 </Link>
               </Nav.Link>
+              {localStorage.getItem('role') =='admin'?<Nav.Link>
+                <Link
+                  to="/dashboard"
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  Dashboard
+                </Link>
+              </Nav.Link>:<></>}
               {!state.token ? <Nav.Link>
                 <Link
                   to="/login"

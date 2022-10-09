@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import image from '../../imeges/loader.gif';
+import image from '../../imeges/loader_Gym.gif';
 import './Spinner.css';
 
 export const Spinner = ({

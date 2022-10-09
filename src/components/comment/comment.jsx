@@ -10,7 +10,7 @@ export const AddComment = () => {
 
   const createComment = async () => {
     setIsLoading(true);
-    const res = await addComment({ comment });
+    const res = await addComment({comment});
     if (res)
       swal(res);
     setIsLoading(false);

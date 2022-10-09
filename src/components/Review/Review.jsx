@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { getAllReviews } from "../../servicesMethods/ReviewsServices/reviewsServices";
 import { Spinner } from '../../ShareComponents/SpinnerComponent/Spinner';
 import "./review.css";
+import moment from 'moment';
+
 
 export const Review = () => {
   const [review, setAllReview] = useState("");
@@ -13,6 +15,7 @@ export const Review = () => {
     const res = await getAllReviews();
     if (res)
       setAllReview(res);
+      console.log("al", res);
     setIsLoading(false);
   }, [getAllReviews]);
 
@@ -42,7 +45,7 @@ export const Review = () => {
                     <h5>{element && element.firstName}</h5>
                     <h5>{element && element.comment}</h5>
                     <p className="dateReview">
-                      {(element && element.date_created || "N/A").slice(0, 10)}
+                      {element && element.date_of_comment && moment(element.date_of_comment).format('MMMM Do YYYY, h:mm A') || 'N/A'}
                     </p>
                   </div>
                   <div className="imgReview">
