@@ -9,6 +9,7 @@
     "@mui/icons-material": "^5.0.4",
     "@mui/material": "^5.10.6",
     "@mui/styled-engine-sc": "^5.10.6",
+    "@mui/x-data-grid": "^5.17.6",
     "@react-icons/all-files": "^4.1.0",
     "@stripe/react-stripe-js": "^1.6.0",
     "@stripe/stripe-js": "^1.19.1",

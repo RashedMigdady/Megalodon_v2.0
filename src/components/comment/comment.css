@@ -31,6 +31,10 @@
   border: none;
   background: #f3f3f7;
   resize: none;
+  color: black;
+}
+input{
+  color: black;
 }
 
 .form44 .signupbtnn {
