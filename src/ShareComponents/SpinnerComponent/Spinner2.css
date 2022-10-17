@@ -1,0 +1,133 @@
+.cssload-loader-container {
+  width: 127px;
+  height: 52px;
+  float: left;
+}
+
+.cssload-loader-container * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.cssload-abs-center {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.cssload-olympicloader {
+  position: relative;
+}
+.cssload-olympicloader .cssload-loader-circle {
+  width: 39px;
+  height: 39px;
+  border: 4px solid rgb(255, 206, 8);
+  border-radius: 50%;
+  animation: spin 760ms infinite linear;
+  -o-animation: spin 760ms infinite linear;
+  -ms-animation: spin 760ms infinite linear;
+  -webkit-animation: spin 760ms infinite linear;
+  -moz-animation: spin 760ms infinite linear;
+  float: left;
+}
+.cssload-olympicloader .cssload-loader-circle.cssload-first {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-top-color: rgb(0, 0, 0);
+}
+.cssload-olympicloader .cssload-loader-circle.cssload-second {
+  position: absolute;
+  top: 0;
+  left: 44px;
+  border-right-color: rgb(0, 0, 0);
+}
+.cssload-olympicloader .cssload-loader-circle.cssload-third {
+  position: absolute;
+  top: 0;
+  left: 88px;
+  border-bottom-color: rgb(0, 0, 0);
+}
+.cssload-olympicloader .cssload-loader-circle.cssload-fourth {
+  position: absolute;
+  top: 14px;
+  left: 22px;
+  border-left-color: rgb(0, 0, 0);
+}
+.cssload-olympicloader .cssload-loader-circle.cssload-fifth {
+  position: absolute;
+  top: 14px;
+  left: 66px;
+  border-right-color: rgb(0, 0, 0);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes spin {
+  from {
+    -o-transform: rotate(0deg);
+  }
+  to {
+    -o-transform: rotate(360deg);
+  }
+}
+
+@-ms-keyframes spin {
+  from {
+    -ms-transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+.cssload-loader-container .cssload-abs-center .app-spinner {
+    /* display: flex !important; */
+    /* flex-direction: column; */
+    align-items: center;
+    /* justify-content: center; */
+    color: #989898;
+    height: 100%;
+    width: 100%;
+    min-width: 25px;
+    min-height: 25px;
+    /* position: absolute; */
+    top: 0;
+    z-index: 999999;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.5s, opacity 0.3s linear;
+}

@@ -14,6 +14,8 @@ import { showError } from "../../../Helper/Toastify.Helper";
 import { useTitle } from '../../../Hooks/Title.Hook';
 import { Button, TextField } from '@mui/material';
 import { Spinner } from '../../../ShareComponents/SpinnerComponent/Spinner';
+import loginSideImage from '../../../imeges/Login-side-image.jpg'
+
 export const Login = () => {
   useTitle('Login');
   const [email, setEmail] = useState(null);
@@ -123,7 +125,7 @@ export const Login = () => {
       <Spinner isActive={isLoading}/>
       <div className="imgBx">
         <img
-          src="https://www.reviewsxp.com/blog/wp-content/uploads/2019/08/Best-gyms-in-jaipur-e1565704535975.jpg"
+          src={loginSideImage}
           alt="broken"
         />
       </div>

@@ -22,14 +22,14 @@ export const Payment = ({ gymId, trainerId, restaurantId }) => {
   const sendMsg = async () => {
     const res = await sendMessage({ confirm });
   }
-  const addNewSubsicribeTrainer = async (trainerId) => {
+  const addNewSubsicribeTrainer = async () => {
     const res = await createSubscribeWithTrainer(trainerId);
   }
 
-  const addNewSubsicribeGym = async (gymId) => {
+  const addNewSubsicribeGym = async () => {
     const res = await createSubscribeWithGym(gymId);
   }
-  const reqResturant = async (restaurantId) => {
+  const reqResturant = async () => {
     const res = await createSubscribeWithResturant(restaurantId);
   }
   const addSUB = () => {

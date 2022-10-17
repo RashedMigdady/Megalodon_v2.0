@@ -5,6 +5,7 @@ import "./About";
 // import { GoLocation } from "react-bootstrap";
 import { GoLocation, GoMail } from "react-icons/go";
 import { useHistory } from "react-router";
+import logoImage from '../../imeges/logo.png';
 
 export const Footer = () => {
   const history = useHistory();
@@ -25,7 +26,7 @@ export const Footer = () => {
               onClick={() => {
                 history.push("/home");
               }}
-              src="https://github.com/RashedMigdady/Megalodon_v2.0/blob/main/src/components/auth/login/logo.png?raw=true"
+              src={logoImage}
               alt="Megalodon logo"
             />{" "}
             <p

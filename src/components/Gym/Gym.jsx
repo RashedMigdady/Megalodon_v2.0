@@ -7,7 +7,7 @@ import { addSubscription } from "../../redux/action/cart";
 import { Form } from "react-bootstrap";
 import { getAllGyms } from '../../servicesMethods/GymsServices/gymsServices';
 import { useTitle } from '../../Hooks/Title.Hook';
-import { Spinner } from '../../ShareComponents/SpinnerComponent/Spinner';
+import { Spinner2 } from '../../ShareComponents/SpinnerComponent/Spinner2';
 export const Gym = () => {
   useTitle('Gyms')
   const [allgyms, setAllGyms] = useState([]);
@@ -55,7 +55,7 @@ export const Gym = () => {
 
   return (
     <div className="bigDiv">
-      <Spinner isActive={isLoading} />
+      <Spinner2 isActive={isLoading} />
       <Form>
         <Form.Group className="searchGym" controlId="exampleForm.ControlInput1">
           <Form.Control

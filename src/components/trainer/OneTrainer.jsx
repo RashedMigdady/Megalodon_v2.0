@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { serverAddress, HTTPServices } from "../../Helper/HTTPMethod.Helper";
 import { useParams } from "react-router-dom";
 import "./OneTrainer.css";
 import Place from "@mui/icons-material/Place";
@@ -11,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { addSubscription } from "../../redux/action/cart";
 import { getTrainerById } from '../../servicesMethods/TrainersServices/trainersServices';
 import { Spinner } from '../../ShareComponents/SpinnerComponent/Spinner';
+import DefaultImageUser from '../../imeges/Default-user.png';
 
 export const OneTrainer = () => {
   const [trainer, setTrainer] = useState(0);
@@ -61,8 +61,7 @@ export const OneTrainer = () => {
       <Spinner isActive={isLoading} />
       <div className="col-xs-12">
         <div className="gym-block-img">
-          {/* fixNeed */}
-          {/* <img src={trainer && trainer.image || imageTest} alt="" className="gym-img" /> */}
+          <img src={trainer && trainer.image ? trainer.image : DefaultImageUser} alt="" className="gym-img" />
         </div>
         <div className="gym-block-bottm">
           <h3 className="gym-block__title">Contact</h3>

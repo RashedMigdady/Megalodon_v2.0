@@ -8,7 +8,7 @@ import { showError } from "../../../Helper/Toastify.Helper";
 import { useTitle } from '../../../Hooks/Title.Hook';
 import { TextField } from '@mui/material';
 import { Spinner } from '../../../ShareComponents/SpinnerComponent/Spinner';
-
+import signupSideImage from '../../../imeges/signup-side-image.jpg';
 
 export const Register = () => {
   useTitle('Register')
@@ -41,7 +41,7 @@ export const Register = () => {
       <Spinner isLoading={isLoading} />
       <div className="imgBox">
         <img
-          src="https://media-cldnry.s-nbcnews.com/image/upload/newscms/2021_10/3455164/210308-gym-masks-bd-2x1.jpg          "
+          src={signupSideImage}
           alt=""
         />
       </div>

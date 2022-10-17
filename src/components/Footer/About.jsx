@@ -1,13 +1,14 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./about.css";
+import logoImage from '../../imeges/logo.png';
 
 function About() {
   return (
     <div className="container">
       <div className="AllAbout">
         <img
-          src="https://media-exp1.licdn.com/dms/image/C4D03AQENTPBIbklKXw/profile-displayphoto-shrink_800_800/0/1642887863214?e=1658361600&v=beta&t=xNLHa2OKzPpkujaosufvxVEdGkXde-KGBX46x9YJ3Jc"
+          src={logoImage}
           alt="Logo"
           className="ImageAbout"
         />

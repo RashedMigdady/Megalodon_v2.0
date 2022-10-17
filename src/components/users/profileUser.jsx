@@ -14,6 +14,7 @@ import { Autocomplete, TextField } from '@mui/material';
 import { getCountries } from '../../servicesMethods/LookUpsIds/StaticLookUpsIds';
 import { Spinner } from '../../ShareComponents/SpinnerComponent/Spinner';
 import { countriesLookupId } from '../../LookUpsIds/loookupIds';
+import DefaultImageUser from '../../imeges/Default-user.png'
 
 
 const customStyles = {
@@ -118,17 +119,10 @@ export const ProfileUser = () => {
 
   return (
     <div className="userProfile">
-      <Spinner isActive={isLoading}  />
+      <Spinner isActive={isLoading} />
       <div className="leftdiv">
         <div className="profileImg">
-          {profile && profile.image !== null ? (
-            <img className="imgProfile" src={profile && profile.image} />
-          ) : (
-            <img
-              className="imgProfile"
-              src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
-            />
-          )}
+          <img className="imgProfile" src={profile && profile.image ? profile.image : DefaultImageUser} />
         </div>
         <h4 className="NameOfUser">
           {profile && profile.firstName + " " + profile.lastName}
