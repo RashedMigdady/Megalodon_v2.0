@@ -1,0 +1,2 @@
+1) complte pagination on products
+2) complete loing with get IP Data

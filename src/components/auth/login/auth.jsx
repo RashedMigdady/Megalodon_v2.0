@@ -8,7 +8,7 @@ import { addToCart } from "../../../redux/action/cart";
 import { addSubscription } from "../../../redux/action/cart";
 import swal from "sweetalert";
 import { Col, Container, Row, Image } from "react-bootstrap";
-import { serverAddress, HTTPServices } from "../../../Helper/HTTPMethod.Helper";
+import { serverAddress, HTTPServices, ipApiKey } from "../../../Helper/HTTPMethod.Helper";
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { showError } from "../../../Helper/Toastify.Helper";
 import { useTitle } from '../../../Hooks/Title.Hook';
@@ -32,10 +32,41 @@ export const Login = () => {
   const userLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+
+    const ipData = fetch(`https://ipfind.co/?ip=46.185.161.162&auth=${ipApiKey}`)
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+
+    /*
+    {
+  "ip_address": "46.185.161.162",
+  "country": "Jordan",
+  "country_code": "JO",
+  "continent": "Asia",
+  "continent_code": "AS",
+  "city": "Amman",
+  "county": null,
+  "region": "Amman",
+  "region_code": "16",
+  "postal_code": null,
+  "timezone": "Asia/Amman",
+  "owner": null,
+  "longitude": 35.939,
+  "latitude": 31.9522,
+  "currency": "JOD",
+  "languages": [
+      "ar-JO",
+      "en"
+  ]
+}
+    */
+
+
     await HTTPServices
       .post(`${serverAddress}/login/`, {
         email,
         password,
+        ipData
       })
       .then((res) => {
         localStorage.setItem("role", res.data.role);
@@ -122,7 +153,7 @@ export const Login = () => {
 
   return (
     <div className="section">
-      <Spinner isActive={isLoading}/>
+      <Spinner isActive={isLoading} />
       <div className="imgBx">
         <img
           src={loginSideImage}

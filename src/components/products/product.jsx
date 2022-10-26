@@ -9,19 +9,30 @@ import { getProducts } from '../../servicesMethods/ProductServices/productServic
 import { showError, showSuccess } from "../../Helper/Toastify.Helper";
 import { useHistory } from 'react-router-dom';
 import { Spinner } from '../../ShareComponents/SpinnerComponent/Spinner';
+import { AppPagination } from '../../ShareComponents/Pagination/Pagination';
 
 export const Products = () => {
-  const [isLoading, setIsLoading] = useState(false)
-  const [products, setProducts] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const pageSize = 3;
+  const [products, setProducts] = useState({
+    products: [],
+    totalCount: 0,
+    from: 0,
+    to: pageSize
+  });
   const dispatch = useDispatch();
   const history = useHistory();
 
   const all = JSON.parse(localStorage.getItem("savedData"));
   useEffect(async () => {
     setIsLoading(true);
-    const res = await getProducts();
+    const res = await getProducts(products.from, products.to);
+    console.log(res);
     if (res)
-      setProducts(res && res.Products);
+      setProducts({
+        products: res.Products,
+        totalCount: res.totalCount
+      });
     setIsLoading(false);
   }, [getProducts]);
 
@@ -50,7 +61,7 @@ export const Products = () => {
       </div>}
       <Row xs={1} md={3} className="g-4">
         {products && products != [] &&
-          products.map((item) => {
+          products && products.products.map((item) => {
             return (<Col key={item}>
               <Card
                 style={{ textAlign: "left", width: "90%", height: "100%" }}
@@ -93,6 +104,11 @@ export const Products = () => {
             </Col>);
           })}
       </Row>
+{/* 
+      <AppPagination
+        count={Math.ceil(products.totalCount / pageSize)}
+        pageSize = {pageSize}
+      /> */}
     </div>
   );
 };
